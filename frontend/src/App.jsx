@@ -1,5 +1,5 @@
 import { Component, useState } from 'react';  
-import './App.css'; // Import the CSS file for animations
+import './components/App.css'; // Import the CSS file for animations
 // import Routes  from "./src/Components/Router"
 
 function App() {
@@ -99,5 +99,3 @@ function App() {
 }
 
 export default App;
-
-
