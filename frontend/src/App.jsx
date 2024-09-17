@@ -25,15 +25,16 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url("https://t3.ftcdn.net/jpg/02/83/54/94/240_F_283549444_QJP74KROpbcvsBvohYSSJxVfFIcqr5O8.jpg")' }}>
-      <header className="bg-blue-800 text-white text-center p-8 bg-opacity-70"> {/* Added bg-opacity for better text visibility */}
-        <h1 className="text-5xl font-bold">Heads or Tails</h1>
+    <div className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
+    style={{ backgroundImage: 'url("https://t3.ftcdn.net/jpg/02/83/54/94/240_F_283549444_QJP74KROpbcvsBvohYSSJxVfFIcqr5O8.jpg")' }}>
+      <header className=" text-white text-center p-8 bg-opacity-70"> {/* Added bg-opacity for better text visibility */}
+        <h1 className="text-5xl font-bold">Heads Or Tails</h1>
         
         <div className="mt-8 flex justify-center"> {/* Center button container */}
           {!isSignedIn ? (
             <button
               onClick={handleSignIn}
-              className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 transition-colors flex items-center gap-3"
+              className="bg-white text-black px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 transition-colors flex items-center gap-3"
             >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6A5yy0ftMeBgTmsVSXKQmm_NbAFV-6H7SWg&s"
@@ -82,8 +83,8 @@ function App() {
 
           </>
         ) : (
-          <div className="text-xl font-bold bg-gray-200 p-4 rounded-lg">
-           Please sign in to play.
+          <div className="text-xl font-bold  p-4 rounded-lg">
+  
 
 
             
