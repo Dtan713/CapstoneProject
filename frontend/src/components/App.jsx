@@ -32,7 +32,7 @@ function App() {
            style={{ backgroundImage: 'url("https://t3.ftcdn.net/jpg/02/83/54/94/240_F_283549444_QJP74KROpbcvsBvohYSSJxVfFIcqr5O8.jpg")' }}>
         <NavBar /> {/* Include the NavBar component */}
         <header className="text-white text-center p-8 bg-opacity-70">
-          <h1 className="text-6xl font-extrabold neon-text">HEADS OR TAILS</h1>
+          <h1 className="text-6xl font-extrabold font-serif neon-text">HEADS OR TAILS</h1>
           <div className="mt-8 flex justify-center">
             {!isSignedIn ? (
               <button
@@ -62,7 +62,7 @@ function App() {
               <img
                 src="https://spinthewheel.app/assets/images/preview/dinner-to-eat.png"
                 alt="Random Image"
-                className={`w-full max-w-2xl border-4 border-green-600 rounded-lg mb-6 transition-transform duration-500 ${isSpinning ? 'spin' : ''}`}
+                className={`w-full max-w-2xl rounded-lg mb-6 transition-transform duration-500 ${isSpinning ? 'spin' : ''}`}
                 onClick={() => handleClick(result === 'Heads' ? 'Heads' : 'Tails')}
               />
               <div className="flex gap-6 mb-6">
@@ -85,7 +85,7 @@ function App() {
             </>
           ) : (
             <div className="text-xl font-bold p-4 rounded-lg">
-             
+              
             </div>
           )}
         </main>

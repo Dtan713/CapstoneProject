@@ -1,8 +1,7 @@
-// src/components/NavBar.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function NavBar() {
+function NavBar({ isSignedIn, onSignIn, onSignOut }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -31,7 +30,7 @@ function NavBar() {
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0">
-             
+            
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
@@ -39,6 +38,21 @@ function NavBar() {
                 <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</Link>
                 <Link to="/services" className="text-gray-300 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</Link>
                 <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
+                {isSignedIn ? (
+                  <button
+                    onClick={onSignOut}
+                    className="bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-white-600"
+                  >
+                    Sign Out
+                  </button>
+                ) : (
+                  <button
+                    onClick={onSignIn}
+                    className="bg-blue-600 text-gray px-3 py-2 rounded-md text-base font-medium hover:bg-white-600"
+                  >
+                    Sign In
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -46,10 +60,27 @@ function NavBar() {
       </div>
       <div className={`${isOpen ? 'block' : 'hidden'} sm:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link to="/" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
+          <Link to="/home" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
           <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</Link>
           <Link to="/services" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</Link>
+          <Link to="/signIn" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">SignIn</Link>
+          
           <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</Link>
+          {isSignedIn ? (
+            <button
+              onClick={onSignOut}
+              className="bg-blue-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <button
+              onClick={onSignIn}
+              className="bg-blue-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-green-600"
+            >
+              Sign In
+            </button>
+          )}
         </div>
       </div>
     </nav>
