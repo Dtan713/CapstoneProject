@@ -1,8 +1,10 @@
-// src/components/App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from './NavBar'; // Import the NavBar component
-import './App.css'; // Import CSS file for animations
+import NavBar from '../NavBar/NavBar';
+import Home from '../Home/Home';
+import About from '../About/About';
+import Login from '../Login/Login';
+import './App.css';
 
 function App() {
   const [result, setResult] = useState('');
@@ -30,66 +32,37 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
            style={{ backgroundImage: 'url("https://t3.ftcdn.net/jpg/02/83/54/94/240_F_283549444_QJP74KROpbcvsBvohYSSJxVfFIcqr5O8.jpg")' }}>
-        <NavBar /> {/* Include the NavBar component */}
+        <NavBar isSignedIn={isSignedIn} onSignIn={handleSignIn} onSignOut={handleSignOut} />
         <header className="text-white text-center p-8 bg-opacity-70">
           <h1 className="text-6xl font-extrabold font-serif neon-text">HEADS OR TAILS</h1>
-          <div className="mt-8 flex justify-center">
-            {!isSignedIn ? (
-              <button
-                onClick={handleSignIn}
-                className="bg-white text-black px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 transition-colors flex items-center gap-3"
-              >
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6A5yy0ftMeBgTmsVSXKQmm_NbAFV-6H7SWg&s"
-                  alt="Sign In"
-                  className="w-14 h-14"
-                />
-                Sign In
-              </button>
-            ) : (
-              <button
-                onClick={handleSignOut}
-                className="bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-red-700 transition-colors"
-              >
-                Sign Out
-              </button>
-            )}
-          </div>
         </header>
         <main className="flex flex-col items-center justify-center flex-grow p-6">
-          {isSignedIn ? (
-            <>
-              <img
-                src="https://spinthewheel.app/assets/images/preview/dinner-to-eat.png"
-                alt="Random Image"
-                className={`w-full max-w-2xl rounded-lg mb-6 transition-transform duration-500 ${isSpinning ? 'spin' : ''}`}
-                onClick={() => handleClick(result === 'Heads' ? 'Heads' : 'Tails')}
-              />
-              <div className="flex gap-6 mb-6">
-                <button
-                  onClick={() => handleClick('Heads')}
-                  className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
-                >
-                  Heads
-                </button>
-                <button
-                  onClick={() => handleClick('Tails')}
-                  className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors"
-                >
-                  Tails
-                </button>
-              </div>
-              <div className="text-2xl font-bold bg-yellow-200 p-4 rounded-lg">
-                {result}
-              </div>
-            </>
-          ) : (
-            <div className="text-xl font-bold p-4 rounded-lg">
-              
-            </div>
-          )}
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
+            <Route path="/game" element={
+              isSignedIn ? (
+                <>
+                  <img
+                    src="https://spinthewheel.app/assets/images/preview/dinner-to-eat.png"
+                    alt="Random Image"
+                    className={`w-full max-w-2xl rounded-lg mb-6 transition-transform duration-500 ${isSpinning ? 'spin' : ''}`}
+                    onClick={() => handleClick(result === 'Heads' ? 'Heads' : 'Tails')}
+                  />
+                  <div className="flex gap-6 mb-6">
+                    <button onClick={() => handleClick('Heads')} className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors">Heads</button>
+                    <button onClick={() => handleClick('Tails')} className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors">Tails</button>
+                  </div>
+                  <div>{result}</div>
+                </>
+              ) : (
+                <div className="text-xl font-bold p-4 rounded-lg">Please log in to play!</div>
+              )
+            } />
+          </Routes>
         </main>
-        <footer className="bg-blue-600 text-white text-center p-4">
+        <footer className="text-white text-center p-4">
           <p>&copy; 2024 Heads or Tails</p>
         </footer>
       </div>

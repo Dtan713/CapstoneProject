@@ -22,7 +22,8 @@
   color: #ecf0f1;
   text-align: center;
   padding: 1rem;
-  font-size: x-large;
+  font-size:x-large;
+  
 }
 
 .app-title {
@@ -30,7 +31,6 @@
   font-weight: bold;
   margin: 0;
   font-style: italic;
- 
 }
 
 .app-main {
@@ -103,3 +103,36 @@
   padding: 0.5rem;
 }
 
+/* Custom styles for header */
+.header-background {
+  background-color: rgba(44, 62, 80, 0.7); /* Semi-transparent */
+  color: #ecf0f1;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Button styles */
+.sign-in-button {
+  background-color: white;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.sign-in-button:hover {
+  background-color: #27ae60;
+  color: white;
+}
+
+.sign-out-button {
+  background-color: #e74c3c;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sign-out-button:hover {
+  background-color: #c0392b;
+}
