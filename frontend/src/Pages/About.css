@@ -1,0 +1,12 @@
+
+/* Common styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  .about-background {
+    background: url('https://example.com/about-bg.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+  }
+}

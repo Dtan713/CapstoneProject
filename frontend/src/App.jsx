@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from '../NavBar/NavBar';
-import Home from '../Home/Home';
-import About from '../About/About';
-import Login from '../Login/Login';
-import './App.css';
+import NavBar from './Navbar/Navbar';
+import Home from './Pages/Home';
+import About from './Pages/About';
+import Contact from './Pages/Contact';
+import Login from './Pages/Login';
+
 
 function App() {
   const [result, setResult] = useState('');
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
             <Route path="/game" element={
               isSignedIn ? (
@@ -70,4 +72,5 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
+

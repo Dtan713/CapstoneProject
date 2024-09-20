@@ -46,6 +46,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
                 <Link to="/home" className="text-gray-300 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
                 <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</Link>
                 <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
+                
 
                 {isSignedIn ? (
                   <button
