@@ -1,59 +1,89 @@
-// Wheel.js
+// NavBar.js
 import React, { useState } from 'react';
-import { link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
+function NavBar({ isSignedIn, onSignIn, onSignOut }) {
+  const [isOpen, setIsOpen] = useState(false);
 
-const Wheel = () => {
-  const [isSpinning, setIsSpinning] = useState(false);
-  const [result, setResult] = useState('');
-
-  const spinWheel = () => {
-    if (isSpinning) return; // Prevent multiple spins at once
-
-    setIsSpinning(true);
-    const randomRotation = Math.floor(Math.random() * 360) + 720; // Spin at least two full turns
-    const wheel = document.getElementById('wheel');
-
-    // Apply rotation
-    wheel.style.transition = 'transform 4s ease-out';
-    wheel.style.transform = `rotate(${randomRotation}deg)`;
-
-    // Determine the result after spinning
-    setTimeout(() => {
-      const actualRotation = randomRotation % 360;
-      const index = Math.floor((actualRotation / 360) * options.length);
-      setResult(options[index]);
-      setIsSpinning(false);
-      wheel.style.transition = 'none'; // Reset transition
-      wheel.style.transform = `rotate(${actualRotation}deg)`; // Set final position
-    }, 4000); // Match this with the transition duration
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <div className="flex flex-col items-center">
-      <div
-        id="wheel"
-        className="border-4 border-black rounded-full h-64 w-64 flex items-center justify-center transition-transform relative"
-      >
-        {options.map((option, index) => (
-          <div key={index} className="absolute">
-            <div style={{ transform: `rotate(${index * (360 / options.length)}deg) translateY(-50%)` }}>
-              {option}
+    <nav className="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-20">
+          <div className="flex items-center">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvRfhAJ2Fee6izbfjM3PxM09ScJ0kYMNKTFQ&s"
+              alt="Logo"
+              className="h-12 w-12 mr-3"
+            />
+            <div className="text-4xl font-bold tracking-wide">Heads Or Tails</div>
+          </div>
+          <div className="hidden sm:block">
+            <div className="flex space-x-6 items-center">
+              <Link to="/home" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/contact" className="nav-link">Contact</Link>
+              <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/wheel" className="nav-link">Spin the Wheel</Link> {/* Add this line */}
             </div>
           </div>
-        ))}
+          <div className="absolute inset-y-0 right-10 flex items-center sm:hidden">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              onClick={toggleMenu}
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
       </div>
-      <button
-        onClick={spinWheel}
-        className="mt-4 p-2 bg-blue-500 text-white rounded"
-        disabled={isSpinning}
-      >
-        {isSpinning ? 'Spinning...' : 'Spin the Wheel!'}
-      </button>
-      {result && <div className="mt-4 text-xl">{`Result: ${result}`}</div>}
-    </div>
+      <div className={`${isOpen ? 'block' : 'hidden'} sm:hidden`}>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          <Link to="/about" className="nav-link-mobile">About</Link>
+          <Link to="/contact" className="nav-link-mobile">Contact</Link>
+          <Link to="/wheel" className="nav-link-mobile">Spin the Wheel</Link> {/* Add this line */}
+          {isSignedIn ? (
+            <button
+              onClick={onSignOut}
+              className="bg-blue-600 text-white block px-4 py-3 rounded-md text-lg font-medium hover:bg-blue-500"
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              onClick={onSignIn}
+              className="bg-blue-600 text-white block px-4 py-3 rounded-md text-lg font-medium hover:bg-blue-500"
+            >
+              Log In
+            </button>
+          )}
+        </div>
+      </div>
+    </nav>
   );
-};
+}
 
-export default Wheel;
+export default NavBar;

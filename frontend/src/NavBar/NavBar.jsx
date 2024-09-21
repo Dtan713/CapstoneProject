@@ -16,7 +16,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
               alt="Logo"
               className="h-12 w-12 mr-3"
             />
-            <div className="text-5xl font-bold tracking-wide ml-[-10px]"> {/* Added negative margin */}
+            <div className="text-5xl font-bold tracking-wide ml-[-10px]">
               Heads Or Tails
             </div>
           </div>
@@ -26,23 +26,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
               <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">About</Link>
               <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Contact</Link>
               <Link to="/login" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Login</Link>
-
-{/* 
-              {isSignedIn ? (
-                <button
-                  onClick={onSignOut}
-                  className="bg-blue-600 text-white px-4 py-3 rounded-md text-lg font-medium hover:bg-white hover:text-blue-800"
-                >
-                  Log Out
-                </button>
-              ) : (
-                <button
-                  onClick={onSignIn}
-                  className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium"
-                >
-                  
-                </button>
-              )} */}
+              <Link to="/wheel" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Spin the Wheel</Link> {/* New Link */}
             </div>
           </div>
           <div className="absolute inset-y-0 right-10 flex items-center sm:hidden">
@@ -81,6 +65,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-medium">About</Link>
           <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-medium">Contact</Link>
+          <Link to="/wheel" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-medium">Spin the Wheel</Link> {/* New Link for mobile */}
           {isSignedIn ? (
             <button
               onClick={onSignOut}
@@ -103,4 +88,3 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
 }
 
 export default NavBar;
-

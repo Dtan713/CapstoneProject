@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import NavBar from './Navbar/Navbar';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Login from './Pages/Login';
 import Wheel from './Pages/Wheel';
-
 const backgrounds = {
   '/home': 'url("https://example.com/home-background.jpg")',
   '/about': 'url("https://images.wondershare.com/virtulook/articles/random-background-generator-13.jpg")',
@@ -35,14 +34,7 @@ function App() {
       style={{ backgroundImage: currentBackground }}>
       <NavBar isSignedIn={isSignedIn} onSignIn={handleSignIn} onSignOut={handleSignOut} />
       <header className="text-white text-center p-8 bg-opacity-70">
-        <h1 className="text-6xl font-extrabold font-serif neon-text">HEADS OR TAILS</h1>
-        <nav>
-          <Link to="/home" className="text-yellow-400 hover:text-yellow-300 mx-4">Home</Link>
-          <Link to="/about" className="text-yellow-400 hover:text-yellow-300 mx-4">About</Link>
-          <Link to="/contact" className="text-yellow-400 hover:text-yellow-300 mx-4">Contact</Link>
-          <Link to="/login" className="text-yellow-400 hover:text-yellow-300 mx-4">Log In</Link>
-          <Link to="/game" className="text-yellow-400 hover:text-yellow-300 mx-4">Wheel Game</Link>
-        </nav>
+        {/* <h1 className="text-6xl font-extrabold font-serif neon-text">HEADS OR TAILS</h1> */}
       </header>
       <main className="flex flex-col items-center justify-center flex-grow p-6">
         <Routes>
@@ -79,4 +71,3 @@ export default function Wrapper() {
     </Router>
   );
 }
-
