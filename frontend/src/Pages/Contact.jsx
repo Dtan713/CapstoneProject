@@ -3,7 +3,15 @@ import './Contact.css'; // Import the CSS file if you have styles
 
 function Contact() {
   return (
-    <div className="contact-container">
+    <div
+      className="contact-container"
+      style={{
+        backgroundColor: '#2c3e50', // Example background color
+        padding: '20px', // Add some padding
+        borderRadius: '10px', // Optional: for rounded corners
+        color: 'white' // Set text color for better contrast
+      }}
+    >
       <h2 style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '2rem' }}>Contact Us</h2>
       <p className="about-paragraph">
         If you have any questions, feel free to reach out!
@@ -47,6 +55,26 @@ function Contact() {
             }}
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="message" style={{ color: 'Yellow', fontWeight: 'bold' }}>
+            Message:
+          </label>
+          <textarea
+            id="message"
+            placeholder="Enter your message here"
+            required
+            rows="4"
+            style={{
+              padding: '10px',
+              marginTop: '10px',
+              borderRadius: '10px',
+              border: '1px solid #ccc',
+              width: '100%',
+              maxWidth: '950px',
+              resize: 'none', // Prevent resizing for a cleaner look
+            }}
+          />
+        </div>
         <button
           type="submit"
           style={{
@@ -67,5 +95,7 @@ function Contact() {
 }
 
 export default Contact;
+
+
 
 

@@ -22,9 +22,12 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
           </div>
           <div className="hidden sm:block">
             <div className="flex space-x-6 items-center">
+              <Link to="/home" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Home</Link>
               <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">About</Link>
               <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Contact</Link>
-              
+              <Link to="/login" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Login</Link>
+
+{/* 
               {isSignedIn ? (
                 <button
                   onClick={onSignOut}
@@ -37,9 +40,9 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
                   onClick={onSignIn}
                   className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium"
                 >
-                  Log In
+                  
                 </button>
-              )}
+              )} */}
             </div>
           </div>
           <div className="absolute inset-y-0 right-10 flex items-center sm:hidden">
