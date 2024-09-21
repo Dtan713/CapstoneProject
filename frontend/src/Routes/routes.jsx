@@ -10,8 +10,8 @@ function Navigation() {
     <nav>
       <Link to="/Home">Home</Link>
       <Link to="/About">About</Link>
-      <Link to="/contact">Contact</Link>
-      <Link to="/Login">Login</Link>
+      <Link to="/Contact">Contact</Link>
+      <Link to="Login">Login</Link>
     </nav>
   );
 }
@@ -23,7 +23,7 @@ export default function App() {
       <Routes>
           <Route path="/Home" element={<Home />} />
           <Route path="/About" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/Contact" element={<Contact />} />
           <Route path="/Login" element={<Login />} />
           <Route path="*" element={<NotFound />} /> {/* Add a NotFound component if desired */}
       </Routes>

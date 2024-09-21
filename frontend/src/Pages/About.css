@@ -1,12 +1,49 @@
+.about-container {
+  transition: background 0.5s ease;
+  text-align: center;
+}
 
-/* Common styles */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+.content-box {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for contrast */
+  border: 3px solid yellow; /* Border for the content box */
+  border-radius: 15px; /* Rounded corners */
+  padding: 40px;
+  max-width: 800px; /* Limit the width for better layout */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  min-height: 50vh;
+}
 
-  .about-background {
-    background: url('https://example.com/about-bg.jpg') no-repeat center center;
-    background-size: cover;
-    min-height: 100vh;
+.about-title {
+  color: yellow;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about-subtitle {
+  color: yellow;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.about-description {
+  color: yellow;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .about-description {
+    font-size: 1.2rem;
   }
 }

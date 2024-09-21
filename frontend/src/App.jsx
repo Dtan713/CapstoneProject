@@ -8,18 +8,16 @@ import Login from './Pages/Login';
 
 
 function App() {
-  const [result, setResult] = useState('');
-  const [isSpinning, setIsSpinning] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const handleClick = (choice) => {
-    setIsSpinning(true);
-    const outcome = Math.random() < 0.5 ? 'Heads' : 'Tails';
-    setTimeout(() => {
-      setResult(outcome === choice ? 'You Win!' : 'You Lose!');
-      setIsSpinning(false);
-    }, 1000);
-  };
+  // const handleClick = (choice) => {
+  //   setIsSpinning(true);
+  //   const outcome = Math.random() < 0.5 ? 'Heads' : 'Tails';
+  //   setTimeout(() => {
+  //     setResult(outcome === choice ? 'You Win!' : 'You Lose!');
+  //     setIsSpinning(false);
+  //   }, 1000);
+  // };
 
   const handleSignIn = () => {
     setIsSignedIn(true);
@@ -35,23 +33,24 @@ function App() {
            style={{ backgroundImage: 'url("https://t3.ftcdn.net/jpg/02/83/54/94/240_F_283549444_QJP74KROpbcvsBvohYSSJxVfFIcqr5O8.jpg")' }}>
         <NavBar isSignedIn={isSignedIn} onSignIn={handleSignIn} onSignOut={handleSignOut} />
         <header className="text-white text-center p-8 bg-opacity-70">
-          <h1 className="text-6xl font-extrabold font-serif neon-text">HEADS OR TAILS</h1>
+          {/* <h1 className="text-6xl font-extrabold font-serif neon-text">HEADS OR TAILS</h1> */}
         </header>
         <main className="flex flex-col items-center justify-center flex-grow p-6">
           <Routes>
             <Route path="/home" element={<Home />} />
+
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login onSignIn={handleSignIn} />} />
             <Route path="/game" element={
               isSignedIn ? (
                 <>
-                  <img
+                  {/* <img
                     src="https://spinthewheel.app/assets/images/preview/dinner-to-eat.png"
                     alt="Random Image"
                     className={`w-full max-w-2xl rounded-lg mb-6 transition-transform duration-500 ${isSpinning ? 'spin' : ''}`}
                     onClick={() => handleClick(result === 'Heads' ? 'Heads' : 'Tails')}
-                  />
+                  /> */}
                   <div className="flex gap-6 mb-6">
                     <button onClick={() => handleClick('Heads')} className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors">Heads</button>
                     <button onClick={() => handleClick('Tails')} className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors">Tails</button>

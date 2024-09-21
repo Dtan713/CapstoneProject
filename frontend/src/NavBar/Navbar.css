@@ -1,0 +1,23 @@
+.navbar {
+    background-color: #333; /* Background color */
+    padding: 1rem; /* Padding around the nav */
+  }
+  
+  .nav-list {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .nav-list li {
+    margin: 0 15px; /* Space between nav items */
+  }
+  
+  .nav-list a, .nav-list button {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline from links */
+    font-size: 1.2rem; /* Font size */
+  }
+  
