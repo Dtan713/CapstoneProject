@@ -23,8 +23,7 @@ function Home() {
     const randomRotation = Math.floor(Math.random() * 360) + 720; // Spin at least two full turns
     const wheel = document.getElementById('wheel');
 
-    // Apply rotation with a faster speed (e.g., 2 seconds instead of 4 seconds)
-    wheel.style.transition = 'transform 2s ease-out';
+    wheel.style.transition = 'transform 4s ease-out';
     wheel.style.transform = `rotate(${randomRotation}deg)`;
 
     // Determine the result after spinning
@@ -35,7 +34,7 @@ function Home() {
       setIsSpinning(false);
       wheel.style.transition = 'none'; // Reset transition
       wheel.style.transform = `rotate(${actualRotation}deg)`; // Set final position
-    }, 2000); // Match this with the new transition duration
+    }, 4000); // Match this with the new transition duration
   };
 
   const handleAddFood = () => {
@@ -61,8 +60,7 @@ function Home() {
   };
 
   return (
-    <div className="  items-center justify- min-h-screen bg-gray-800 text-white p-6">
-      {/* Images outside the main container */}
+    <div className="items-center justify-min-h-screen bg-gray-800 text-white p-6">
       <div className="image-container mb-6 w-full max-w-6xl">
         <img 
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnHl4W3ttVIloStXI-bK-EiZSh34V6fnZcpA&s" 
@@ -103,21 +101,26 @@ function Home() {
           id="wheel"
           className="border-4 border-white rounded-full h-64 w-64 flex items-center justify-center transition-transform relative mx-auto mb-4 bg-gradient-to-r from-blue-400 to-white-600 shadow-lg"
         >
-          {currentFoodOptions.map((food, index) => (
-            <div key={index} className="absolute flex items-center justify-center">
-              <div 
-                style={{ 
-                  transform: `rotate(${index * (360 / currentFoodOptions.length)}deg) translateY(-50%)`, 
+          {currentFoodOptions.map((food, index) => {
+            const angle = (index * (360 / currentFoodOptions.length)) + (360 / currentFoodOptions.length) / 2; // Calculate angle for the food item
+            return (
+              <div key={index} className="absolute" style={{
+                transform: `rotate(${angle}deg) translateY(-100%)`,
+                textAlign: 'center',
+                width: '100%',
+              }}>
+                <div style={{
+                  transform: `rotate(-${angle}deg)`,
                   fontSize: '1.2rem',
                   fontWeight: 'bold',
                   color: '#fff',
                   textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
-                }}
-              >
-                {food}
+                }}>
+                  {food}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <button
@@ -151,7 +154,7 @@ function Home() {
           />
           <button
             onClick={handleAddFood}
-            className="bg-yellow-500 text-white rounded-lg px-4 py-2 font-semibold transition duration-300 hover:bg-blue-600"
+            className="bg-yellow-500 text-white rounded-lg px-4 py-2 font-semibold transition duration-400 hover:bg-blue-600"
           >
             Add Food
           </button>

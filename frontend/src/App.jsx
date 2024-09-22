@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import NavBar from './Navbar/Navbar';
+
 import Home from './Pages/Home';
+import NavBar from './Navbar/Navbar';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Login from './Pages/Login';
 
 const backgrounds = {
   '/home': 'url("")',
-  '/about': 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgAjTSqR5fdcYbzDJiZs_LF_OdsIawHHxMqw&s")',
-  '/contact': 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZYac2T08APnJ4HY6P3a99336s19nucyH3xQ&s")',
+  '/about': 'url("")',
+  '/contact': 'url(")',
   '/login': ')',
   // '/game': 'url("https://example.com/game-background.jpg")',
 };

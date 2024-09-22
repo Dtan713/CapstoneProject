@@ -24,16 +24,16 @@ function About() {
 
   return (
     <div style={backgroundStyle}>
-      <h2 className="text-royal-blue font-bold text-9xl mb-4"> {/* Increased size and changed color */}
+      <h2 className="text-blue-500 font-bold text-7xl mb-4"> {/* Changed to blue */}
         About This Website
       </h2>
-      <h3 className="text-royal-blue font-semibold text-7xl mb-4"> {/* Increased size and changed color */}
+      <h3 className="text-blue-500 font-semibold text-6xl mb-4"> {/* Changed to blue */}
         A Fun Randomizer for Everyone
       </h3>
-      <h4 className="text-royal-blue font-medium text-4xl mb-4"> {/* Increased size and changed color */}
+      <h4 className="text-blue-500 font-medium text-4xl mb-4"> {/* Changed to blue */}
         Explore various randomization options to help make decisions in a fun and engaging way!
       </h4>
-      <p className="text-royal-blue font-medium text-3xl mt-4 px-4"> {/* Increased size and changed color */}
+      <p className="text-blue-500 font-medium text-3xl mt-4 px-4"> {/* Changed to blue */}
         Whether you're a couple looking for new date ideas or an individual seeking a bit of randomness in your life,
         this website provides a unique and enjoyable experience.
       </p>
