@@ -1,0 +1,53 @@
+/* Contact.css */
+body {
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .wheel {
+    width: 300px;  /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    border-radius: 50%;
+    border: 10px solid #34495e; /* A softer border color */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background: radial-gradient(circle, #ecf0f1, #bdc3c7); /* Nice background gradient */
+  }
+  
+  .wheel-item {
+    position: absolute;
+    width: 50%; /* Each section takes half of the wheel */
+    height: 50%; /* Each section takes half of the wheel */
+    clip-path: polygon(100% 0, 0% 0, 100% 100%); /* Create triangular section */
+    display: flex; /* Use flexbox for centering */
+    align-items: flex-end; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    color: white; /* Text color */
+    font-weight: bold; /* Text weight */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .wheel-item:nth-child(odd) {
+    background-color: #3498db; /* Blue */
+  }
+  
+  .wheel-item:nth-child(even) {
+    background-color: #e74c3c; /* Red */
+  }
+  
+  .wheel-label {
+    text-align: center;
+    width: 100%;
+    transform: translateY(-10px); /* Adjust this to position text */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add some text shadow for readability */
+  }
+  
+  button {
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #f39c12; /* Change button hover color */
+  }
+  

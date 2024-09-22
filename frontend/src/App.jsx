@@ -7,9 +7,9 @@ import Contact from './Pages/Contact';
 import Login from './Pages/Login';
 import Wheel from './Pages/Wheel';
 const backgrounds = {
-  '/home': 'url("https://example.com/home-background.jpg")',
-  '/about': 'url("https://images.wondershare.com/virtulook/articles/random-background-generator-13.jpg")',
-  '/contact': 'url("https://example.com/contact-background.jpg")',
+  '/home': 'url("")',
+  '/about': 'url("https://t3.ftcdn.net/jpg/02/83/54/94/240_F_283549444_QJP74KROpbcvsBvohYSSJxVfFIcqr5O8.jpg")',
+  '/contact': 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZYac2T08APnJ4HY6P3a99336s19nucyH3xQ&s")',
   '/login': 'url("https://example.com/login-background.jpg")',
   '/game': 'url("https://example.com/game-background.jpg")',
 };
@@ -27,6 +27,7 @@ function App() {
 
   const location = useLocation();
   const currentBackground = backgrounds[location.pathname] || 'url("https://example.com/default-background.jpg")'; // Fallback
+  
 
   return (
     <div 
