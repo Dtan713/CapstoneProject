@@ -14,7 +14,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
             <img
               src="https://as1.ftcdn.net/v2/jpg/06/57/45/90/1000_F_657459006_yutl35amfkomxsQrttMKcEPbj89zeABX.jpg"
               alt="Logo"
-              className="h-10 w-10 mr-3"  // Adjusted size here
+              className="h-10 w-10 mr-3"
             />
             <div className="text-5xl font-serif tracking-wide ml-[-10px]">
               Heads Or Tails
@@ -22,11 +22,10 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
           </div>
           <div className="hidden sm:block">
             <div className="flex space-x-6 items-center">
+              <Link to="/login" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Login</Link>
               <Link to="/home" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Home</Link>
               <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">About</Link>
               <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Contact</Link>
-              <Link to="/login" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Login</Link>
-              <Link to="/wheel" className="text-gray-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-medium">Spin the Wheel</Link>
             </div>
           </div>
           <div className="absolute inset-y-0 right-10 flex items-center sm:hidden">
@@ -65,7 +64,6 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-medium">About</Link>
           <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-medium">Contact</Link>
-          <Link to="/wheel" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-medium">Spin the Wheel</Link>
           {isSignedIn ? (
             <button
               onClick={onSignOut}
@@ -88,4 +86,3 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
 }
 
 export default NavBar;
-

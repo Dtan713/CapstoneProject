@@ -8,32 +8,32 @@ function About() {
   // Change background style based on the current route
   const backgroundStyle = {
     backgroundImage: location.pathname === '/about' 
-      ? "url('https://example.com/your-background-image.jpg')" // Replace with your image URL
+      ? "url('')" // Replace with your image URL
       : 'none',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    minHeight: '60vh', // Adjusted for more impact
+    minHeight: '60vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     color: 'white',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', // Text shadow for visibility
-    padding: '20px', // Optional: Add padding for better spacing
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+    padding: '20px',
   };
 
   return (
     <div style={backgroundStyle}>
-      <h2 className="text-yellow-400 font-bold text-4xl mb-4"> {/* Increased size */}
+      <h2 className="text-royal-blue font-bold text-9xl mb-4"> {/* Increased size and changed color */}
         About This Website
       </h2>
-      <h3 className="text-yellow-300 font-semibold text-3xl mb-4"> {/* Increased size */}
+      <h3 className="text-royal-blue font-semibold text-7xl mb-4"> {/* Increased size and changed color */}
         A Fun Randomizer for Everyone
       </h3>
-      <h4 className="text-yellow-200 font-medium text-2xl mb-4"> {/* Increased size */}
+      <h4 className="text-royal-blue font-medium text-4xl mb-4"> {/* Increased size and changed color */}
         Explore various randomization options to help make decisions in a fun and engaging way!
       </h4>
-      <p className="text-yellow-200 text-xl mt-4 px-4"> {/* Increased size */}
+      <p className="text-royal-blue font-medium text-3xl mt-4 px-4"> {/* Increased size and changed color */}
         Whether you're a couple looking for new date ideas or an individual seeking a bit of randomness in your life,
         this website provides a unique and enjoyable experience.
       </p>

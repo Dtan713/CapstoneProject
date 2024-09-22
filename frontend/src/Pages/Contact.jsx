@@ -6,13 +6,16 @@ function Contact() {
     <div
       className="contact-container"
       style={{
-        backgroundColor: '#2c3e50', // Example background color
-        padding: '20px', // Add some padding
-        borderRadius: '10px', // Optional: for rounded corners
-        color: 'white' // Set text color for better contrast
+        backgroundColor: '#2c3e50', // Background color
+        padding: '40px', // Increased padding for extra space
+        borderRadius: '10px', // Rounded corners
+        color: 'white', // Text color
+        maxWidth: '1200px', // Set maximum width for extra large appearance
+        margin: 'auto', // Center the container
+        height: 'auto', // Adjust height based on content
       }}
     >
-      <h2 style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '2rem' }}>Contact Us</h2>
+      <h2 style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '2.5rem' }}>Contact Us</h2> {/* Increased font size */}
       <p className="about-paragraph">
         If you have any questions, feel free to reach out!
       </p>
@@ -27,12 +30,11 @@ function Contact() {
             placeholder="Enter your email"
             required
             style={{
-              padding: '10px',
+              padding: '15px', // Increased padding for input
               marginTop: '10px',
               borderRadius: '10px',
               border: '1px solid #ccc',
               width: '100%',
-              maxWidth: '950px',
             }}
           />
         </div>
@@ -46,12 +48,11 @@ function Contact() {
             placeholder="Enter your phone number"
             required
             style={{
-              padding: '10px',
+              padding: '15px', // Increased padding for input
               marginTop: '10px',
               borderRadius: '10px',
               border: '1px solid #ccc',
               width: '100%',
-              maxWidth: '500px',
             }}
           />
         </div>
@@ -63,14 +64,13 @@ function Contact() {
             id="message"
             placeholder="Enter your message here"
             required
-            rows="4"
+            rows="6" // Increased rows for a bigger text area
             style={{
-              padding: '10px',
+              padding: '15px', // Increased padding for textarea
               marginTop: '10px',
               borderRadius: '10px',
               border: '1px solid #ccc',
               width: '100%',
-              maxWidth: '950px',
               resize: 'none', // Prevent resizing for a cleaner look
             }}
           />
@@ -78,13 +78,14 @@ function Contact() {
         <button
           type="submit"
           style={{
-            marginTop: '10px',
+            marginTop: '15px',
             backgroundColor: 'orange',
             color: 'white',
-            padding: '10px 20px',
+            padding: '12px 24px', // Increased padding for button
             border: 'none',
             borderRadius: '5px',
             cursor: 'pointer',
+            fontSize: '1.1rem', // Increased font size for button
           }}
         >
           Send

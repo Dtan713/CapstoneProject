@@ -5,13 +5,13 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Login from './Pages/Login';
-import Wheel from './Pages/Wheel';
+
 const backgrounds = {
   '/home': 'url("")',
-  '/about': 'url("https://t3.ftcdn.net/jpg/02/83/54/94/240_F_283549444_QJP74KROpbcvsBvohYSSJxVfFIcqr5O8.jpg")',
+  '/about': 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgAjTSqR5fdcYbzDJiZs_LF_OdsIawHHxMqw&s")',
   '/contact': 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZYac2T08APnJ4HY6P3a99336s19nucyH3xQ&s")',
-  '/login': 'url("https://example.com/login-background.jpg")',
-  '/game': 'url("https://example.com/game-background.jpg")',
+  '/login': ')',
+  // '/game': 'url("https://example.com/game-background.jpg")',
 };
 
 function App() {
@@ -58,7 +58,7 @@ function App() {
           } />
         </Routes>
       </main>
-      <footer className="text-white text-center p-4">
+      <footer className="text-black text-center p-4">
         <p>&copy; 2024 Heads or Tails</p>
       </footer>
     </div>

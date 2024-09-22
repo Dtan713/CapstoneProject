@@ -26,12 +26,12 @@ body {
     color: white; /* Text color */
     font-weight: bold; /* Text weight */
     transition: background-color 0.3s ease; /* Smooth transition for background color */
-  }
-  
-  .wheel-item:nth-child(odd) {
-    background-color: #3498db; /* Blue */
-  }
-  
+    background-color: rgba(0, 128, 255, 0.7); /* Example background color */
+}
+
+.wheel-item:nth-child(odd) {
+    background-color: rgba(0, 102, 204, 0.7); /* Different color for odd items */
+}
   .wheel-item:nth-child(even) {
     background-color: #e74c3c; /* Red */
   }
@@ -48,6 +48,48 @@ body {
   }
   
   button:hover {
-    background-color: #f39c12; /* Change button hover color */
+    background-color: #0c0801; /* Change button hover color */
   }
   
+  .background-container {
+    background-color: rgba(131, 60, 225, 0.1); /* Semi-transparent white */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Inner spacing */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
+  }
+
+  .styled-image {
+    width: 200%; /* or any specific width, e.g., 800px */
+    max-width: 800px; /* Maximum width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .styled-image {
+    width: 100%; /* or any specific width, e.g., 800px */
+    max-width: 800px; /* Maximum width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  
+
+
+.food-spot {
+  position: absolute;
+  width: 50%; /* Adjust for spot size */
+  height: 50%; /* Adjust for spot size */
+  background-color: rgba(255, 0, 0, 0.3); /* Adjust for color */
+  border-radius: 50%;
+  transform-origin: 100% 100%; /* Set pivot point */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.food-spot:nth-child(1) { transform: rotate(0deg); }
+.food-spot:nth-child(2) { transform: rotate(60deg); }
+.food-spot:nth-child(3) { transform: rotate(120deg); }
+.food-spot:nth-child(4) { transform: rotate(180deg); }
+.food-spot:nth-child(5) { transform: rotate(240deg); }
+.food-spot:nth-child(6) { transform: rotate(300deg); }

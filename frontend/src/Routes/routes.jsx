@@ -1,35 +1,29 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./Home/Home";
-import About from "./About/About";
-import Contact from "./Contact/Contact";
-import Login from "./Login/Login";
+// import React, { useState } from 'react';
+// import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-function Navigation() {
-  return (
-    <nav>
-      <Link to="/Home">Home</Link>
-      <Link to="/About">About</Link>
-      <Link to="/Contact">Contact</Link>
-      <Link to="Login">Login</Link>
-    </nav>
-  );
-}
+// function App() {
+//   const [isSignedIn, setIsSignedIn] = useState(false);
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<NotFound />} /> {/* Add a NotFound component if desired */}
-      </Routes>
-    </BrowserRouter>
-  );
-}
+//   const handleSignIn = () => setIsSignedIn(true);
+//   const handleSignOut = () => setIsSignedIn(false);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+//   return (
+//     <Router>
+//       <NavBar isSignedIn={isSignedIn} onSignIn={handleSignIn} onSignOut={handleSignOut} />
+//       <Switch>
+//         <Route path="/login">
+//           {isSignedIn ? <Redirect to="/home" /> : <Login onSignIn={handleSignIn} />}
+//         </Route>
+//         <Route path="/home">
+//           {isSignedIn ? <Home /> : <Redirect to="/login" />}
+//         </Route>
+//         <Route path="/about" component={About} />
+//         <Route path="/contact" component={Contact} />
+//         <Route path="/wheel" component={Wheel} />
+//         <Route path="/" exact>
+//           <Redirect to="/login" />
+//         </Route>
+//       </Switch>
+//     </Router>
+//   );
+// }
