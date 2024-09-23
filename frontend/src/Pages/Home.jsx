@@ -42,7 +42,6 @@ function Home() {
     Quesadilla: [{ id: 16, description: 'Free drink with any quesadilla', code: 'QUESODRINK', location: 'Quesadilla Corner' }],
     Burrito: [{ id: 17, description: '$3 off burrito on Fridays', code: 'BURRITO3', location: 'Burrito Bar' }],
     Nachos: [{ id: 18, description: 'Get a free side with nachos', code: 'FREESIDE', location: 'Nacho Shack' }],
-    // Add more food coupons as needed
   };
 
   const fetchCoupons = (food) => {
@@ -101,7 +100,7 @@ function Home() {
 
         <div
           id="wheel"
-          className="border-4 border-yellow-400 rounded-full h-64 w-64 relative mx-auto mb-4 shadow-lg transition-transform duration-600"
+          className="border-4 border-yellow-400 rounded-full h-80 w-80 relative mx-auto mb-4 shadow-lg transition-transform duration-600" // Size decreased here
           style={{
             overflow: 'hidden',
             position: 'relative',
@@ -122,7 +121,7 @@ function Home() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '1rem',
+                fontSize: '1.25rem', // Font size remains the same
                 fontWeight: 'bold',
                 color: '#fff',
                 borderBottom: '2px solid white',
@@ -200,4 +199,3 @@ function Home() {
 }
 
 export default Home;
-

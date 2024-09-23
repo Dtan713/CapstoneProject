@@ -16,6 +16,13 @@ function Contact() {
     }, 2000); // Adjust the delay as needed
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) { // Check for Enter key without Shift
+      event.preventDefault(); // Prevent adding a new line
+      handleSubmit(event); // Call handleSubmit
+    }
+  };
+
   return (
     <div
       className="contact-container"
@@ -93,6 +100,7 @@ function Contact() {
             placeholder="Enter your message here"
             required
             rows="6"
+            onKeyDown={handleKeyDown} // Add onKeyDown handler
             style={{
               padding: '15px',
               marginTop: '10px',

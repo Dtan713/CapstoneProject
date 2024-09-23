@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import Login from './Pages/Login';
 import Home from './Pages/Home';
-import NavBar from './Navbar/Navbar';
+import NavBar from './Navbar/Navbar'; 
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 
+
 const backgrounds = {
-  '/home': { image: 'url("your-home-background-url")',}, // Add your background URLs and colors
-  '/about': { image: 'url("your-about-background-url")', },
-  '/contact': { image: 'url("your-contact-background-url"),' },
-  '/login': { image: 'url("your-login-background-url"),' },
+  '/home': { image: 'url("your-home-background-url")' }, // Add your background URLs
+  '/about': { image: 'url("your-about-background-url")' },
+  '/contact': { image: 'url("your-contact-background-url")' },
+  '/login': { image: 'url("your-login-background-url")' },
 };
 
 function App() {

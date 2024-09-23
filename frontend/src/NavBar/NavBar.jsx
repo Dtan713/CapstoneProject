@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../App.css'; // Ensure this imports your CSS file with the font
 
 function NavBar({ isSignedIn, onSignIn, onSignOut }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +8,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-gray-100 text-yellow shadow-lg"> {/* Changed to bg-gray-100 */}
+    <nav className="bg-gray-100 text-yellow shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-20">
           <div className="flex items-center">
@@ -16,7 +17,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
               alt="Logo"
               className="h-10 w-10 mr-3"
             />
-            <div className="text-5xl font-serif tracking-wide ml-[-10px]">
+            <div className="text-5xl font-Courier-Bold tracking-wide ml-[-10px]" style={{ fontFamily: 'Gotham, sans-serif' }}>
               Heads Or Tails
             </div>
           </div>
