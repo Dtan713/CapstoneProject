@@ -26,20 +26,65 @@ function Home() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [coupons, setCoupons] = useState([]);
 
-  // Dummy coupon data
+  // Updated coupon data with locations for each food item
   const couponData = {
     Pizza: [
       { id: 1, description: '20% off on your next pizza order', code: 'PIZZA20', location: 'Local Pizza Place' },
       { id: 2, description: 'Free garlic bread with any pizza', code: 'GARLICFREE', location: 'Local Pizza Place' },
     ],
+    Pasta: [
+      { id: 3, description: '10% off on pasta orders', code: 'PASTA10', location: 'Pasta Palace' },
+      { id: 4, description: 'Buy one get one free on Thursdays', code: 'BOGO', location: 'Pasta Palace' },
+    ],
+    Salad: [
+      { id: 5, description: 'Free drink with any salad', code: 'SALADDRINK', location: 'Healthy Greens' },
+    ],
     Burger: [
-      { id: 3, description: '$5 off any burger combo', code: 'BURGER5', location: 'Burger Joint' },
-      { id: 4, description: 'Buy one get one free on Tuesdays', code: 'BOGO', location: 'Burger Joint' },
+      { id: 6, description: '$5 off any burger combo', code: 'BURGER5', location: 'Burger Joint' },
+      { id: 7, description: 'Buy one get one free on Tuesdays', code: 'BOGO', location: 'Burger Joint' },
+    ],
+    'Hot Dog': [
+      { id: 8, description: 'Get a free topping with any hot dog', code: 'FREETOPPING', location: 'Hot Dog Stand' },
+    ],
+    Tacos: [
+      { id: 9, description: '2 for 1 tacos on Wednesdays', code: 'TACOWED', location: 'Taco Truck' },
     ],
     Sushi: [
-      { id: 5, description: 'Buy 2 rolls, get 1 free', code: 'SUSHIFREE', location: 'Sushi Spot' },
+      { id: 10, description: 'Buy 2 rolls, get 1 free', code: 'SUSHIFREE', location: 'Sushi Spot' },
     ],
-    // Add more items as needed
+    Ramen: [
+      { id: 11, description: '15% off your ramen order', code: 'RAMEN15', location: 'Ramen House' },
+    ],
+    Tempura: [
+      { id: 12, description: 'Free appetizer with tempura', code: 'FREEAPP', location: 'Tempura Corner' },
+    ],
+    'General Tso\'s Chicken': [
+      { id: 13, description: '10% off for new customers', code: 'NEW10', location: 'Chinese Bistro' },
+    ],
+    Dumplings: [
+      { id: 14, description: 'Free dipping sauce with any dumpling order', code: 'FREESAUCE', location: 'Dumpling Den' },
+    ],
+    'Fried Rice': [
+      { id: 15, description: 'Get a small soup with fried rice', code: 'SOUPFREE', location: 'Rice Noodle Place' },
+    ],
+    Curry: [
+      { id: 16, description: 'Free naan with any curry', code: 'FREENAAN', location: 'Curry House' },
+    ],
+    Biryani: [
+      { id: 17, description: '10% off on your first biryani order', code: 'BIRYANI10', location: 'Biryani Spot' },
+    ],
+    Naan: [
+      { id: 18, description: 'Buy 2 naans, get 1 free', code: 'NAANBOGO', location: 'Naan Place' },
+    ],
+    Quesadilla: [
+      { id: 19, description: 'Free drink with any quesadilla', code: 'QUESODRINK', location: 'Quesadilla Corner' },
+    ],
+    Burrito: [
+      { id: 20, description: '$3 off burrito on Fridays', code: 'BURRITO3', location: 'Burrito Bar' },
+    ],
+    Nachos: [
+      { id: 21, description: 'Get a free side with nachos', code: 'FREESIDE', location: 'Nacho Shack' },
+    ],
   };
 
   const fetchCoupons = (food) => {
@@ -51,16 +96,12 @@ function Home() {
     if (currentFoodOptions.length === 0) return; // Prevent spinning if no food options
     setIsSpinning(true);
 
-    // const audio = new Audio('C:public\Users\shiao.tan\Downloads\mixkit-bike-wheel-spinning-1613.wav');
-    // audio.play();
-
     const randomRotation = Math.floor(Math.random() * 360) + 720; // Spin at least two full turns
     const wheel = document.getElementById('wheel');
 
     wheel.style.transition = 'transform 4s ease-out';
     wheel.style.transform = `rotate(${randomRotation}deg)`;
 
-    // Determine the result after spinning
     setTimeout(() => {
       const actualRotation = randomRotation % 360;
       const index = Math.floor((actualRotation / 360) * currentFoodOptions.length);
@@ -70,7 +111,7 @@ function Home() {
       setIsSpinning(false);
       wheel.style.transition = 'none'; // Reset transition
       wheel.style.transform = `rotate(${actualRotation}deg)`; // Set final position
-    }, 4000); // Match this with the new transition duration
+    }, 4000);
   };
 
   const handleAddFood = () => {
@@ -102,8 +143,8 @@ function Home() {
 
         <div
           id="wheel"
-          className="border-4 border-yellow rounded-full h-64 w-64 relative mx-auto mb-4"
-          style={{ overflow: 'hidden' }} // Ensure content doesn't overflow
+          className="border-4 border-yellow-400 rounded-full h-64 w-64 relative mx-auto mb-4"
+          style={{ overflow: 'hidden', position: 'relative' }} // Ensure content doesn't overflow
         >
           {currentFoodOptions.map((food, index) => {
             const angle = (index * (360 / currentFoodOptions.length));
@@ -143,7 +184,6 @@ function Home() {
           </div>
         )}
 
-        {/* Display Coupons and Deals */}
         {result && (
           <div className="mt-6 bg-gray-800 p-4 rounded-lg">
             <h3 className="text-xl font-bold text-yellow-400">Coupons & Best Deals</h3>

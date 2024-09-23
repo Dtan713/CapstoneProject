@@ -9,6 +9,11 @@ function Contact() {
   const handleSubmit = (event) => {
     event.preventDefault(); 
     setIsMessageSent(true); 
+
+    // Redirect to home page after a brief delay
+    setTimeout(() => {
+      navigate('/home'); 
+    }, 2000); // Adjust the delay as needed
   };
 
   return (
@@ -36,7 +41,7 @@ function Contact() {
           borderRadius: '5px',
           textAlign: 'center',
         }}>
-          Your message has been sent successfully!
+          Your message has been sent successfully! 
         </div>
       )}
       <form className="contact-form" onSubmit={handleSubmit}>
@@ -55,7 +60,7 @@ function Contact() {
               borderRadius: '10px',
               border: '1px solid #ccc',
               width: '100%',
-              color: 'black', // Font color for input
+              color: 'black',
               background: 'white',
             }}
           />

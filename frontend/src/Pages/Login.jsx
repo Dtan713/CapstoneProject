@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Contact.css'; // Import the same CSS file for consistent styling
 
 function Login() {
@@ -11,6 +11,7 @@ function Login() {
   const [loginPassword, setLoginPassword] = useState('');
   const [createEmail, setCreateEmail] = useState('');
   const [createPassword, setCreatePassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const toggleForm = () => {
     setIsCreatingAccount(!isCreatingAccount);
@@ -19,14 +20,22 @@ function Login() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     console.log("Logging in with:", loginEmail, loginPassword);
-    // After successful login logic (e.g., authentication check)
-    navigate('/home'); // Redirect to the home page
+    // Add logic for authentication check
+    navigate('/home'); // Redirect to the home page after successful login
   };
 
   const handleCreateSubmit = (e) => {
     e.preventDefault();
-    console.log("Creating account with:", createEmail, createPassword);
-    // Here you can add the logic to create the account, e.g. API call
+    
+    // Validation for creating account
+    if (createEmail && createPassword && createPassword === confirmPassword) {
+      console.log("Creating account with:", createEmail, createPassword);
+      // Here you can add the logic to create the account, e.g. API call
+      alert("Account created successfully!");
+      navigate('/home'); // Redirect to the home page after account creation
+    } else {
+      alert("Please ensure all fields are filled correctly and that passwords match.");
+    }
   };
 
   return (
@@ -43,8 +52,21 @@ function Login() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
       }}
     >
+      {/* Account Image */}
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7lVd-MZ41Dj-AYVtJMuJmSS7f_CiNcrUhQ&s" // Replace with your image URL
+        alt="Login Account"
+        style={{
+          width: '100%',
+          maxWidth: '600px',
+          borderRadius: '10px',
+          marginBottom: '20px',
+        }}
+      />
+
       <h2 style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '3rem' }}>
         {isCreatingAccount ? 'Create Account' : 'Welcome Back!'}
       </h2>
@@ -68,7 +90,7 @@ function Login() {
                 border: '1px solid #ccc',
                 width: '100%',
                 fontSize: '1rem',
-                color: 'black', // Set input text color to black
+                color: 'black',
               }}
             />
           </div>
@@ -89,7 +111,28 @@ function Login() {
                 border: '1px solid #ccc',
                 width: '100%',
                 fontSize: '1rem',
-                color: 'black', // Set input text color to black
+                color: 'black',
+              }}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="confirmPassword" style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '1.2rem' }}>
+              Confirm Password:
+            </label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              style={{
+                padding: '15px',
+                marginTop: '10px',
+                borderRadius: '10px',
+                border: '1px solid #ccc',
+                width: '100%',
+                fontSize: '1rem',
+                color: 'black',
               }}
             />
           </div>
@@ -128,7 +171,7 @@ function Login() {
                 border: '1px solid #ccc',
                 width: '100%',
                 fontSize: '1rem',
-                color: 'black', // Set input text color to black
+                color: 'black',
               }}
             />
           </div>
@@ -149,7 +192,7 @@ function Login() {
                 border: '1px solid #ccc',
                 width: '100%',
                 fontSize: '1rem',
-                color: 'black', // Set input text color to black
+                color: 'black',
               }}
             />
           </div>

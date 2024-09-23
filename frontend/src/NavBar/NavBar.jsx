@@ -7,7 +7,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-black-800 text-yellow shadow-lg">
+    <nav className="bg-gray-100 text-yellow shadow-lg"> {/* Changed to bg-gray-100 */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-20">
           <div className="flex items-center">
@@ -74,7 +74,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
           ) : (
             <button
               onClick={onSignIn}
-              className="bg-blue-600 text- block px-4 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-blue-800"
+              className="bg-blue-600 text-white block px-4 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-blue-800"
             >
               Log In
             </button>
@@ -86,4 +86,3 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
 }
 
 export default NavBar;
-

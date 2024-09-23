@@ -7,34 +7,31 @@ import About from './Pages/About';
 import Contact from './Pages/Contact';
 
 const backgrounds = {
-  '/home': 'url("")',
-  '/about': 'url("")',
-  '/contact': 'url("")',
-  '/login': 'url("")',
-  // '/game': 'url("https://example.com/game-background.jpg")',
+  '/home': { image: 'url("your-home-background-url")',}, // Add your background URLs and colors
+  '/about': { image: 'url("your-about-background-url")', },
+  '/contact': { image: 'url("your-contact-background-url"),' },
+  '/login': { image: 'url("your-login-background-url"),' },
 };
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  
-  const handleSignIn = () => {
-    setIsSignedIn(true);
-  };
-
-  const handleSignOut = () => {
-    setIsSignedIn(false);
-  };
-
   const location = useLocation();
-  const currentBackground = backgrounds[location.pathname] || 'url("https://example.com/default-background.jpg")'; // Fallback
-  
+  const { image, color } = backgrounds[location.pathname] || { image: 'url("fallback-image-url")', color: 'rgba(0, 0, 0, 0.5)' };
+
   return (
     <div 
       className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
-      style={{ backgroundImage: currentBackground }}>
-      <NavBar isSignedIn={isSignedIn} onSignIn={handleSignIn} onSignOut={handleSignOut} />
-      <header className="text-white text-center p-8 bg-opacity-70">
-        {/* <h1 className="text-6xl font-extrabold font-serif neon-text">HEADS OR TAILS</h1> */}
+      style={{ backgroundImage: image }}>
+      
+      {/* Overlay */}
+      <div 
+        className="absolute inset-0" 
+        style={{ backgroundColor: color }} 
+      />
+      
+      <NavBar isSignedIn={isSignedIn} onSignIn={() => setIsSignedIn(true)} onSignOut={() => setIsSignedIn(false)} />
+      <header className="text-black text-center p-8 bg-opacity-70">
+        {/* Optional header content */}
       </header>
       <main className="flex flex-col items-center justify-center flex-grow p-6">
         <Routes>
@@ -42,19 +39,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/game" element={
-            isSignedIn ? (
-              <>
-                <div className="flex gap-6 mb-6">
-                  <button onClick={() => handleClick('Heads')} className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors">Heads</button>
-                  <button onClick={() => handleClick('Tails')} className="bg-black-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-green-700 transition-colors">Tails</button>
-                </div>
-                <div>{result}</div>
-              </>
-            ) : (
-              <div className="text-xl font-bold p-4 rounded-lg">Please log in to play!</div>
-            )
-          } />
           {/* Redirect from root path to login page */}
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
