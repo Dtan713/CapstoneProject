@@ -1,90 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import './Contact.css';
 
 function Home() {
   const initialFoodOptions = {
-    Italian: ['Pizza', 'Pasta', 'Salad'],
-    American: ['Burger', 'Hot Dog', 'Tacos'],
-    Japanese: ['Sushi', 'Ramen', 'Tempura'],
-    Chinese: ['General Tso\'s Chicken', 'Dumplings', 'Fried Rice'],
-    Indian: ['Curry', 'Biryani', 'Naan'],
-    Mexican: ['Quesadilla', 'Burrito', 'Nachos'],
+    Italian: ['Pizza', 'Pasta', 'Salad', 'Lasagna', 'Tiramisu', 'Risotto', 'Bruschetta'],
+    American: ['Burger', 'Hot Dog', 'Tacos', 'Mac & Cheese', 'Steak', 'BBQ Ribs', 'Apple Pie'],
+    Japanese: ['Sushi', 'Ramen', 'Tempura', 'Sashimi', 'Udon', 'Miso Soup', 'Okonomiyaki'],
+    Chinese: ['General Tso\'s Chicken', 'Dumplings', 'Fried Rice', 'Sweet and Sour Pork', 'Spring Rolls', 'Kung Pao Chicken', 'Mapo Tofu'],
+    Indian: ['Curry', 'Biryani', 'Naan', 'Samosa', 'Paneer Tikka', 'Chaat', 'Butter Chicken'],
+    Mexican: ['Quesadilla', 'Burrito', 'Nachos', 'Chilaquiles', 'Tamales', 'Enchiladas', 'Elote'],
+    Greek: ['Moussaka', 'Gyro', 'Souvlaki', 'Spanakopita', 'Baklava'],
+    Thai: ['Pad Thai', 'Green Curry', 'Tom Yum Soup', 'Spring Rolls', 'Mango Sticky Rice'],
+    Mediterranean: ['Falafel', 'Hummus', 'Tabbouleh', 'Shawarma', 'Baklava'],
+    French: ['Croissant', 'Coq au Vin', 'Ratatouille', 'Crème Brûlée', 'Quiche Lorraine'],
   };
 
   const [foodOptions, setFoodOptions] = useState(initialFoodOptions);
-  const [currentFoodOptions, setCurrentFoodOptions] = useState([
-    ...foodOptions['Italian'],
-    ...foodOptions['American'],
-    ...foodOptions['Japanese'],
-    ...foodOptions['Chinese'],
-    ...foodOptions['Indian'],
-    ...foodOptions['Mexican'],
-  ]);
+  const [currentFoodOptions, setCurrentFoodOptions] = useState(Object.values(initialFoodOptions).flat());
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   const [result, setResult] = useState('');
   const [isSpinning, setIsSpinning] = useState(false);
   const [coupons, setCoupons] = useState([]);
 
-  // Updated coupon data with locations for each food item
   const couponData = {
-    Pizza: [
-      { id: 1, description: '20% off on your next pizza order', code: 'PIZZA20', location: 'Local Pizza Place' },
-      { id: 2, description: 'Free garlic bread with any pizza', code: 'GARLICFREE', location: 'Local Pizza Place' },
-    ],
-    Pasta: [
-      { id: 3, description: '10% off on pasta orders', code: 'PASTA10', location: 'Pasta Palace' },
-      { id: 4, description: 'Buy one get one free on Thursdays', code: 'BOGO', location: 'Pasta Palace' },
-    ],
-    Salad: [
-      { id: 5, description: 'Free drink with any salad', code: 'SALADDRINK', location: 'Healthy Greens' },
-    ],
-    Burger: [
-      { id: 6, description: '$5 off any burger combo', code: 'BURGER5', location: 'Burger Joint' },
-      { id: 7, description: 'Buy one get one free on Tuesdays', code: 'BOGO', location: 'Burger Joint' },
-    ],
-    'Hot Dog': [
-      { id: 8, description: 'Get a free topping with any hot dog', code: 'FREETOPPING', location: 'Hot Dog Stand' },
-    ],
-    Tacos: [
-      { id: 9, description: '2 for 1 tacos on Wednesdays', code: 'TACOWED', location: 'Taco Truck' },
-    ],
-    Sushi: [
-      { id: 10, description: 'Buy 2 rolls, get 1 free', code: 'SUSHIFREE', location: 'Sushi Spot' },
-    ],
-    Ramen: [
-      { id: 11, description: '15% off your ramen order', code: 'RAMEN15', location: 'Ramen House' },
-    ],
-    Tempura: [
-      { id: 12, description: 'Free appetizer with tempura', code: 'FREEAPP', location: 'Tempura Corner' },
-    ],
-    'General Tso\'s Chicken': [
-      { id: 13, description: '10% off for new customers', code: 'NEW10', location: 'Chinese Bistro' },
-    ],
-    Dumplings: [
-      { id: 14, description: 'Free dipping sauce with any dumpling order', code: 'FREESAUCE', location: 'Dumpling Den' },
-    ],
-    'Fried Rice': [
-      { id: 15, description: 'Get a small soup with fried rice', code: 'SOUPFREE', location: 'Rice Noodle Place' },
-    ],
-    Curry: [
-      { id: 16, description: 'Free naan with any curry', code: 'FREENAAN', location: 'Curry House' },
-    ],
-    Biryani: [
-      { id: 17, description: '10% off on your first biryani order', code: 'BIRYANI10', location: 'Biryani Spot' },
-    ],
-    Naan: [
-      { id: 18, description: 'Buy 2 naans, get 1 free', code: 'NAANBOGO', location: 'Naan Place' },
-    ],
-    Quesadilla: [
-      { id: 19, description: 'Free drink with any quesadilla', code: 'QUESODRINK', location: 'Quesadilla Corner' },
-    ],
-    Burrito: [
-      { id: 20, description: '$3 off burrito on Fridays', code: 'BURRITO3', location: 'Burrito Bar' },
-    ],
-    Nachos: [
-      { id: 21, description: 'Get a free side with nachos', code: 'FREESIDE', location: 'Nacho Shack' },
-    ],
+    Pizza: [{ id: 1, description: '20% off on your next pizza order', code: 'PIZZA20', location: 'Local Pizza Place' }],
+    Pasta: [{ id: 2, description: '10% off on pasta orders', code: 'PASTA10', location: 'Pasta Palace' }],
+    Salad: [{ id: 3, description: 'Free drink with any salad', code: 'SALADDRINK', location: 'Healthy Greens' }],
+    Burger: [{ id: 4, description: '$5 off any burger combo', code: 'BURGER5', location: 'Burger Joint' }],
+    'Hot Dog': [{ id: 5, description: 'Get a free topping with any hot dog', code: 'FREETOPPING', location: 'Hot Dog Stand' }],
+    Tacos: [{ id: 6, description: '2 for 1 tacos on Wednesdays', code: 'TACOWED', location: 'Taco Truck' }],
+    Sushi: [{ id: 7, description: 'Buy 2 rolls, get 1 free', code: 'SUSHIFREE', location: 'Sushi Spot' }],
+    Ramen: [{ id: 8, description: '15% off your ramen order', code: 'RAMEN15', location: 'Ramen House' }],
+    Tempura: [{ id: 9, description: 'Free appetizer with tempura', code: 'FREEAPP', location: 'Tempura Corner' }],
+    'General Tso\'s Chicken': [{ id: 10, description: '10% off for new customers', code: 'NEW10', location: 'Chinese Bistro' }],
+    Dumplings: [{ id: 11, description: 'Free dipping sauce with any dumpling order', code: 'FREESAUCE', location: 'Dumpling Den' }],
+    'Fried Rice': [{ id: 12, description: 'Get a small soup with fried rice', code: 'SOUPFREE', location: 'Rice Noodle Place' }],
+    Curry: [{ id: 13, description: 'Free naan with any curry', code: 'FREENAAN', location: 'Curry House' }],
+    Biryani: [{ id: 14, description: '10% off on your first biryani order', code: 'BIRYANI10', location: 'Biryani Spot' }],
+    Naan: [{ id: 15, description: 'Buy 2 naans, get 1 free', code: 'NAANBOGO', location: 'Naan Place' }],
+    Quesadilla: [{ id: 16, description: 'Free drink with any quesadilla', code: 'QUESODRINK', location: 'Quesadilla Corner' }],
+    Burrito: [{ id: 17, description: '$3 off burrito on Fridays', code: 'BURRITO3', location: 'Burrito Bar' }],
+    Nachos: [{ id: 18, description: 'Get a free side with nachos', code: 'FREESIDE', location: 'Nacho Shack' }],
+    // Add more food coupons as needed
   };
 
   const fetchCoupons = (food) => {
@@ -93,10 +51,10 @@ function Home() {
   };
 
   const handleSpin = () => {
-    if (currentFoodOptions.length === 0) return; // Prevent spinning if no food options
+    if (currentFoodOptions.length === 0) return;
     setIsSpinning(true);
 
-    const randomRotation = Math.floor(Math.random() * 360) + 720; // Spin at least two full turns
+    const randomRotation = Math.floor(Math.random() * 360) + 720;
     const wheel = document.getElementById('wheel');
 
     wheel.style.transition = 'transform 4s ease-out';
@@ -107,10 +65,10 @@ function Home() {
       const index = Math.floor((actualRotation / 360) * currentFoodOptions.length);
       const selectedFood = currentFoodOptions[index];
       setResult(selectedFood);
-      fetchCoupons(selectedFood); // Fetch coupons for the selected food
+      fetchCoupons(selectedFood);
       setIsSpinning(false);
-      wheel.style.transition = 'none'; // Reset transition
-      wheel.style.transform = `rotate(${actualRotation}deg)`; // Set final position
+      wheel.style.transition = 'none';
+      wheel.style.transform = `rotate(${actualRotation}deg)`;
     }, 4000);
   };
 
@@ -121,8 +79,8 @@ function Home() {
 
     if (newFoods.length > 0) {
       setCurrentFoodOptions(prev => [...prev, ...newFoods]);
-      setInputValue1(''); // Clear first input
-      setInputValue2(''); // Clear second input
+      setInputValue1('');
+      setInputValue2('');
     }
   };
 
@@ -143,18 +101,24 @@ function Home() {
 
         <div
           id="wheel"
-          className="border-4 border-yellow-400 rounded-full h-64 w-64 relative mx-auto mb-4"
-          style={{ overflow: 'hidden', position: 'relative' }} // Ensure content doesn't overflow
+          className="border-4 border-yellow-400 rounded-full h-64 w-64 relative mx-auto mb-4 shadow-lg transition-transform duration-600"
+          style={{
+            overflow: 'hidden',
+            position: 'relative',
+            background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 0.5))',
+            boxShadow: '0 10px 20px rgba(0, 0, 0, 0.5)',
+            backdropFilter: 'blur(5px)',
+          }}
         >
           {currentFoodOptions.map((food, index) => {
             const angle = (index * (360 / currentFoodOptions.length));
             return (
               <div key={index} className="absolute" style={{
                 transform: `rotate(${angle}deg)`,
-                clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`, // Triangle slice shape
+                clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`,
                 width: '100%',
                 height: '100%',
-                backgroundColor: `hsl(${(index * (360 / currentFoodOptions.length))}, 70%, 50%)`, // Color for each slice
+                backgroundColor: `hsl(${(index * (360 / currentFoodOptions.length))}, 70%, 50%)`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -179,26 +143,36 @@ function Home() {
         </button>
 
         {result && (
-          <div className={`mt-6 text-3xl font-bold ${isSpinning ? 'text-gray-400' : 'text-yellow-400'}`}>
-            {isSpinning ? '...' : `Result: ${result}`}
-          </div>
+          <>
+            <div className={`mt-6 text-3xl font-bold ${isSpinning ? 'text-gray-400' : 'text-yellow-400'}`}>
+              {isSpinning ? '...' : `Result: ${result}`}
+            </div>
+
+            {/* Map Image Section */}
+            <div className="mt-4">
+              <img
+                src="https://offloadmedia.feverup.com/secretnyc.co/wp-content/uploads/2021/02/18100252/Screenshot-2024-04-18-at-9.57.59%E2%80%AFAM.jpg" // Replace with your actual map image URL
+                alt="Map"
+                className="w-full h-auto mb-4 rounded"
+              />
+            </div>
+
+            {/* Coupons Section */}
+            <div className="mt-6 bg-gray-800 p-4 rounded-lg">
+              <h3 className="text-xl font-bold text-yellow-400">Coupons & Best Deals</h3>
+              <ul className="mt-2">
+                {coupons.map(coupon => (
+                  <li key={coupon.id} className="text-gray-200 mb-2">
+                    {coupon.description} <strong>(Code: {coupon.code})</strong> <br />
+                    <span className="text-sm text-gray-400">Location: {coupon.location}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
         )}
 
-        {result && (
-          <div className="mt-6 bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-xl font-bold text-yellow-400">Coupons & Best Deals</h3>
-            <ul className="mt-2">
-              {coupons.map(coupon => (
-                <li key={coupon.id} className="text-gray-200 mb-2">
-                  {coupon.description} <strong>(Code: {coupon.code})</strong> <br />
-                  <span className="text-sm text-gray-400">Location: {coupon.location}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="mt-4">
+        <div className="mt-8"> {/* Increased margin-top here */}
           <input
             type="text"
             value={inputValue1}
@@ -226,3 +200,4 @@ function Home() {
 }
 
 export default Home;
+
