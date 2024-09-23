@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import Login from './Pages/Login';
 import Home from './Pages/Home';
 import NavBar from './Navbar/Navbar';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
-import Login from './Pages/Login';
 
 const backgrounds = {
   '/home': 'url("")',
   '/about': 'url("")',
-  '/contact': 'url(")',
-  '/login': ')',
+  '/contact': 'url("")',
+  '/login': 'url("")',
   // '/game': 'url("https://example.com/game-background.jpg")',
 };
 
@@ -29,7 +28,6 @@ function App() {
   const location = useLocation();
   const currentBackground = backgrounds[location.pathname] || 'url("https://example.com/default-background.jpg")'; // Fallback
   
-
   return (
     <div 
       className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
@@ -57,6 +55,8 @@ function App() {
               <div className="text-xl font-bold p-4 rounded-lg">Please log in to play!</div>
             )
           } />
+          {/* Redirect from root path to login page */}
+          <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </main>
       <footer className="text-black text-center p-4">

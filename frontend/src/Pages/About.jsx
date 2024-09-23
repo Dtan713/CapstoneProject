@@ -30,7 +30,7 @@ function About() {
       <h3 className="text-blue-500 font-semibold text-6xl mb-4"> {/* Changed to blue */}
         A Fun Randomizer for Everyone
       </h3>
-      <h4 className="text-blue-500 font-medium text-4xl mb-4"> {/* Changed to blue */}
+      <h4 className="text-blue-500 font-medium text-3xl mb-4"> {/* Changed to blue */}
         Explore various randomization options to help make decisions in a fun and engaging way!
       </h4>
       <p className="text-blue-500 font-medium text-3xl mt-4 px-4"> {/* Changed to blue */}
