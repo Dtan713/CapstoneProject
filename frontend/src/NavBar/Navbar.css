@@ -1,25 +1,55 @@
-.navbar {
-    background-color: #333; /* Background color */
-    padding: 1rem; /* Padding around the nav */
-    font-family: 'Gotham', sans-serif; /* Apply Gotham font */
+/* App.css */
+
+nav {
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.nav-list {
-    display: flex; /* Use flexbox for layout */
-    justify-content: center; /* Center items horizontally */
-    list-style: none; /* Remove default list styles */
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
+.nav-link, .mobile-nav-link {
+    color: #FBBF24; /* Yellow color */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-list li {
-    margin: 0 15px; /* Space between nav items */
+.nav-link:hover, .mobile-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slight white background on hover */
+    transform: scale(1.05); /* Slight pop effect */
 }
 
-.nav-list a,
-.nav-list button {
-    color: white; /* Text color */
-    text-decoration: none; /* Remove underline from links */
-    font-size: 1.2rem; /* Font size */
-    font-family: 'Gotham', sans-serif; /* Apply Gotham font */
+.nav-button {
+    background-color: #3B82F6; /* Blue color */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background-color: white; /* Change background to white on hover */
+    color: #3B82F6; /* Change text color to blue */
+    transform: scale(1.05); /* Slight pop effect */
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FBBF24; /* Yellow color */
+}
+
+.mobile-nav-link {
+    color: #FBBF24; /* Yellow color */
+    padding: 10px 15px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }

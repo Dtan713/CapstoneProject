@@ -15,7 +15,6 @@ function Home() {
     French: ['Croissant', 'Coq au Vin', 'Ratatouille', 'Crème Brûlée', 'Quiche Lorraine'],
   };
 
-  const [foodOptions, setFoodOptions] = useState(initialFoodOptions);
   const [currentFoodOptions, setCurrentFoodOptions] = useState(Object.values(initialFoodOptions).flat());
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
@@ -23,48 +22,17 @@ function Home() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [coupons, setCoupons] = useState([]);
 
-  const couponData = {
-    Pizza: [{ id: 1, description: '20% off on your next pizza order', code: 'PIZZA20', location: 'Local Pizza Place' }],
-    Pasta: [{ id: 2, description: '10% off on pasta orders', code: 'PASTA10', location: 'Pasta Palace' }],
-    Salad: [{ id: 3, description: 'Free drink with any salad', code: 'SALADDRINK', location: 'Healthy Greens' }],
-    Burger: [{ id: 4, description: '$5 off any burger combo', code: 'BURGER5', location: 'Burger Joint' }],
-    'Hot Dog': [{ id: 5, description: 'Get a free topping with any hot dog', code: 'FREETOPPING', location: 'Hot Dog Stand' }],
-    Tacos: [{ id: 6, description: '2 for 1 tacos on Wednesdays', code: 'TACOWED', location: 'Taco Truck' }],
-    Sushi: [{ id: 7, description: 'Buy 2 rolls, get 1 free', code: 'SUSHIFREE', location: 'Sushi Spot' }],
-    Ramen: [{ id: 8, description: '15% off your ramen order', code: 'RAMEN15', location: 'Ramen House' }],
-    Tempura: [{ id: 9, description: 'Free appetizer with tempura', code: 'FREEAPP', location: 'Tempura Corner' }],
-    'General Tso\'s Chicken': [{ id: 10, description: '10% off for new customers', code: 'NEW10', location: 'Chinese Bistro' }],
-    Dumplings: [{ id: 11, description: 'Free dipping sauce with any dumpling order', code: 'FREESAUCE', location: 'Dumpling Den' }],
-    'Fried Rice': [{ id: 12, description: 'Get a small soup with fried rice', code: 'SOUPFREE', location: 'Rice Noodle Place' }],
-    Curry: [{ id: 13, description: 'Free naan with any curry', code: 'FREENAAN', location: 'Curry House' }],
-    Biryani: [{ id: 14, description: '10% off on your first biryani order', code: 'BIRYANI10', location: 'Biryani Spot' }],
-    Naan: [{ id: 15, description: 'Buy 2 naans, get 1 free', code: 'NAANBOGO', location: 'Naan Place' }],
-    Quesadilla: [{ id: 16, description: 'Free drink with any quesadilla', code: 'QUESODRINK', location: 'Quesadilla Corner' }],
-    Burrito: [{ id: 17, description: '$3 off burrito on Fridays', code: 'BURRITO3', location: 'Burrito Bar' }],
-    Nachos: [{ id: 18, description: 'Get a free side with nachos', code: 'FREESIDE', location: 'Nacho Shack' }],
-  };
-
-  const fetchCoupons = (food) => {
-    const fetchedCoupons = couponData[food] || [{ id: 1, description: 'No current coupons available.', code: '', location: '' }];
-    setCoupons(fetchedCoupons);
-  };
-
-  const handleFetch = async () => {
+  const fetchCoupons = async (food) => {
     try {
-        const response = await fetch("http://localhost:8080/coupon");
-
-        // Check if the response is ok (status in the range 200-299)
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log(data);
-        setCoupons(data); // Assuming setCoupons is defined in your component
+      const response = await fetch(`http://localhost:8080/coupon/${food}`); // Adjust endpoint if necessary
+      if (!response.ok) throw new Error("Error fetching coupons");
+      const data = await response.json();
+      setCoupons(data);
     } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
+      console.error("Failed to fetch coupons:", error);
+      setCoupons([{ id: 1, description: 'No current coupons available.', code: '', location: '' }]);
     }
-};
+  };
 
   const handleSpin = () => {
     if (currentFoodOptions.length === 0) return;
@@ -117,7 +85,7 @@ function Home() {
 
         <div
           id="wheel"
-          className="border-4 border-yellow-400 rounded-full h-80 w-80 relative mx-auto mb-4 shadow-lg transition-transform duration-600" // Size decreased here
+          className="border-4 border-yellow-400 rounded-full h-80 w-80 relative mx-auto mb-4"
           style={{
             overflow: 'hidden',
             position: 'relative',
@@ -138,7 +106,7 @@ function Home() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '1.25rem', // Font size remains the same
+                fontSize: '1.25rem',
                 fontWeight: 'bold',
                 color: '#fff',
                 borderBottom: '2px solid white',
@@ -164,15 +132,6 @@ function Home() {
               {isSpinning ? '...' : `Result: ${result}`}
             </div>
 
-            {/* Map Image Section */}
-            <div className="mt-4">
-              <img
-                src="https://offloadmedia.feverup.com/secretnyc.co/wp-content/uploads/2021/02/18100252/Screenshot-2024-04-18-at-9.57.59%E2%80%AFAM.jpg" // Replace with your actual map image URL
-                alt="Map"
-                className="w-full h-auto mb-4 rounded"
-              />
-            </div>
-
             {/* Coupons Section */}
             <div className="mt-6 bg-gray-800 p-4 rounded-lg">
               <h3 className="text-xl font-bold text-yellow-400">Coupons & Best Deals</h3>
@@ -188,7 +147,7 @@ function Home() {
           </>
         )}
 
-        <div className="mt-8"> {/* Increased margin-top here */}
+        <div className="mt-8">
           <input
             type="text"
             value={inputValue1}

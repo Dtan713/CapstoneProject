@@ -57,7 +57,7 @@ function Login() {
     >
       {/* Account Image */}
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7lVd-MZ41Dj-AYVtJMuJmSS7f_CiNcrUhQ&s" // Replace with your image URL
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg9-2ci1Ts2HHas6wrAyO22of-Xfcvw7sYg&s" // Replace with your image URL
         alt="Login Account"
         style={{
           width: '100%',

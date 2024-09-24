@@ -8,27 +8,30 @@ import Contact from './Pages/Contact';
 import './App.css';
 
 const backgrounds = {
-  '/home': { image: 'url("your-home-background-url")' },
-  '/about': { image: 'url("your-about-background-url")' },
-  '/contact': { image: 'url("your-contact-background-url")' },
-  '/login': { image: 'url("your-login-background-url")' },
+  '/home': { image: 'url("https://img.freepik.com/premium-photo/blue-background-with-spread-mediterranean-appetizers-including-olives-cheese-tomatoes_14117-958320.jpg?size=626&ext=jpg&ga=GA1.1.947224364.1726785476&semt=ais_hybrid")' },
+  '/about': { image: 'url("https://img.freepik.com/free-photo/bowl-mozzarella-balls-with-tomato-sauce-garlic-pasta-turquoise-background_23-2147922791.jpg")' },
+  '/contact': { image: 'url("https://img.freepik.com/premium-photo/food-background-with-sea-fish-blue_128650-1312.jpg")' },
+  '/login': { image: 'url("https://img.freepik.com/premium-photo/breakfast-buffet-bliss_1254967-49247.jpg")' },
 };
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const location = useLocation();
-  const { image, color } = backgrounds[location.pathname] || { image: 'url("fallback-image-url")', color: 'rgba(0, 0, 0, 0.5)' };
+  const { image } = backgrounds[location.pathname] || { image: 'url("fallback-image-url")' };
 
   return (
     <div 
       className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
-      style={{ backgroundImage: image }}>
+      style={{ 
+        backgroundImage: image,
+        // backgroundSize: 'cover', // Ensure the image covers the entire container
+        // backgroundPosition: 'center', // Center the image
+      }}>
 
-      {/* Overlay */}
-      <div 
+      {/* <div 
         className="absolute inset-0" 
-        style={{ backgroundColor: color }} 
-      />
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} // Dark overlay for better text contrast */}
+      
       
       <NavBar isSignedIn={isSignedIn} onSignIn={() => setIsSignedIn(true)} onSignOut={() => setIsSignedIn(false)} />
       <header className="text-black text-center p-8 bg-opacity-70">
@@ -40,13 +43,13 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          {/* Redirect from root path to home page */}
           <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
       </main>
       <footer className="text-black text-center p-4">
-        <p>&copy; 2024 Heads or Tails</p>
-      </footer>
+  <p className="font-bold text-lg">&copy; 2024 Heads or Tails</p> {/* Added font-bold and text-lg */}
+</footer>
+
     </div>
   );
 }

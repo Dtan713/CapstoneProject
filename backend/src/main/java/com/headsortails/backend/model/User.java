@@ -16,9 +16,7 @@ import java.util.Set;
 public class MyAppUser {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String username;
     private String password;
     private String email;
-    private Boolean enabled;
 
 }

@@ -17,23 +17,23 @@ function About() {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+    color: 'black', // Change text color to black
+    textShadow: 'none', // Remove text shadow if you want a clean look
     padding: '20px',
   };
 
   return (
     <div style={backgroundStyle}>
-      <h2 className="text-blue-500 font-bold text-7xl mb-4"> {/* Changed to blue */}
+      <h2 className="font-bold text-7xl mt-4 mb-4">
         About This Website
       </h2>
-      <h3 className="text-blue-500 font-semibold text-6xl mb-4"> {/* Changed to blue */}
+      <h3 className="font-semibold text-6xl mt-4 mb-4">
         A Fun Randomizer for Everyone
       </h3>
-      <h4 className="text-blue-500 font-medium text-3xl mb-4"> {/* Changed to blue */}
+      <h4 className="font-medium text-3xl mt-4 mb-4">
         Explore various randomization options to help make decisions in a fun and engaging way!
       </h4>
-      <p className="text-blue-500 font-medium text-3xl mt-4 px-4"> {/* Changed to blue */}
+      <p className="font-medium text-3xl mt-4 px-4">
         Whether you're a couple looking for new date ideas or an individual seeking a bit of randomness in your life,
         this website provides a unique and enjoyable experience.
       </p>

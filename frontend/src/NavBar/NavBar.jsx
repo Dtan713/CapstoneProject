@@ -8,14 +8,14 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-gray-100 text-yellow shadow-lg">
+    <nav className="bg-blue-800 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-20">
           <div className="flex items-center">
             <img
               src="https://as1.ftcdn.net/v2/jpg/06/57/45/90/1000_F_657459006_yutl35amfkomxsQrttMKcEPbj89zeABX.jpg"
               alt="Logo"
-              className="h-10 w-10 mr-3"
+              className="h-12 w-12 mr-3 border-4 border-yellow-500" // Changed to border-4 for a bolder border
             />
             <div className="text-5xl font-Courier-Bold tracking-wide ml-[-10px]" style={{ fontFamily: 'Gotham, sans-serif' }}>
               Heads Or Tails
@@ -23,11 +23,10 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
           </div>
           <div className="hidden sm:block">
             <div className="flex space-x-6 items-center">
-              {/* Move Home link to the top */}
-              <Link to="/home" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Home</Link>
-              <Link to="/about" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">About</Link>
-              <Link to="/contact" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Contact</Link>
-              <Link to="/login" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Login</Link>
+              <Link to="/home" className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Home</Link>
+              <Link to="/about" className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">About</Link>
+              <Link to="/contact" className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Contact</Link>
+              <Link to="/login" className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Login</Link>
             </div>
           </div>
           <div className="absolute inset-y-0 right-10 flex items-center sm:hidden">
@@ -64,9 +63,9 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
       </div>
       <div className={`${isOpen ? 'block' : 'hidden'} sm:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link to="/home" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">Home</Link>
-          <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">About</Link>
-          <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">Contact</Link>
+          <Link to="/home" className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">Home</Link>
+          <Link to="/about" className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">About</Link>
+          <Link to="/contact" className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">Contact</Link>
           {isSignedIn ? (
             <button
               onClick={onSignOut}

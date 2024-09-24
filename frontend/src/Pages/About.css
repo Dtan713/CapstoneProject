@@ -8,27 +8,27 @@
 
 .title, .subtitle, .description, .text {
   transition: color 0.3s ease; /* Smooth transition for color change */
-  color: #d0ff00; /* Set text color to yellow */
+  color: black; /* Change text color to black */
 }
 
 .title {
   font-size: 3.5rem; /* Increase font size */
   font-weight: bold;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+  text-shadow: none; /* Remove text shadow for black text */
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 3rem; /* Increase font size */
   font-weight: 600;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+  text-shadow: none; /* Remove text shadow for black text */
   margin-bottom: 1rem;
 }
 
 .description {
   font-size: 2.5rem; /* Increase font size */
   font-weight: 500;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  text-shadow: none; /* Remove text shadow for black text */
   margin-bottom: 1rem;
 }
 
@@ -38,7 +38,7 @@
   margin-top: 1rem;
   padding: 0 20px;
   text-align: center;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  text-shadow: none; /* Remove text shadow for black text */
 }
 
 /* Optional: Add a subtle background overlay */
