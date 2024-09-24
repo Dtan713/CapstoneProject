@@ -5,10 +5,10 @@ import Home from './Pages/Home';
 import NavBar from './Navbar/Navbar'; 
 import About from './Pages/About';
 import Contact from './Pages/Contact';
-
+import './App.css';
 
 const backgrounds = {
-  '/home': { image: 'url("your-home-background-url")' }, // Add your background URLs
+  '/home': { image: 'url("your-home-background-url")' },
   '/about': { image: 'url("your-about-background-url")' },
   '/contact': { image: 'url("your-contact-background-url")' },
   '/login': { image: 'url("your-login-background-url")' },
@@ -23,7 +23,7 @@ function App() {
     <div 
       className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
       style={{ backgroundImage: image }}>
-      
+
       {/* Overlay */}
       <div 
         className="absolute inset-0" 
@@ -40,8 +40,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          {/* Redirect from root path to login page */}
-          <Route path="/" element={<Navigate to="/login" />} />
+          {/* Redirect from root path to home page */}
+          <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
       </main>
       <footer className="text-black text-center p-4">

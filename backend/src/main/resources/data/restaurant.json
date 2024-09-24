@@ -1,0 +1,48 @@
+[
+  {
+    "cuisine": "Italian",
+    "food": [
+      "Pizza",
+      "Pasta",
+      "Lasagna",
+      "Risotto"
+    ]
+  },
+  {
+    "cuisine": "Mexican",
+    "food": [
+      "Tacos",
+      "Burritos",
+      "Quesadillas",
+      "Nachos"
+    ]
+  },
+  {
+    "cuisine": "Indian",
+    "food": [
+      "Biryani",
+      "Butter Chicken",
+      "Samosa",
+      "Paneer Tikka"
+    ]
+  },
+  {
+    "cuisine": "Chinese",
+    "food": [
+      "Dim Sum",
+      "Kung Pao Chicken",
+      "Sweet and Sour Pork",
+      "Fried Rice"
+    ]
+  },
+  {
+    "cuisine": "Japanese",
+    "food": [
+      "Sushi",
+      "Ramen",
+      "Tempura",
+      "Teriyaki Chicken"
+    ]
+  }
+]
+

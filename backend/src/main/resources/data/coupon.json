@@ -1,0 +1,42 @@
+[
+  {
+
+    "name": "Summer Discount",
+    "description": "20% off on all summer items.",
+    "code": "SUMMER20",
+    "location": "New York",
+    "restaurant": "City Bistro"
+  },
+  {
+
+    "name": "Free Dessert",
+    "description": "Get a free dessert with any main course.",
+    "code": "FREEDESSERT",
+    "location": "New York",
+    "restaurant": "Gourmet Grill"
+  },
+  {
+
+    "name": "Buy One Get One Free",
+    "description": "Buy one entrée and get another free.",
+    "code": "BOGO",
+    "location": "New York",
+    "restaurant": "Tex-Mex Haven"
+  },
+  {
+
+    "name": "Weekday Special",
+    "description": "15% off on weekdays.",
+    "code": "WEEKDAY15",
+    "location": "New York",
+    "restaurant": "Tropical Eats"
+  },
+  {
+
+    "name": "Family Meal Deal",
+    "description": "Special pricing for family meals.",
+    "code": "FAMILYMEAL",
+    "location": "New York",
+    "restaurant": "Family Feast"
+  }
+]

@@ -49,6 +49,23 @@ function Home() {
     setCoupons(fetchedCoupons);
   };
 
+  const handleFetch = async () => {
+    try {
+        const response = await fetch("http://localhost:8080/coupon");
+
+        // Check if the response is ok (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);
+        setCoupons(data); // Assuming setCoupons is defined in your component
+    } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+    }
+};
+
   const handleSpin = () => {
     if (currentFoodOptions.length === 0) return;
     setIsSpinning(true);

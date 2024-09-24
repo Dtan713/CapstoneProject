@@ -23,10 +23,11 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
           </div>
           <div className="hidden sm:block">
             <div className="flex space-x-6 items-center">
-              <Link to="/login" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Login</Link>
+              {/* Move Home link to the top */}
               <Link to="/home" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Home</Link>
               <Link to="/about" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">About</Link>
               <Link to="/contact" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Contact</Link>
+              <Link to="/login" className="text-black-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">Login</Link>
             </div>
           </div>
           <div className="absolute inset-y-0 right-10 flex items-center sm:hidden">
@@ -63,6 +64,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
       </div>
       <div className={`${isOpen ? 'block' : 'hidden'} sm:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
+          <Link to="/home" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">Home</Link>
           <Link to="/about" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">About</Link>
           <Link to="/contact" className="text-gray-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold">Contact</Link>
           {isSignedIn ? (
