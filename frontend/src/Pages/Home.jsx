@@ -64,8 +64,8 @@ function Home() {
   };
 
   return (
-    <div className="items-center justify-min-h-screen bg-gray-800 text-white p-6 border-4 border-yellow-500"> {/* Outer container with yellow border */}
-      <div className="image-container mb-6 w-full max-w-6xl border-4 border-yellow-500 rounded-lg"> {/* Image container with yellow border */}
+    <div className="items-center justify-min-h-screen bg-gray-800 text-white p-6 border-4 border-yellow-500">
+      <div className="image-container mb-6 w-full max-w-6xl border-4 border-yellow-500 rounded-lg">
         <img 
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnHl4W3ttVIloStXI-bK-EiZSh34V6fnZcpA&s" 
           alt="Description 1" 
@@ -73,7 +73,6 @@ function Home() {
         />
       </div>
 
-      {/* Inner container with yellow border */}
       <div className="border-4 border-yellow-500 bg-gray-900 rounded-lg shadow-lg p-8 w-full max-w-3xl text-center">
         <h2 className="text-yellow-400 font-bold text-5xl mb-4">Welcome To Heads Or Tails</h2>
         <p className="text-gray-200 font-semibold text-lg mb-4">A fun randomizer website for couples and individuals.</p>
@@ -135,7 +134,7 @@ function Home() {
             </div>
 
             {/* Coupons Section */}
-            <div className="mt-6 bg-gray-800 p-4 rounded-lg">
+            <div className="mt-6 border-4 border-yellow-500 bg-gray-800 rounded-lg p-4">
               <h3 className="text-xl font-bold text-yellow-400">Coupons & Best Deals</h3>
               <ul className="mt-2">
                 {coupons.map(coupon => (
@@ -145,6 +144,14 @@ function Home() {
                   </li>
                 ))}
               </ul>
+              {/* GIF Map */}
+              <div className="mt-4">
+                <img 
+                  src="https://developers.google.com/static/maps/architecture/dds-real-time/images/nyc.gif" // Replace with your actual GIF URL
+                  alt="Map of Locations"
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
             </div>
           </>
         )}

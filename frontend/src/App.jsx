@@ -8,7 +8,7 @@ import Contact from './Pages/Contact';
 import './App.css';
 
 const backgrounds = {
-  '/home': { image: 'url("https://img.freepik.com/premium-photo/blue-background-with-spread-mediterranean-appetizers-including-olives-cheese-tomatoes_14117-958320.jpg?size=626&ext=jpg&ga=GA1.1.947224364.1726785476&semt=ais_hybrid")' },
+  '/home': { image: 'url("https://img.freepik.com/free-photo/green-vegetables-lemon-juice-blue_141793-1631.jpg?t=st=1727050481~exp=1727054081~hmac=b427e05abeb09872639935b7b109d449d4c57c0d6d9b756e11e097d005167fb4")' },
   '/about': { image: 'url("https://img.freepik.com/free-photo/bowl-mozzarella-balls-with-tomato-sauce-garlic-pasta-turquoise-background_23-2147922791.jpg")' },
   '/contact': { image: 'url("https://img.freepik.com/premium-photo/food-background-with-sea-fish-blue_128650-1312.jpg")' },
   '/login': { image: 'url("https://img.freepik.com/premium-photo/breakfast-buffet-bliss_1254967-49247.jpg")' },
@@ -24,15 +24,10 @@ function App() {
       className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
       style={{ 
         backgroundImage: image,
-        // backgroundSize: 'cover', // Ensure the image covers the entire container
-        // backgroundPosition: 'center', // Center the image
-      }}>
-
-      {/* <div 
-        className="absolute inset-0" 
-        style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} // Dark overlay for better text contrast */}
-      
-      
+        backgroundSize: 'cover', // Ensures the image covers the entire container
+        backgroundPosition: 'center', // Centers the image
+      }}
+    >
       <NavBar isSignedIn={isSignedIn} onSignIn={() => setIsSignedIn(true)} onSignOut={() => setIsSignedIn(false)} />
       <header className="text-black text-center p-8 bg-opacity-70">
         {/* Optional header content */}
@@ -47,9 +42,8 @@ function App() {
         </Routes>
       </main>
       <footer className="text-black text-center p-4">
-  <p className="font-bold text-lg">&copy; 2024 Heads or Tails</p> {/* Added font-bold and text-lg */}
-</footer>
-
+        <p className="font-bold text-lg">&copy; 2024 Heads or Tails</p>
+      </footer>
     </div>
   );
 }

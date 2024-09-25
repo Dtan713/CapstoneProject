@@ -8,7 +8,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-blue-800 text-white shadow-lg border-4 border-yellow-500">
+    <nav className="bg-blue-800 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-20">
           <div className="flex items-center">
