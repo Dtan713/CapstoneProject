@@ -15,10 +15,8 @@ public class Coupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
     private String description;
     private String code;
-    private String location;
-    private String restaurant;
+
 
 }

@@ -18,6 +18,7 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String cuisine;
-//    private ArrayList<String> food = new ArrayList<String>();
+
+    private ArrayList<String> food = new ArrayList<String>();
 
 }

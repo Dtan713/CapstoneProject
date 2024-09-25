@@ -1,153 +1,17 @@
-[
+[[
   {
     "id": 1,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
+    "password": "password123",
+    "email": "user1@example.com"
   },
   {
     "id": 2,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
+    "password": "securepass456",
+    "email": "user2@example.com"
   },
   {
     "id": 3,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
-  },
-  {
-    "id": 4,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
-  },
-  {
-    "id": 5,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
-  },
-  {
-    "id": 6,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
-  },
-  {
-    "id": 7,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
-  },
-  {
-    "id": 8,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
-  },
-  {
-    "id": 9,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
-  },
-  {
-    "id": 10,
-    "username": "user1",
-    "password": "password1",
-    "email": "user1@example.com",
-    "enabled": true,
-    "roles": [
-      {
-        "id": 1,
-        "role": "ROLE_USER"
-      }
-
-    ],
-    "HeadsOrTails": []
+    "password": "mypassword789",
+    "email": "user3@example.com"
   }
 ]
-

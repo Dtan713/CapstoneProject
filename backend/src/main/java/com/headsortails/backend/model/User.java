@@ -5,15 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Table(name = "user")
 @Entity
-public class MyAppUser {
+public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String password;

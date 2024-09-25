@@ -1,42 +1,72 @@
 [
   {
-
-    "name": "Summer Discount",
-    "description": "20% off on all summer items.",
-    "code": "SUMMER20",
-    "location": "New York",
-    "restaurant": "City Bistro"
+    "id": 1,
+    "code": "SAVE10",
+    "discount": 10,
+    "description": "Save 10% on your next order",
+    "expiryDate": "2024-12-31"
   },
   {
-
-    "name": "Free Dessert",
-    "description": "Get a free dessert with any main course.",
-    "code": "FREEDESSERT",
-    "location": "New York",
-    "restaurant": "Gourmet Grill"
+    "id": 2,
+    "code": "FREESHIP",
+    "discount": 0,
+    "description": "Free shipping on orders over $50",
+    "expiryDate": "2024-10-15"
   },
   {
-
-    "name": "Buy One Get One Free",
-    "description": "Buy one entrée and get another free.",
+    "id": 3,
     "code": "BOGO",
-    "location": "New York",
-    "restaurant": "Tex-Mex Haven"
+    "discount": 50,
+    "description": "Buy one, get one free on select items",
+    "expiryDate": "2024-11-30"
   },
   {
-
-    "name": "Weekday Special",
-    "description": "15% off on weekdays.",
-    "code": "WEEKDAY15",
-    "location": "New York",
-    "restaurant": "Tropical Eats"
+    "id": 4,
+    "code": "WELCOME15",
+    "discount": 15,
+    "description": "15% off for new customers",
+    "expiryDate": "2025-01-01"
   },
   {
-
-    "name": "Family Meal Deal",
-    "description": "Special pricing for family meals.",
-    "code": "FAMILYMEAL",
-    "location": "New York",
-    "restaurant": "Family Feast"
+    "id": 5,
+    "code": "SPEND50",
+    "discount": 5,
+    "description": "Get $5 off when you spend $50 or more",
+    "expiryDate": "2024-10-31"
+  },
+  {
+    "id": 6,
+    "code": "SUMMER20",
+    "discount": 20,
+    "description": "20% off summer collection",
+    "expiryDate": "2024-08-31"
+  },
+  {
+    "id": 7,
+    "code": "FALL15",
+    "discount": 15,
+    "description": "15% off on fall items",
+    "expiryDate": "2024-09-30"
+  },
+  {
+    "id": 8,
+    "code": "BLACKFRIDAY",
+    "discount": 30,
+    "description": "30% off during Black Friday sales",
+    "expiryDate": "2024-11-29"
+  },
+  {
+    "id": 9,
+    "code": "NEWYEAR2025",
+    "discount": 25,
+    "description": "25% off your first purchase of 2025",
+    "expiryDate": "2025-01-15"
+  },
+  {
+    "id": 10,
+    "code": "CLEARANCE",
+    "discount": 40,
+    "description": "40% off clearance items",
+    "expiryDate": "2024-07-31"
   }
 ]
