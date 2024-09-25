@@ -64,6 +64,7 @@ function Login() {
           maxWidth: '600px',
           borderRadius: '10px',
           marginBottom: '20px',
+          border: '4px solid yellow', // Added yellow border
         }}
       />
 

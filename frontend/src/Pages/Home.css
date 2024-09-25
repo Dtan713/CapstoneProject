@@ -1,95 +1,12 @@
-/* Contact.css */
-body {
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .wheel {
-    width: 300px;  /* Adjust as needed */
-    height: 300px; /* Adjust as needed */
-    border-radius: 50%;
-    border: 10px solid #34495e; /* A softer border color */
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    background: radial-gradient(circle, #ecf0f1, #bdc3c7); /* Nice background gradient */
-  }
-  
-  .wheel-item {
-    position: absolute;
-    width: 50%; /* Each section takes half of the wheel */
-    height: 50%; /* Each section takes half of the wheel */
-    clip-path: polygon(100% 0, 0% 0, 100% 100%); /* Create triangular section */
-    display: flex; /* Use flexbox for centering */
-    align-items: flex-end; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    color: white; /* Text color */
-    font-weight: bold; /* Text weight */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    background-color: rgba(0, 128, 255, 0.7); /* Example background color */
+.spin {
+  animation: spin 4s ease-out forwards;
 }
 
-.wheel-item:nth-child(odd) {
-    background-color: rgba(0, 102, 204, 0.7); /* Different color for odd items */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-  .wheel-item:nth-child(even) {
-    background-color: #e74c3c; /* Red */
-  }
-  
-  .wheel-label {
-    text-align: center;
-    width: 100%;
-    transform: translateY(-10px); /* Adjust this to position text */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add some text shadow for readability */
-  }
-  
-  button {
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0c0801; /* Change button hover color */
-  }
-  
-  .background-container {
-    background-color: rgba(131, 60, 225, 0.1); /* Semi-transparent white */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Inner spacing */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Shadow effect */
-  }
-
-  .styled-image {
-    width: 200%; /* or any specific width, e.g., 800px */
-    max-width: 800px; /* Maximum width */
-    height: auto; /* Maintain aspect ratio */
-  }
-  
-  .styled-image {
-    width: 100%; /* or any specific width, e.g., 800px */
-    max-width: 800px; /* Maximum width */
-    height: auto; /* Maintain aspect ratio */
-  }
-  
-  
-
-
-.food-spot {
-  position: absolute;
-  width: 50%; /* Adjust for spot size */
-  height: 50%; /* Adjust for spot size */
-  background-color: rgba(255, 0, 0, 0.3); /* Adjust for color */
-  border-radius: 50%;
-  transform-origin: 100% 100%; /* Set pivot point */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-}
-
-.food-spot:nth-child(1) { transform: rotate(0deg); }
-.food-spot:nth-child(2) { transform: rotate(60deg); }
-.food-spot:nth-child(3) { transform: rotate(120deg); }
-.food-spot:nth-child(4) { transform: rotate(180deg); }
-.food-spot:nth-child(5) { transform: rotate(240deg); }
-.food-spot:nth-child(6) { transform: rotate(300deg); }

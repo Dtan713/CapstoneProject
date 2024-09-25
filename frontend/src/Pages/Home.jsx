@@ -1,21 +1,16 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';  
 import './Contact.css';
 
 function Home() {
-  const initialFoodOptions = {
-    Italian: ['Pizza', 'Pasta', 'Salad', 'Lasagna', 'Tiramisu', 'Risotto', 'Bruschetta'],
-    American: ['Burger', 'Hot Dog', 'Tacos', 'Mac & Cheese', 'Steak', 'BBQ Ribs', 'Apple Pie'],
-    Japanese: ['Sushi', 'Ramen', 'Tempura', 'Sashimi', 'Udon', 'Miso Soup', 'Okonomiyaki'],
-    Chinese: ['General Tso\'s Chicken', 'Dumplings', 'Fried Rice', 'Sweet and Sour Pork', 'Spring Rolls', 'Kung Pao Chicken', 'Mapo Tofu'],
-    Indian: ['Curry', 'Biryani', 'Naan', 'Samosa', 'Paneer Tikka', 'Chaat', 'Butter Chicken'],
-    Mexican: ['Quesadilla', 'Burrito', 'Nachos', 'Chilaquiles', 'Tamales', 'Enchiladas', 'Elote'],
-    Greek: ['Moussaka', 'Gyro', 'Souvlaki', 'Spanakopita', 'Baklava'],
-    Thai: ['Pad Thai', 'Green Curry', 'Tom Yum Soup', 'Spring Rolls', 'Mango Sticky Rice'],
-    Mediterranean: ['Falafel', 'Hummus', 'Tabbouleh', 'Shawarma', 'Baklava'],
-    French: ['Croissant', 'Coq au Vin', 'Ratatouille', 'Crème Brûlée', 'Quiche Lorraine'],
-  };
+  const initialFoodOptions = [
+    'Pizza', 'Pasta', 'Salad', 'Lasagna', 'Tiramisu',
+    'Burger', 'Hot Dog', 'Tacos', 'Mac & Cheese', 
+    'Sushi', 'Ramen', 'Tempura', 'Sashimi', 
+    'Curry', 'Biryani', 'Naan', 'Samosa', 
+    'Quesadilla', 'Burrito', 'Nachos', 'Chilaquiles'
+  ];
 
-  const [currentFoodOptions, setCurrentFoodOptions] = useState(Object.values(initialFoodOptions).flat());
+  const [currentFoodOptions, setCurrentFoodOptions] = useState(initialFoodOptions);
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   const [result, setResult] = useState('');
@@ -24,8 +19,8 @@ function Home() {
 
   const fetchCoupons = async (food) => {
     try {
-      const response = await fetch(`http://localhost:8080/coupon/${food}`); // Adjust endpoint if necessary
-      if (!response.ok) throw new Error("Error fetching coupons");
+      const response = await fetch(`http://localhost:8080/coupon/${food}`);
+      if (!response.ok) throw new Error("coupons");
       const data = await response.json();
       setCoupons(data);
     } catch (error) {
@@ -69,16 +64,17 @@ function Home() {
   };
 
   return (
-    <div className="items-center justify-min-h-screen bg-gray-800 text-white p-6">
-      <div className="image-container mb-6 w-full max-w-6xl">
+    <div className="items-center justify-min-h-screen bg-gray-800 text-white p-6 border-4 border-yellow-500"> {/* Outer container with yellow border */}
+      <div className="image-container mb-6 w-full max-w-6xl border-4 border-yellow-500 rounded-lg"> {/* Image container with yellow border */}
         <img 
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnHl4W3ttVIloStXI-bK-EiZSh34V6fnZcpA&s" 
           alt="Description 1" 
-          className="styled-image w-full h-auto" 
+          className="styled-image w-full h-auto rounded-lg" 
         />
       </div>
 
-      <div className="bg-gray-900 rounded-lg shadow-lg p-8 w-full max-w-3xl text-center">
+      {/* Inner container with yellow border */}
+      <div className="border-4 border-yellow-500 bg-gray-900 rounded-lg shadow-lg p-8 w-full max-w-3xl text-center">
         <h2 className="text-yellow-400 font-bold text-5xl mb-4">Welcome To Heads Or Tails</h2>
         <p className="text-gray-200 font-semibold text-lg mb-4">A fun randomizer website for couples and individuals.</p>
         <p className="text-gray-200 font-semibold text-lg mb-4">Spin the wheel and discover what delicious food to enjoy!</p>
@@ -116,6 +112,12 @@ function Home() {
               </div>
             );
           })}
+          <img 
+            src="https://example.com/spinning-coin.png" // Replace with the actual coin image path
+            alt="Spinning Coin"
+            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${isSpinning ? 'spin' : ''}`}
+            style={{ width: '50px', height: '50px', transition: 'transform 4s ease-out' }}
+          />
         </div>
 
         <button

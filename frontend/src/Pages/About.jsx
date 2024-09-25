@@ -24,7 +24,7 @@ function About() {
 
   return (
     <div style={backgroundStyle}>
-      <h2 className="font-bold text-7xl mt-4 mb-4">
+      <h2 className="font-bold text-7xl mt mb-4">
         About This Website
       </h2>
       <h3 className="font-semibold text-6xl mt-4 mb-4">
