@@ -5,20 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
+@Data
+@Table(name = "registration")
 @Entity
-@Table(name = "coupon")
-public class Coupon {
+public class Registration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String description;
-    private String code;
-    private String discount;
-
-
+    private String password;
+    private String email;
 
 }

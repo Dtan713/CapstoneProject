@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "password": "password123",
+    "password": "examplePassword123",
     "email": "user1@example.com"
   },
   {
     "id": 2,
-    "password": "securepass456",
+    "password": "anotherPassword456",
     "email": "user2@example.com"
   },
   {
     "id": 3,
-    "password": "mypassword789",
+    "password": "securePassword789",
     "email": "user3@example.com"
   }
 ]

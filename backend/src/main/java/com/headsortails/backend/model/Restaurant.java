@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -19,6 +19,7 @@ public class Restaurant {
     private Integer id;
     private String cuisine;
 
-    private ArrayList<String> food = new ArrayList<String>();
+
+    private List<String> food;
 
 }

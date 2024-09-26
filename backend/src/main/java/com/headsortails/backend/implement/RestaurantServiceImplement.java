@@ -15,5 +15,6 @@ import java.util.List;
         public List<Restaurant>getAllRestaurants() {
             return restaurantRepository.findAll();
         }
+
     }
 

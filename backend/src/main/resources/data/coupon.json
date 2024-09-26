@@ -1,72 +1,70 @@
 [
   {
     "id": 1,
-    "code": "SAVE10",
-    "discount": 10,
-    "description": "Save 10% on your next order",
-    "expiryDate": "2024-12-31"
+    "code": "SAVE20",
+    "discount": 20,
+    "description": "Save 20% on your next order"
+
   },
   {
     "id": 2,
-    "code": "FREESHIP",
+    "code": "DELIVERY",
     "discount": 0,
-    "description": "Free shipping on orders over $50",
-    "expiryDate": "2024-10-15"
+    "description": "Free Delivery on orders over $50"
+
   },
   {
     "id": 3,
     "code": "BOGO",
     "discount": 50,
-    "description": "Buy one, get one free on select items",
-    "expiryDate": "2024-11-30"
+    "description": "Buy one, get one free on select items"
+
   },
   {
     "id": 4,
-    "code": "WELCOME15",
-    "discount": 15,
-    "description": "15% off for new customers",
-    "expiryDate": "2025-01-01"
+    "code": "WELCOME20",
+    "discount": 20,
+    "description": "20% off for new customers"
+
   },
   {
     "id": 5,
     "code": "SPEND50",
-    "discount": 5,
-    "description": "Get $5 off when you spend $50 or more",
-    "expiryDate": "2024-10-31"
+    "discount": 10,
+    "description": "Get $10 off when you spend $50 or more"
+
   },
   {
     "id": 6,
     "code": "SUMMER20",
     "discount": 20,
-    "description": "20% off summer collection",
-    "expiryDate": "2024-08-31"
+    "description": "20% off Light Foods"
+
   },
   {
     "id": 7,
     "code": "FALL15",
     "discount": 15,
-    "description": "15% off on fall items",
-    "expiryDate": "2024-09-30"
+    "description": "15% Off For Halloween"
+
   },
   {
     "id": 8,
-    "code": "BLACKFRIDAY",
+    "code": "Taco Tuesday",
     "discount": 30,
-    "description": "30% off during Black Friday sales",
-    "expiryDate": "2024-11-29"
-  },
+    "description": "30% off Tacos"  },
   {
     "id": 9,
     "code": "NEWYEAR2025",
     "discount": 25,
-    "description": "25% off your first purchase of 2025",
-    "expiryDate": "2025-01-15"
+    "description": "25% off your first purchase of 2025"
+
   },
   {
     "id": 10,
-    "code": "CLEARANCE",
+    "code": "FourZero",
     "discount": 40,
-    "description": "40% off clearance items",
-    "expiryDate": "2024-07-31"
+    "description": "Get 40% off "
+
   }
 ]
