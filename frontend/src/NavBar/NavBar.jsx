@@ -13,7 +13,7 @@ function NavBar({ isSignedIn, onSignIn, onSignOut }) {
         <div className="relative flex items-center justify-between h-20">
           <div className="flex items-center">
             <img
-              src="https://as1.ftcdn.net/v2/jpg/06/57/45/90/1000_F_657459006_yutl35amfkomxsQrttMKcEPbj89zeABX.jpg"
+              src="https://thumbs.dreamstime.com/b/heads-tails-text-orange-grungy-round-rubber-stamp-vintage-227040330.jpg"
               alt="Logo"
               className="h-12 w-12 mr-3 border-4 border-yellow-500" // Changed to border-4 for a bolder border
             />

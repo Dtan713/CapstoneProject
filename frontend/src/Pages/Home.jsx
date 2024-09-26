@@ -1,4 +1,4 @@
-import React, { useState } from 'react';  
+import React, { useState } from 'react';
 import './Contact.css';
 
 function Home() {
@@ -17,15 +17,23 @@ function Home() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [coupons, setCoupons] = useState([]);
 
-  const fetchCoupons = async (food) => {
+  const fetchCoupons = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/coupon/${food}`);
-      if (!response.ok) throw new Error("coupons");
+      const response = await fetch('http://localhost:8080/coupons');
+      if (!response.ok) {
+        throw new Error("Failed to fetch coupons");
+      }
       const data = await response.json();
+      console.log(data);
       setCoupons(data);
     } catch (error) {
-      console.error("Failed to fetch coupons:", error);
-      setCoupons([{ id: 1, description: 'No current coupons available.', code: '', location: '' }]);
+      console.error("Fetch coupons:", error);
+      setCoupons([{
+        id: 1,
+        description: "Save 20% on your next order.",
+        code: "SAVE20",
+        location: "NY, NY"
+      }]);
     }
   };
 
@@ -57,7 +65,12 @@ function Home() {
     if (inputValue2.trim() !== '') newFoods.push(inputValue2.trim());
 
     if (newFoods.length > 0) {
-      setCurrentFoodOptions(prev => [...prev, ...newFoods]);
+      setCurrentFoodOptions(prev => {
+        const updatedFoods = [...prev];
+        if (newFoods[0]) updatedFoods.unshift(newFoods[0]);
+        if (newFoods[1]) updatedFoods.push(newFoods[1]);
+        return updatedFoods;
+      });
       setInputValue1('');
       setInputValue2('');
     }
@@ -69,53 +82,37 @@ function Home() {
         <img 
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnHl4W3ttVIloStXI-bK-EiZSh34V6fnZcpA&s" 
           alt="Description 1" 
-          className="styled-image w-full h-auto rounded-lg" 
+          className={`styled-image w-full h-auto rounded-lg ${isSpinning ? 'spin' : ''}`} 
         />
       </div>
 
       <div className="border-4 border-yellow-500 bg-gray-900 rounded-lg shadow-lg p-8 w-full max-w-3xl text-center">
         <h2 className="text-yellow-400 font-bold text-5xl mb-4">Welcome To Heads Or Tails</h2>
-        <p className="text-gray-200 font-semibold text-lg mb-4">A fun randomizer website for couples and individuals.</p>
-        <p className="text-gray-200 font-semibold text-lg mb-4">Spin the wheel and discover what delicious food to enjoy!</p>
+        <p className="text-yellow-200 font-semibold text-lg mb-4">A fun randomizer website for couples and individuals.</p>
+        <p className="text-yellow-200 font-semibold text-lg mb-4">Spin the wheel and discover what delicious food to enjoy!</p>
 
         <div
           id="wheel"
           className="border-4 border-yellow-400 rounded-full h-80 w-80 relative mx-auto mb-4"
-          style={{
-            overflow: 'hidden',
-            position: 'relative',
-            background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 0.5))',
-            boxShadow: '0 10px 20px rgba(0, 0, 0, 0.5)',
-            backdropFilter: 'blur(5px)',
-          }}
         >
           {currentFoodOptions.map((food, index) => {
             const angle = (index * (360 / currentFoodOptions.length));
             return (
               <div key={index} className="absolute" style={{
                 transform: `rotate(${angle}deg)`,
-                clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`,
                 width: '100%',
                 height: '100%',
-                backgroundColor: `hsl(${(index * (360 / currentFoodOptions.length))}, 70%, 50%)`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.25rem',
-                fontWeight: 'bold',
-                color: '#fff',
-                borderBottom: '2px solid white',
-                borderTop: '2px solid white',
+                clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`,
               }}>
                 <span style={{ transform: `rotate(-${angle}deg)` }}>{food}</span>
               </div>
             );
           })}
           <img 
-            src="https://example.com/spinning-coin.png" // Replace with the actual coin image path
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWKMm2yKQHkP-7c2phsAquzM9EQVack3xaWw&s"
             alt="Spinning Coin"
             className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${isSpinning ? 'spin' : ''}`}
-            style={{ width: '50px', height: '50px', transition: 'transform 4s ease-out' }}
+            style={{ width: '200px', height: '200px' }}
           />
         </div>
 
@@ -133,7 +130,6 @@ function Home() {
               {isSpinning ? '...' : `Result: ${result}`}
             </div>
 
-            {/* Coupons Section */}
             <div className="mt-6 border-4 border-yellow-500 bg-gray-800 rounded-lg p-4">
               <h3 className="text-xl font-bold text-yellow-400">Coupons & Best Deals</h3>
               <ul className="mt-2">
@@ -144,10 +140,9 @@ function Home() {
                   </li>
                 ))}
               </ul>
-              {/* GIF Map */}
               <div className="mt-4">
                 <img 
-                  src="https://developers.google.com/static/maps/architecture/dds-real-time/images/nyc.gif" // Replace with your actual GIF URL
+                  src="https://developers.google.com/static/maps/architecture/dds-real-time/images/nyc.gif"
                   alt="Map of Locations"
                   className="w-full h-auto rounded-lg"
                 />
@@ -156,28 +151,31 @@ function Home() {
           </>
         )}
 
-        <div className="mt-8">
+        <div className="mt-8 p-4 rounded-lg"> {/* Removed border here */}
           <input
             type="text"
             value={inputValue1}
             onChange={(e) => setInputValue1(e.target.value)}
             placeholder="Add your first food item"
-            className="border border-gray-500 rounded-lg p-2 text-black mr-2"
+            className="border-4 border-yellow-500 rounded-lg p-2 text-black mr-2 placeholder-blue-600 placeholder-opacity-75" // Changed border color to yellow
+            style={{ transition: 'border-color 0.3s' }}
           />
           <input
             type="text"
             value={inputValue2}
             onChange={(e) => setInputValue2(e.target.value)}
             placeholder="Add your second food item"
-            className="border border-gray-500 rounded-lg p-2 text-black mr-2"
+            className="border-4 border-yellow-500 rounded-lg p-2 text-black mr-2 placeholder-blue-600 placeholder-opacity-75" // Changed border color to yellow
+            style={{ transition: 'border-color 0.3s' }}
           />
-          <button
-            onClick={handleAddFood}
-            className="bg-yellow-500 text-white rounded-lg px-4 py-2 font-semibold transition duration-400 hover:bg-blue-600"
-          >
-            Add Food
-          </button>
         </div>
+        
+        <button
+          onClick={handleAddFood}
+          className="mt-4 bg-yellow-500 text-white rounded-lg px-4 py-2 font-semibold transition duration-400 hover:bg-blue-600"
+        >
+          Add Food
+        </button>
       </div>
     </div>
   );

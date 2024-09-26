@@ -6,7 +6,6 @@ function Login() {
   const navigate = useNavigate();
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   
-  // State for login and create account inputs
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [createEmail, setCreateEmail] = useState('');
@@ -20,19 +19,15 @@ function Login() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     console.log("Logging in with:", loginEmail, loginPassword);
-    // Add logic for authentication check
-    navigate('/home'); // Redirect to the home page after successful login
+    navigate('/home');
   };
 
   const handleCreateSubmit = (e) => {
     e.preventDefault();
-    
-    // Validation for creating account
     if (createEmail && createPassword && createPassword === confirmPassword) {
       console.log("Creating account with:", createEmail, createPassword);
-      // Here you can add the logic to create the account, e.g. API call
       alert("Account created successfully!");
-      navigate('/home'); // Redirect to the home page after account creation
+      navigate('/home');
     } else {
       alert("Please ensure all fields are filled correctly and that passwords match.");
     }
@@ -46,7 +41,7 @@ function Login() {
         padding: '60px',
         borderRadius: '10px',
         color: 'white',
-        maxWidth: '1200px',
+        maxWidth: '600px', // Adjust this value for both pages
         margin: 'auto',
         display: 'flex',
         flexDirection: 'column',
@@ -55,25 +50,24 @@ function Login() {
         position: 'relative',
       }}
     >
-      {/* Account Image */}
       <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg9-2ci1Ts2HHas6wrAyO22of-Xfcvw7sYg&s" // Replace with your image URL
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg9-2ci1Ts2HHas6wrAyO22of-Xfcvw7sYg&s"
         alt="Login Account"
         style={{
           width: '100%',
           maxWidth: '600px',
           borderRadius: '10px',
           marginBottom: '20px',
-          border: '4px solid yellow', // Added yellow border
+          border: '4px solid yellow',
         }}
       />
 
       <h2 style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '3rem' }}>
-        {isCreatingAccount ? 'Create Account' : 'Welcome Back!'}
+        {isCreatingAccount ? 'Create Account' : 'Login'}
       </h2>
 
       {isCreatingAccount ? (
-        <form className="contact-form" onSubmit={handleCreateSubmit} style={{ width: '100%', maxWidth: '600px' }}>
+        <form className="contact-form" onSubmit={handleCreateSubmit} style={{ width: '100%' }}>
           <div className="form-group">
             <label htmlFor="newEmail" style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '1.2rem' }}>
               Email:
@@ -154,7 +148,7 @@ function Login() {
           </button>
         </form>
       ) : (
-        <form className="contact-form" onSubmit={handleLoginSubmit} style={{ width: '100%', maxWidth: '600px' }}>
+        <form className="contact-form" onSubmit={handleLoginSubmit} style={{ width: '100%' }}>
           <div className="form-group">
             <label htmlFor="email" style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '1.2rem' }}>
               Email:
