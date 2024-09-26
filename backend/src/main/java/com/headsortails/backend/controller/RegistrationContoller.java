@@ -23,5 +23,7 @@ import java.util.List;
     public List<Registration> getAllRegistration() {
         return registrationService.getAllRegistrations();
     }
+
+
 }
 

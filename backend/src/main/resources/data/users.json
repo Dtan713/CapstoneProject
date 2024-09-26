@@ -1,17 +1,26 @@
 [
   {
     "id": 1,
-    "password": "password123",
-    "email": "user1@example.com"
+    "username": "john_doe",
+    "email": "john@example.com",
+    "password": "password123"
   },
   {
     "id": 2,
-    "password": "securepass456",
-    "email": "user2@example.com"
+    "username": "jane_smith",
+    "email": "jane@example.com",
+    "password": "securePassword!"
   },
   {
     "id": 3,
-    "password": "mypassword789",
-    "email": "user3@example.com"
+    "username": "alex_jones",
+    "email": "alex@example.com",
+    "password": "mySecretPass"
+  },
+  {
+    "id": 4,
+    "username": "mary_jane",
+    "email": "mary@example.com",
+    "password": "anotherPassword"
   }
 ]

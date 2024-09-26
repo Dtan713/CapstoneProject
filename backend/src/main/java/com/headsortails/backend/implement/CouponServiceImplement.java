@@ -17,4 +17,6 @@ public class CouponServiceImplement implements CouponService {
     public List<Coupon> getAllCoupons() {
         return couponRepository.findAll();
     }
+
+
 }
