@@ -11,36 +11,57 @@ function Home() {
   ];
 
   const [currentFoodOptions, setCurrentFoodOptions] = useState(initialFoodOptions);
+  const [newFoods, setNewFoods] = useState([])
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   const [result, setResult] = useState('');
   const [isSpinning, setIsSpinning] = useState(false);
   const [coupons, setCoupons] = useState([]);
+  const [favorites, setFavorites] = useState([]); // New state for favorites
 
-  const fetchCoupons = async () => {
+  const fetchCoupons = async (newFood) => {
     try {
-      const response = await fetch('http://localhost:8080/coupons');
+      const response = await fetch(`http://localhost:8080/coupons/${newFood[0]}`);
       if (!response.ok) {
         throw new Error("Failed to fetch coupons");
       }
       const data = await response.json();
-      console.log(data);
+      console.log(data)
       setCoupons(data);
     } catch (error) {
       console.error("Fetch coupons:", error);
-      setCoupons([{
-        id: 1,
-        description: "Save 20% on your next order.",
-        code: "SAVE20",
-        location: "NY, NY"
-      }]);
+    }
+    
+    try {
+      const response = await fetch(`http://localhost:8080/coupons/${newFood[0]}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch coupons");
+      }
+      const data = await response.json();
+      console.log(data)
+      setCoupons(data);
+    } catch (error) {
+      console.error("Fetch coupons:", error);
     }
   };
 
+  {coupons.length > 0 ? (
+    <ul>
+      {coupons.map(coupon => (
+        <li key={coupon.id} className="text-gray-200 mb-2">
+          {coupon.description} <strong>(Code: {coupon.code})</strong> <br />
+          <span className="text-sm text-gray-400">Location: {coupon.location}</span>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-gray-400">No coupons available for this food.</p>
+  )}
+
   const handleSpin = () => {
-    if (currentFoodOptions.length === 0) return;
     setIsSpinning(true);
 
+    console.log(currentFoodOptions)
     const randomRotation = Math.floor(Math.random() * 360) + 720;
     const wheel = document.getElementById('wheel');
 
@@ -51,8 +72,8 @@ function Home() {
       const actualRotation = randomRotation % 360;
       const index = Math.floor((actualRotation / 360) * currentFoodOptions.length);
       const selectedFood = currentFoodOptions[index];
-      setResult(selectedFood);
-      fetchCoupons(selectedFood);
+      setResult(newFoods);
+      fetchCoupons(newFoods);
       setIsSpinning(false);
       wheel.style.transition = 'none';
       wheel.style.transform = `rotate(${actualRotation}deg)`;
@@ -60,22 +81,33 @@ function Home() {
   };
 
   const handleAddFood = () => {
-    const newFoods = [];
-    if (inputValue1.trim() !== '') newFoods.push(inputValue1.trim());
-    if (inputValue2.trim() !== '') newFoods.push(inputValue2.trim());
+    setNewFoods([inputValue1, inputValue2])
 
-    if (newFoods.length > 0) {
-      setCurrentFoodOptions(prev => {
-        const updatedFoods = [...prev];
-        if (newFoods[0]) updatedFoods.unshift(newFoods[0]);
-        if (newFoods[1]) updatedFoods.push(newFoods[1]);
-        return updatedFoods;
-      });
-      setInputValue1('');
-      setInputValue2('');
-    }
+    console.log(inputValue1)
+    console.log(inputValue2)
+    console.log(newFoods)
+
+    setInputValue1('');
+    setInputValue2('');
+    // if (newFoods.length > 0) {
+    //   setCurrentFoodOptions(prev => {
+    //     const updatedFoods = [...prev];
+    //     if (newFoods[0]) updatedFoods.unshift(newFoods[0]);
+    //     if (newFoods[1]) updatedFoods.push(newFoods[1]);
+    //     console.log(updatedFoods)
+    //     return updatedFoods;
+    //   });
+      
+    // }
   };
 
+  // New function to save favorite food
+  const handleSaveFavorite = () => {
+    if (result && !favorites.includes(result)) {
+      setFavorites(prevFavorites => [...prevFavorites, result]);
+    }
+  };
+  console.log(newFoods)
   return (
     <div className="items-center justify-min-h-screen bg-gray-800 text-white p-6 border-4 border-yellow-500">
       <div className="image-container mb-6 w-full max-w-6xl border-4 border-yellow-500 rounded-lg">
@@ -130,6 +162,13 @@ function Home() {
               {isSpinning ? '...' : `Result: ${result}`}
             </div>
 
+            <button
+              onClick={handleSaveFavorite}
+              className="mt-4 bg-green-500 text-white rounded-lg px-4 py-2 font-semibold transition duration-400 hover:bg-green-600"
+            >
+              Save as Favorite
+            </button>
+
             <div className="mt-6 border-4 border-yellow-500 bg-gray-800 rounded-lg p-4">
               <h3 className="text-xl font-bold text-yellow-400">Coupons & Best Deals</h3>
               <ul className="mt-2">
@@ -151,13 +190,13 @@ function Home() {
           </>
         )}
 
-        <div className="mt-8 p-4 rounded-lg"> {/* Removed border here */}
+        <div className="mt-8 p-4 rounded-lg">
           <input
             type="text"
             value={inputValue1}
             onChange={(e) => setInputValue1(e.target.value)}
             placeholder="Add your first food item"
-            className="border-4 border-yellow-500 rounded-lg p-2 text-black mr-2 placeholder-blue-600 placeholder-opacity-75" // Changed border color to yellow
+            className="border-4 border-yellow-500 rounded-lg p-2 text-black mr-2 placeholder-blue-600 placeholder-opacity-75"
             style={{ transition: 'border-color 0.3s' }}
           />
           <input
@@ -165,7 +204,7 @@ function Home() {
             value={inputValue2}
             onChange={(e) => setInputValue2(e.target.value)}
             placeholder="Add your second food item"
-            className="border-4 border-yellow-500 rounded-lg p-2 text-black mr-2 placeholder-blue-600 placeholder-opacity-75" // Changed border color to yellow
+            className="border-4 border-yellow-500 rounded-lg p-2 text-black mr-2 placeholder-blue-600 placeholder-opacity-75"
             style={{ transition: 'border-color 0.3s' }}
           />
         </div>
@@ -176,6 +215,18 @@ function Home() {
         >
           Add Food
         </button>
+
+        {/* Display favorite foods */}
+        {favorites.length > 0 && (
+          <div className="mt-8 border-4 border-yellow-500 bg-gray-800 rounded-lg p-4">
+            <h3 className="text-xl font-bold text-yellow-400">Favorite Foods</h3>
+            <ul className="mt-2">
+              {favorites.map((food, index) => (
+                <li key={index} className="text-gray-200 mb-2">{food}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

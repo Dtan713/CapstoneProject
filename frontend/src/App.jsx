@@ -24,8 +24,8 @@ function App() {
       className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat" 
       style={{ 
         backgroundImage: image,
-        backgroundSize: 'cover', // Ensures the image covers the entire container
-        backgroundPosition: 'center', // Centers the image
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center', 
       }}
     >
       <NavBar isSignedIn={isSignedIn} onSignIn={() => setIsSignedIn(true)} onSignOut={() => setIsSignedIn(false)} />

@@ -10,16 +10,16 @@ function Contact() {
     event.preventDefault(); 
     setIsMessageSent(true); 
 
-    // Redirect to home page after a brief delay
+    
     setTimeout(() => {
       navigate('/home'); 
     }, 2000); // Adjust the delay as needed
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter' && !event.shiftKey) { // Check for Enter key without Shift
-      event.preventDefault(); // Prevent adding a new line
-      handleSubmit(event); // Call handleSubmit
+    if (event.key === 'Enter' && !event.shiftKey) { 
+      event.preventDefault(); 
+      handleSubmit(event);
     }
   };
 

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import './About.css'; // Ensure this file contains your custom styles
+// import './About.css'; 
 
 function About() {
   const location = useLocation();
 
-  // Change background style based on the current route
+  
   const backgroundStyle = {
     backgroundImage: location.pathname === '/about' 
-      ? "url('')" // Replace with your image URL
+      ? "url('')" 
       : 'none',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -17,8 +17,8 @@ function About() {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'black', // Change text color to black
-    textShadow: 'none', // Remove text shadow if you want a clean look
+    color: 'black', 
+    textShadow: 'none',
     padding: '20px',
   };
 
