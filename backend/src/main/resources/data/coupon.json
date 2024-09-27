@@ -3,68 +3,199 @@
     "id": 1,
     "code": "SAVE20",
     "discount": 20,
-    "description": "Save 20% on your next order"
+    "description": "Save 20% on your next order",
+    "cuisine": "Italian"
 
   },
   {
     "id": 2,
     "code": "DELIVERY",
     "discount": 0,
-    "description": "Free Delivery on orders over $50"
+    "description": "Free Delivery on orders over $50",
+    "cuisine": "General"
 
   },
   {
     "id": 3,
     "code": "BOGO",
     "discount": 50,
-    "description": "Buy one, get one free on select items"
+    "description": "Buy one, get one free on select items",
+    "cuisine": "Mexican"
 
   },
   {
     "id": 4,
     "code": "WELCOME20",
     "discount": 20,
-    "description": "20% off for new customers"
+    "description": "20% off for new customers",
+    "cuisine": "American"
 
   },
   {
     "id": 5,
     "code": "SPEND50",
     "discount": 10,
-    "description": "Get $10 off when you spend $50 or more"
+    "description": "Get $10 off when you spend $50 or more",
+    "cuisine": "Asian"
 
   },
   {
     "id": 6,
     "code": "SUMMER20",
     "discount": 20,
-    "description": "20% off Light Foods"
+    "description": "20% off Light Foods",
+    "cuisine": "Mediterranean"
 
   },
   {
     "id": 7,
     "code": "FALL15",
     "discount": 15,
-    "description": "15% Off For Halloween"
+    "description": "15% Off For Halloween",
+    "cuisine": "General"
 
   },
   {
     "id": 8,
     "code": "Taco Tuesday",
     "discount": 30,
-    "description": "30% off Tacos"  },
+    "description": "30% off Tacos",
+    "cuisine": "Mexican"
+
+  },
   {
     "id": 9,
     "code": "NEWYEAR2025",
     "discount": 25,
-    "description": "25% off your first purchase of 2025"
+    "description": "25% off your first purchase of 2025",
+    "cuisine": "Italian"
 
   },
   {
     "id": 10,
     "code": "FourZero",
     "discount": 40,
-    "description": "Get 40% off "
+    "description": "Get 40% off",
+    "cuisine": "General"
+
+  },
+  {
+    "id": 11,
+    "code": "ITALIAN10",
+    "discount": 10,
+    "description": "10% off on Italian dishes",
+    "cuisine": "Italian"
+  },
+  {
+    "id": 12,
+    "code": "PIZZA50",
+    "discount": 50,
+    "description": "50% off on all pizzas",
+    "cuisine": "Italian"
+
+  },
+  {
+    "id": 13,
+    "code": "PASTA20",
+    "discount": 20,
+    "description": "20% off on pasta orders",
+    "cuisine": "Italian"
+
+  },
+  {
+    "id": 14,
+    "code": "LASAGNA15",
+    "discount": 15,
+    "description": "15% off on lasagna",
+    "cuisine": "Italian"
+
+  },
+  {
+    "id": 15,
+    "code": "TIRAMISU5",
+    "discount": 5,
+    "description": "5% off on Tiramisu",
+    "cuisine": "Italian"
+
+  },
+  {
+    "id": 16,
+    "code": "MEXICAN10",
+    "discount": 10,
+    "description": "10% off on Mexican cuisine",
+    "cuisine": "Mexican"
+
+  },
+  {
+    "id": 17,
+    "code": "BURGER20",
+    "discount": 20,
+    "description": "20% off on burgers",
+    "cuisine": "American"
+
+  },
+  {
+    "id": 18,
+    "code": "FRIES15",
+    "discount": 15,
+    "description": "15% off on fries",
+    "cuisine": "American"
+
+  },
+  {
+    "id": 19,
+    "code": "SUSHI10",
+    "discount": 10,
+    "description": "10% off on sushi orders",
+    "cuisine": "Asian"
+
+  },
+  {
+    "id": 20,
+    "code": "CURRY25",
+    "discount": 25,
+    "description": "25% off on curry dishes",
+    "cuisine": "Asian"
+
+  },
+  {
+    "id": 21,
+    "code": "ASIAN15",
+    "discount": 15,
+    "description": "15% off on Asian cuisine",
+    "cuisine": "Asian"
+
+  },
+  {
+    "id": 22,
+    "code": "MEDITERRANEAN10",
+    "discount": 10,
+    "description": "10% off on Mediterranean dishes",
+    "cuisine": "Mediterranean"
+
+  },
+  {
+    "id": 23,
+    "code": "GREEK15",
+    "discount": 15,
+    "description": "15% off on Greek dishes",
+    "cuisine": "Mediterranean"
+
+  },
+  {
+    "id": 24,
+    "code": "TABBULEH20",
+    "discount": 20,
+    "description": "20% off on Tabbuleh",
+    "cuisine": "Mediterranean"
+
+  },
+  {
+    "id": 25,
+    "code": "HUMMUS10",
+    "discount": 10,
+    "description": "10% off on Hummus",
+    "cuisine": "Mediterranean"
 
   }
 ]

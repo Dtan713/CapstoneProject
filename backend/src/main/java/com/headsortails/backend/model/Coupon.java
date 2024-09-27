@@ -18,7 +18,7 @@ public class Coupon {
     private String description;
     private String code;
     private String discount;
-
+    private String cuisine;
 
 
 }

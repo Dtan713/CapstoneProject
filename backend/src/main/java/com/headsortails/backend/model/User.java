@@ -5,10 +5,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
 
 //import javax.persistence.*;
 
 @Getter
+@Setter
 @Entity
 public class User {
 
@@ -21,19 +23,7 @@ public class User {
     private String email;
     private String password;
 
-    public void setId(Long id) {
-        this.id = id;
+
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-}

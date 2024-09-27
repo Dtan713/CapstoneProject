@@ -3,11 +3,11 @@ package com.headsortails.backend.Loader;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.headsortails.backend.common.CouponRepository;
-import com.headsortails.backend.common.RegistrationRepository;
+//import com.headsortails.backend.common.RegistrationRepository;
 import com.headsortails.backend.common.RestaurantRepository;
 import com.headsortails.backend.common.UserRepository;
 import com.headsortails.backend.model.Coupon;
-import com.headsortails.backend.model.Registration;
+//import com.headsortails.backend.model.Registration;
 import com.headsortails.backend.model.Restaurant;
 import com.headsortails.backend.model.User;
 import org.slf4j.Logger;
@@ -26,14 +26,14 @@ public class JsonDataLoader implements CommandLineRunner {
     private final CouponRepository couponRepository;
     private final RestaurantRepository restaurantRepository;
     private final UserRepository userRepository;
-    private final RegistrationRepository registrationRepository;
+//    private final RegistrationRepository registrationRepository;
     private final ObjectMapper objectMapper;
 
-    public JsonDataLoader(CouponRepository couponRepository, RestaurantRepository restaurantRepository, UserRepository userRepository, RegistrationRepository registrationRepository, ObjectMapper objectMapper) {
+    public JsonDataLoader(CouponRepository couponRepository, RestaurantRepository restaurantRepository, UserRepository userRepository, ObjectMapper objectMapper) {
         this.couponRepository = couponRepository;
         this.restaurantRepository = restaurantRepository;
         this.userRepository = userRepository;
-        this.registrationRepository = registrationRepository;
+//        this.registrationRepository = registrationRepository;
         this.objectMapper = new ObjectMapper();
     }
 
@@ -43,25 +43,25 @@ public class JsonDataLoader implements CommandLineRunner {
         loadCouponData();
         loadRestaurantData();
         loadUserData();
-        loadRegistrationData();
+//        loadRegistrationData();
 
     }
 
-    private void loadRegistrationData() {
-        if (registrationRepository.count() == 0) {
-            try (InputStream inputStream = getClass().getResourceAsStream("/data/registration.json")) {
-                List<Registration> registrations = objectMapper.readValue(inputStream, new TypeReference<List<Registration>>() {
-                });
-                logger.info("Registration loaded from JSON file: {}", registrations);
-                registrationRepository.saveAll(registrations);
-            } catch (IOException e) {
-                logger.error("Unable to load registration data from JSON file", e);
-                throw new RuntimeException("Unable to load registration data from JSON file", e);
-            }
-        } else {
-            logger.info("Registration data already loaded");
-        }
-    }
+//    private void loadRegistrationData() {
+//        if (registrationRepository.count() == 0) {
+//            try (InputStream inputStream = getClass().getResourceAsStream("/data/registration.json")) {
+//                List<Registration> registrations = objectMapper.readValue(inputStream, new TypeReference<List<Registration>>() {
+//                });
+//                logger.info("Registration loaded from JSON file: {}", registrations);
+//                registrationRepository.saveAll(registrations);
+//            } catch (IOException e) {
+//                logger.error("Unable to load registration data from JSON file", e);
+//                throw new RuntimeException("Unable to load registration data from JSON file", e);
+//            }
+//        } else {
+//            logger.info("Registration data already loaded");
+//        }
+//    }
 
     private void loadRestaurantData() {
         if (restaurantRepository.count() == 0) {

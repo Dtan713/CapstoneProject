@@ -2,11 +2,14 @@ package com.headsortails.backend.controller;
 
 import com.headsortails.backend.common.CouponRepository;
 import com.headsortails.backend.model.Coupon;
+import com.headsortails.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 //@RequestMapping("/coupon") // Use @RequestMapping for the base path
@@ -23,11 +26,15 @@ public class CouponController {
         return coupons;
     }
 
-    
-
-
+    @GetMapping("/coupons/{name}")
+    public Coupon getCouponByCuisineName(@PathVariable String name) {
+        Optional<Coupon> coupon = couponRepository.findByCuisine(name);
+        return coupon.orElse(null);
     }
 
+
+
+}
 
 
 
