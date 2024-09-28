@@ -1,9 +1,24 @@
 package com.headsortails.backend.service;
 
-import com.headsortails.backend.model.Restaurant;
-
 import java.util.List;
 
-public interface RestaurantService {
-    List<Restaurant> getAllRestaurants();
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.headsortails.backend.common.PlanToGoRepository;
+import com.headsortails.backend.model.PlanToGo;
+
+@Service
+public class RestaurantService {
+
+
+
+
+
+
+
+
+
+    
+
 }

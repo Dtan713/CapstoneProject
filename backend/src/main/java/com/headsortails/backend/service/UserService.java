@@ -3,10 +3,10 @@ package com.headsortails.backend.service;
 import com.headsortails.backend.model.User;
 import com.headsortails.backend.common.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -29,7 +29,6 @@ public class UserService {
     public User updateUser(Long id, User userDetails) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {
-            user.setUsername(userDetails.getUsername());
             user.setEmail(userDetails.getEmail());
             user.setPassword(userDetails.getPassword());
             return userRepository.save(user);
@@ -40,4 +39,19 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+
+    public Optional<User> loginUser(String email, String password) {
+
+        Optional<User> user = userRepository.findByEmail(email);
+
+        if (user.isPresent()) {
+            User foundUser = user.get();
+            if (foundUser.getPassword().equals(password)) {
+                return Optional.of(foundUser);
+            }
+        }
+        return Optional.empty();
+    }
+
 }

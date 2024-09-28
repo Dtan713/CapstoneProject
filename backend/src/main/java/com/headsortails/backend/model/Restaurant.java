@@ -16,10 +16,19 @@ import java.util.List;
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String cuisine;
+    private Long id;
+    private String name;
+    private String specialty;
+    private String address;
+    private String image;
+    private String description;
 
 
-    private List<String> food;
-
+    public Restaurant(String name, String specialty, String address, String image, String description) {
+        this.name = name;
+        this.specialty = specialty;
+        this.address = address;
+        this.image = image;
+        this.description = description;
+    }
 }

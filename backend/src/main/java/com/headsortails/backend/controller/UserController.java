@@ -1,5 +1,7 @@
 package com.headsortails.backend.controller;
 
+import com.headsortails.DTO.LoginRequest;
+import com.headsortails.backend.common.UserRepository;
 import com.headsortails.backend.model.User;
 import com.headsortails.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,50 +10,59 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
+
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    private UserRepository userRepository;
+
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody User newUser) {
+        Optional<User> existingUser = userRepository.findByEmail(newUser.getEmail());
+
+        if (existingUser.isPresent()) {
+            return ResponseEntity.ok().body("Email is already in use.");
+        }
+
+        Optional<User> registeredUser = Optional.ofNullable(userService.saveUser(newUser));
+
+        if (registeredUser.isPresent()) {
+            return ResponseEntity.ok().body(registeredUser);
+        } else {
+            return ResponseEntity.badRequest().body("An error has occurred during registration.");
+        }
     }
 
-    // Create a new user
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userService.saveUser(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
+        Optional<User> user = userService.loginUser(loginRequest.getEmail(), loginRequest.getPassword());
+
+        if (user.isPresent()) {
+            return ResponseEntity.ok().body("User is now logged");
+        } else {
+            return ResponseEntity.ok().body("Email or Password is Incorrect");
+        }
     }
 
-    // Get all users
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
-        return new ResponseEntity<>(users, HttpStatus.OK);
-    }
 
-    // Get user by ID
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        return user != null ? new ResponseEntity<>(user, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public User getUserById(@PathVariable Long id) {
+        return userRepository.findById(id).orElse(null);
     }
+    
 
-    // Update user
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        User updatedUser = userService.updateUser(id, userDetails);
-        return updatedUser != null ? new ResponseEntity<>(updatedUser, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+  
 
-    // Delete user
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+
 }
