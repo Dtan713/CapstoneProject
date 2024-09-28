@@ -12,15 +12,15 @@
 /* App.css or your relevant CSS file */
 
 .background {
-  background-position: center;  /* Center the image */
-  background-repeat: no-repeat;  /* Prevent image from repeating */
-  background-size: contain;  /* Scale the image to fit inside the container */
-  height: 10vh;  /* Full height of the viewport */
-  width: 10%;  /* Full width of the container */
-  display: flex;  /* Center content vertically */
-  align-items: center;  /* Center content vertically */
-  justify-content: center;  /* Center content horizontally */
-  overflow: hidden;  /* Hide any overflow */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-size: contain; /* Scale the image to fit inside the container */
+  height: 10vh; /* Full height of the viewport */
+  width: 10%; /* Full width of the container */
+  display: flex; /* Center content vertically */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  overflow: hidden; /* Hide any overflow */
 }
 
 /* App.css */

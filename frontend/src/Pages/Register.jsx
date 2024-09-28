@@ -1,49 +1,53 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Contact.css"; // Import the same CSS file for consistent styling
+import "./Contact.css";
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
 
-  // Form state to hold the values
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
   });
 
-  // Function to handle form submission
-  const loginRequest = async (e) => {
-    e.preventDefault();
-    console.log("Form submitted with values:", formValues);
-    try {
-      console.log(formValues);
-      const response = await axios.post("http://localhost:8080/users/login", {
-        email: formValues.email,
-        password: formValues.password,
-      });
-
-      console.log(response);
-
-      if (response.data == "User is now logged") {
-        localStorage.setItem("auth", "true");
-        navigate("/");
-        window.location.reload();
-      } else {
-        alert(response.data);
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  // Function to handle changes to input fields
   const handleChange = (e) => {
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value,
     });
     console.log(formValues);
+  };
+  const register = async (e) => {
+    e.preventDefault();
+
+    if (e.target["password"].value != e.target["confirmPassword"].value) {
+      console.log(e.target["password"]);
+      console.log(e.target["confirmPassword"]);
+      alert("Passwords do not match, please try again");
+    } else {
+      try {
+        console.log(formValues);
+        const response = await axios.post(
+          "http://localhost:8080/users/register",
+          {
+            email: formValues.email,
+            password: formValues.password,
+          }
+        );
+
+        if (response.data.id) {
+          console.log("User was created");
+          localStorage.setItem("auth", "true");
+          navigate("/");
+          window.location.reload();
+        } else {
+          alert(response.data);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
   };
 
   return (
@@ -65,7 +69,7 @@ function Login() {
     >
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg9-2ci1Ts2HHas6wrAyO22of-Xfcvw7sYg&s"
-        alt="Login Account"
+        alt="Register Account"
         style={{
           width: "100%",
           maxWidth: "600px",
@@ -76,17 +80,17 @@ function Login() {
       />
 
       <h2 style={{ color: "Yellow", fontWeight: "bold", fontSize: "3rem" }}>
-        Login
+        Create Account
       </h2>
 
       <form
         className="contact-form"
-        onSubmit={loginRequest}
+        onSubmit={register}
         style={{ width: "100%" }}
       >
         <div className="form-group">
           <label
-            htmlFor="email"
+            htmlFor="newEmail"
             style={{
               color: "Yellow",
               fontWeight: "bold",
@@ -97,8 +101,8 @@ function Login() {
           </label>
           <input
             type="email"
-            id="email"
-            name="email" // Name should match the state key
+            name="email"
+            id="newEmail"
             onChange={handleChange}
             required
             style={{
@@ -114,7 +118,7 @@ function Login() {
         </div>
         <div className="form-group">
           <label
-            htmlFor="password"
+            htmlFor="newPassword"
             style={{
               color: "Yellow",
               fontWeight: "bold",
@@ -125,9 +129,36 @@ function Login() {
           </label>
           <input
             type="password"
-            id="password"
-            name="password" // Name should match the state key
+            id="newPassword"
+            name="password"
             onChange={handleChange}
+            required
+            style={{
+              padding: "15px",
+              marginTop: "10px",
+              borderRadius: "10px",
+              border: "1px solid #ccc",
+              width: "100%",
+              fontSize: "1rem",
+              color: "black",
+            }}
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="confirmPassword"
+            style={{
+              color: "Yellow",
+              fontWeight: "bold",
+              fontSize: "1.2rem",
+            }}
+          >
+            Confirm Password:
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
             required
             style={{
               padding: "15px",
@@ -153,15 +184,15 @@ function Login() {
             fontSize: "1.2rem",
           }}
         >
-          Login
+          Create Account
         </button>
       </form>
 
       <div className="mt-4 text-center">
         <p className="text-yellow-300" style={{ fontSize: "1.1rem" }}>
-          Don’t have an account?
+          Already have an account?
           <button
-            onClick={() => navigate("/register")}
+            onClick={() => navigate("/login")}
             className="text-blue-400 font-semibold hover:underline"
             style={{
               background: "none",
@@ -169,7 +200,7 @@ function Login() {
               cursor: "pointer",
             }}
           >
-            Create Account
+            Log In
           </button>
         </p>
       </div>
@@ -177,4 +208,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

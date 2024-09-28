@@ -1,0 +1,47 @@
+.restaurant-cards-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Allows cards to wrap based on screen size */
+  gap: 20px;
+  padding: 20px;
+}
+
+.restaurant-card {
+  background-color: #5d8cd7;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content horizontally */
+  justify-content: center; /* Centers the content vertically */
+}
+
+.restaurant-card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.restaurant-card h3 {
+  font-size: 1.5rem;
+  color: #afd30d;
+ 
+}
+
+.restaurant-card p {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.restaurant-card-image {
+  width: 200%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  display: block;
+}
