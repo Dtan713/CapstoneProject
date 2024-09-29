@@ -17,15 +17,12 @@ function Login() {
     e.preventDefault();
     console.log("Form submitted with values:", formValues);
     try {
-      console.log(formValues);
       const response = await axios.post("http://localhost:8080/users/login", {
         email: formValues.email,
         password: formValues.password,
       });
 
-      console.log(response);
-
-      if (response.data == "User is now logged") {
+      if (response.data === "User is now logged") {
         localStorage.setItem("auth", "true");
         navigate("/");
         window.location.reload();
@@ -43,7 +40,6 @@ function Login() {
       ...formValues,
       [e.target.name]: e.target.value,
     });
-    console.log(formValues);
   };
 
   return (
@@ -82,9 +78,9 @@ function Login() {
       <form
         className="contact-form"
         onSubmit={loginRequest}
-        style={{ width: "100%" }}
+        style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}
       >
-        <div className="form-group">
+        <div className="form-group" style={{ width: "100%" }}>
           <label
             htmlFor="email"
             style={{
@@ -98,7 +94,7 @@ function Login() {
           <input
             type="email"
             id="email"
-            name="email" // Name should match the state key
+            name="email"
             onChange={handleChange}
             required
             style={{
@@ -112,7 +108,7 @@ function Login() {
             }}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group" style={{ width: "100%" }}>
           <label
             htmlFor="password"
             style={{
@@ -126,7 +122,7 @@ function Login() {
           <input
             type="password"
             id="password"
-            name="password" // Name should match the state key
+            name="password"
             onChange={handleChange}
             required
             style={{
@@ -140,21 +136,24 @@ function Login() {
             }}
           />
         </div>
-        <button
-          type="submit"
-          style={{
-            marginTop: "20px",
-            backgroundColor: "orange",
-            color: "white",
-            padding: "15px 30px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontSize: "1.2rem",
-          }}
-        >
-          Login
-        </button>
+
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "20px", }}>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "orange",
+              color: "white",
+              padding: "15px 30px",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              fontSize: "1.2rem",
+              hover: "blue",
+            }}
+          >
+            Login
+          </button>
+        </div>
       </form>
 
       <div className="mt-4 text-center">

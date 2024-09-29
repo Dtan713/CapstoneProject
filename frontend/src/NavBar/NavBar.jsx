@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; 
 import "../App.css"; // Ensure this imports your CSS file with the font
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     // Check if the user is logged in by looking for an item in localStorage
@@ -21,6 +22,7 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("auth");
     setIsLoggedIn(false);
+    navigate('/login'); // Navigate to login page after logout
   };
 
   return (
@@ -43,16 +45,16 @@ function NavBar() {
           <div className="hidden sm:block">
             <div className="flex space-x-6 items-center">
               <Link
-                to="/home"
-                className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
-              >
-                Home
-              </Link>
-              <Link
                 to="/about"
                 className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
               >
                 About
+              </Link>
+              <Link
+                to="/home"
+                className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+              >
+                Home
               </Link>
               <Link
                 to="/contact"
@@ -74,9 +76,6 @@ function NavBar() {
                   >
                     Restaurants
                   </Link>
-                  <button className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold">
-                    I Can't Choose
-                  </button>
                   <button
                     onClick={handleLogout}
                     className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
@@ -85,14 +84,12 @@ function NavBar() {
                   </button>
                 </>
               ) : (
-                <>
-                  <Link
-                    to="/login"
-                    className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
-                  >
-                    Login
-                  </Link>
-                </>
+                <Link
+                  to="/login"
+                  className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+                >
+                  Login
+                </Link>
               )}
             </div>
           </div>
@@ -180,3 +177,5 @@ function NavBar() {
 }
 
 export default NavBar;
+
+

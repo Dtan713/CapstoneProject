@@ -34,6 +34,18 @@ const backgrounds = {
     image:
       'url("https://img.freepik.com/premium-photo/breakfast-buffet-bliss_1254967-49247.jpg")',
   },
+  "/plans": {
+    image:
+      'url("https://cdn-proxy.slickplan.com/imgs/bg/note.webp")',
+  },
+  "/restaurants": {
+    image:
+      'url("https://static.vecteezy.com/system/resources/previews/004/870/602/non_2x/fast-food-modern-banners-set-labels-background-fast-food-template-frame-and-page-design-for-menu-design-modern-style-with-art-fast-food-icons-on-blue-color-background-illustration-free-vector.jpg")',
+  },
+  "/editplan": {
+    image:
+      'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiuRR7HBemsQZdrzn4AMbh6FtBG6lj3Osc8g&s")',
+  },
 };
 
 function App() {
@@ -48,8 +60,9 @@ function App() {
       className="flex flex-col min-h-screen bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: image,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundSize: "cover", // Make the background cover the whole div
+        backgroundPosition: "center", // Center the image
+        minHeight: "200vh", // Ensure the div takes full viewport height
       }}
     >
       <NavBar />
@@ -58,18 +71,18 @@ function App() {
       </header>
       <main className="flex flex-col items-center justify-center flex-grow p-6">
         <Routes>
-          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/plans" element={<Plans />} />
           <Route path="/plans/edit/:id" element={<EditPlan />} />
           <Route path="/restaurants" element={<Restaurant />} />
-          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/" element={<Navigate to="/about" />} />
         </Routes>
       </main>
-      <footer className="text-black text-center p-4">
+      <footer className="text-yellow text-center p-4">
         <p className="font-bold text-lg">&copy; 2024 Heads or Tails</p>
       </footer>
     </div>

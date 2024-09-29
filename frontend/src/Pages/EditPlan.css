@@ -1,36 +1,49 @@
 .edit-plan-container {
-  max-width: 600px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 100px;
+  min-height: 65vh;
   margin: auto;
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: lightblue;
+  background-size: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(154, 228, 6, 0.1);
+  background-image: url('https://media.istockphoto.com/id/1571889418/vector/waves-formed-by-glowing-dots-in-3d.jpg?b=1&s=612x612&w=0&k=20&c=cNht6KAKaf5IeK5nI994TPidXIlT-n4IwDEPIjiNwF4=');
+  background-size: cover;
+  background-position: center;
+  color:rgb(139, 185, 200)
+  
+ 
 }
 
 .edit-plan-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 form div {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 form label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  font-text: bold;
+  
+
 }
 
 form input[type="text"],
 form input[type="date"] {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
 }
 
 form input[type="checkbox"] {
-  margin-right: 10px;
+  margin-right: 3000px;
 }
 
 .edit-button {
@@ -46,4 +59,8 @@ form input[type="checkbox"] {
 
 button:hover {
   background-color: #45a049;
+}
+
+.bold-text {
+  font-weight: bold;
 }

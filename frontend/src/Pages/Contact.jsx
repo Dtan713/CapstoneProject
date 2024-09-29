@@ -3,14 +3,47 @@ import { useNavigate } from 'react-router-dom';
 import './Contact.css'; 
 
 function Contact() {
+  const [email, setEmail] = useState(''); 
+  const [phone, setPhone] = useState(''); 
+  const [message, setMessage] = useState(''); 
   const [isMessageSent, setIsMessageSent] = useState(false); 
   const navigate = useNavigate(); 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); 
     setIsMessageSent(true); 
 
-    
+    // Log data to console
+    console.log('Email:', email);
+    console.log('Phone:', phone);
+    console.log('Message:', message);
+
+    // Send data to backend
+    try {
+      const response = await fetch('http://localhost:8080/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, phone, message }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Optionally handle the response if needed
+      const data = await response.json();
+      console.log('Response from server:', data);
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+
+    // Reset the form fields
+    setEmail('');
+    setPhone('');
+    setMessage('');
+
     setTimeout(() => {
       navigate('/home'); 
     }, 2000); // Adjust the delay as needed
@@ -24,18 +57,15 @@ function Contact() {
   };
 
   return (
-    <div
-      className="contact-container"
-      style={{
-        backgroundColor: '#2c3e50',
-        padding: '40px',
-        borderRadius: '10px',
-        color: 'white',
-        maxWidth: '1200px',
-        margin: 'auto',
-        height: 'auto',
-      }}
-    >
+    <div className="contact-container" style={{
+      backgroundColor: '#2c3e50',
+      padding: '40px',
+      borderRadius: '10px',
+      color: 'white',
+      maxWidth: '1200px',
+      margin: 'auto',
+      height: 'auto',
+    }}>
       <h2 style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '2.5rem' }}>Contact Us</h2>
       <p className="about-paragraph">
         If you have any questions, feel free to reach out!
@@ -53,14 +83,14 @@ function Contact() {
       )}
       <form className="contact-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email" style={{ color: 'Yellow', fontWeight: 'bold' }}>
-            Email:
-          </label>
+          <label htmlFor="email" style={{ color: 'Yellow', fontWeight: 'bold' }}>Email:</label>
           <input
             type="email"
             id="email"
             placeholder="Enter your email"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             style={{
               padding: '15px',
               marginTop: '10px',
@@ -73,14 +103,14 @@ function Contact() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="phone" style={{ color: 'Yellow', fontWeight: 'bold' }}>
-            Phone Number:
-          </label>
+          <label htmlFor="phone" style={{ color: 'Yellow', fontWeight: 'bold' }}>Phone Number:</label>
           <input
             type="tel"
             id="phone"
             placeholder="Enter your phone number"
             required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             style={{
               padding: '15px',
               marginTop: '10px',
@@ -92,15 +122,15 @@ function Contact() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="message" style={{ color: 'Yellow', fontWeight: 'bold' }}>
-            Message:
-          </label>
+          <label htmlFor="message" style={{ color: 'Yellow', fontWeight: 'bold' }}>Message:</label>
           <textarea
             id="message"
             placeholder="Enter your message here"
             required
             rows="6"
-            onKeyDown={handleKeyDown} // Add onKeyDown handler
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
             style={{
               padding: '15px',
               marginTop: '10px',

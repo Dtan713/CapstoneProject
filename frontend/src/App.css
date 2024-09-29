@@ -1,7 +1,7 @@
 /* In your CSS file */
 .background-container {
   width: 100%; /* Full width of the parent container */
-  height: 200px; /* Adjust height as necessary */
+  height: 250px; /* Adjust height as necessary */
   background-repeat: no-repeat; /* Prevents the background from repeating */
   background-position: center; /* Centers the background image */
   background-size: cover; /* Cover ensures the image covers the entire container */

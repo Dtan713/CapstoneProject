@@ -1,11 +1,32 @@
+body {
+  background-image: url(''); /* Replace with your background image */
+  background-size: cover; /* Cover the entire page */
+  background-position: cover; /* Center the background image */
+  background-repeat: no-repeat;
+   /* Remove default margin */
+  font-family: Arial, sans-serif; /* Set a clean font */
+  height: 200vh;
+  
+}
+
+
+
+
+
+
+
+
 .restaurant-cards-container {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap-reverse;
   grid-template-columns: repeat(
     auto-fill,
     minmax(250px, 1fr)
   ); /* Allows cards to wrap based on screen size */
   gap: 20px;
   padding: 20px;
+  justify-content: space-around;
+  margin: 20px;
 }
 
 .restaurant-card {
@@ -19,6 +40,7 @@
   flex-direction: column;
   align-items: center; /* Centers the content horizontally */
   justify-content: center; /* Centers the content vertically */
+  border: 2px solid yellow; /* Yellow border */
 }
 
 .restaurant-card:hover {
@@ -44,4 +66,17 @@
   margin-bottom: 20px;
   object-fit: cover; /* Ensures the image maintains aspect ratio */
   display: block;
+}
+
+.restaurant-card h3 {
+  color: yellow; /* Change font color to yellow */
+  font-weight: bold; /* Make the font bold */
+}
+
+
+
+
+.restaurant-card-image {
+  width: 100%; /* Example style, adjust as needed */
+  height: auto; /* Maintain aspect ratio */
 }

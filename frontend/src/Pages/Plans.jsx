@@ -10,21 +10,6 @@ function Plans() {
   const [error, setError] = useState(null);
 
   let navigate = useNavigate();
-  // Fetch data from the API
-  //   useEffect(() => {
-  //     const fetchPlans = async () => {
-  //       try {
-  //         const response = await axios.get("http://localhost:8080/plans/user/1");
-  //         setPlans(response.data); // Assuming API response is an array
-  //         setLoading(false);
-  //         console.log(plans);
-  //       } catch (err) {
-  //         setError(err.message);
-  //         setLoading(false);
-  //       }
-  //     };
-  //     fetchPlans();
-  //   }, []);
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -33,11 +18,8 @@ function Plans() {
           "http://localhost:8080/plans/users/1/restaurants"
         );
         setRestaurants(response.data); // Assuming API response is an array of restaurants
-        setLoading(false);
-        console.log(restaurants);
       } catch (err) {
         setError(err.message);
-        setLoading(false);
       }
     };
 
@@ -45,17 +27,17 @@ function Plans() {
       try {
         const response = await axios.get("http://localhost:8080/plans/user/1");
         setPlans(response.data); // Assuming API response is an array
-        setLoading(false);
-        console.log(plans);
       } catch (err) {
         setError(err.message);
-        setLoading(false);
       }
     };
 
-    fetchRestaurants().then(() => {
-      fetchPlans();
-    });
+    Promise.all([fetchRestaurants(), fetchPlans()])
+      .then(() => setLoading(false))
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
   const handleDelete = async (planId) => {
@@ -79,9 +61,9 @@ function Plans() {
     <div className="plan-cards-container">
       {plans.map((plan, i) => (
         <div key={plan.id} className="plan-card">
-          <h3>{restaurants[i].name}</h3>
-          <h4>{restaurants[i].address}</h4>
-          <img src={restaurants[i].image} className="plan-card-image" />
+          <h3>{restaurants[i]?.name}</h3>
+          <h4>{restaurants[i]?.address}</h4>
+          <img src={restaurants[i]?.image} className="plan-card-image" alt={restaurants[i]?.name} />
           <p>
             <strong>Planned Date:</strong> {plan.plannedDate}
           </p>

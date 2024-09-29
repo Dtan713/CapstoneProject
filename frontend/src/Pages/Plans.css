@@ -1,18 +1,36 @@
+body {
+  background-image: url(''); /* Replace with your background image */
+  background-size: cover; /* Cover the entire page */
+  background-position: cover; /* Center the background image */
+  background-repeat: no-repeat;
+   /* Remove default margin */
+  font-family: Arial, sans-serif; /* Set a clean font */
+  height: 250vh;
+  
+}
+
 .plan-cards-container {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   padding: 20px;
+  margin: 20px;
 }
 
 .plan-card {
-  background-color: #847bcf;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: lightblue;
+  border: 4px solid yellow; /* Yellow border */
+  border-radius: 8px;
+  background-color: whitesmoke;
+  
+  padding: 16px;
+  margin: 10px;
+  box-shadow: 0 2px 5px;
   text-align: center;
   transition: transform 0.2s ease;
-  width: 100%;
+  width: 200%;
+  transition: transform 0.2s ease;
 }
 
 .plan-card:hover {
@@ -21,17 +39,19 @@
 
 .plan-card h3 {
   font-size: 1.5rem;
-  color: #333;
+ 
 }
 
 .plan-card p {
   font-size: 1rem;
   margin: 10px 0;
+  text-align: center;
 }
 
 .plan-card-image {
   width: 100%;
-  max-width: 200px;
+  max-width: 210px;
+  margin: 0 auto;
   height: auto;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -39,26 +59,32 @@
 
 .card-actions {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 10px;
 }
 
 .edit-button,
 .delete-button {
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 5px;
+  display: inline-block;
+  flex: 1;
+
 }
 
 .edit-button {
-  background-color: #4caf50;
-  color: white;
+  background-color: #5b3ac7;
+  color: rgb(104, 59, 228);
 }
 
 .edit-button:hover {
-  background-color: #45a049;
+  background-color: #102b69;
 }
 
 .delete-button {
@@ -67,5 +93,5 @@
 }
 
 .delete-button:hover {
-  background-color: #d32f2f;
+  background-color: #552fd3;
 }
