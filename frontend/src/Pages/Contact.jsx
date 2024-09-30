@@ -45,8 +45,8 @@ function Contact() {
     setMessage('');
 
     setTimeout(() => {
-      navigate('/home'); 
-    }, 2000); // Adjust the delay as needed
+      navigate('/about'); 
+    }, 1000); // Adjust the delay as needed
   };
 
   const handleKeyDown = (event) => {

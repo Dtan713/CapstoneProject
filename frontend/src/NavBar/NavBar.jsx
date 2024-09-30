@@ -4,10 +4,11 @@ import "../App.css"; // Ensure this imports your CSS file with the font
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
+    // Check if the user is logged in by looking for an item in localStorage
     const userToken = localStorage.getItem("auth");
     if (userToken) {
       setIsLoggedIn(true);
@@ -21,7 +22,7 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("auth");
     setIsLoggedIn(false);
-    navigate('/login');
+    navigate('/login'); // Navigate to login page after logout
   };
 
   return (
@@ -32,7 +33,7 @@ function NavBar() {
             <img
               src="https://thumbs.dreamstime.com/b/heads-tails-text-orange-grungy-round-rubber-stamp-vintage-227040330.jpg"
               alt="Logo"
-              className="h-12 w-12 mr-3 border-4 border-yellow-500"
+              className="h-12 w-12 mr-3 border-4 border-yellow-500" // Changed to border-4 for a bolder border
             />
             <div
               className="text-4xl font-Courier-Bold tracking-wide ml-[-10px]"
@@ -49,19 +50,31 @@ function NavBar() {
               >
                 About
               </Link>
+              <Link
+                to="/wheel"
+                className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+              >
+                Wheel
+              </Link>
+              <Link
+                to="/contact"
+                className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+              >
+                Contact
+              </Link>
               {isLoggedIn ? (
                 <>
-                  <Link
-                    to="/restaurants"
-                    className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
-                  >
-                    Restaurants
-                  </Link>
                   <Link
                     to="/plans"
                     className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
                   >
                     Plans
+                  </Link>
+                  <Link
+                    to="/restaurants"
+                    className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+                  >
+                    Restaurants
                   </Link>
                   <button
                     onClick={handleLogout}
@@ -78,19 +91,6 @@ function NavBar() {
                   Login
                 </Link>
               )}
-              <Link
-                to="/wheel"
-                className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
-              >
-                Wheel
-              </Link>
-              <Link
-                to="/contact"
-                className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
-              >
-                Contact
-              </Link>
-              
             </div>
           </div>
           <div className="absolute inset-y-0 right-10 flex items-center sm:hidden">
@@ -138,32 +138,30 @@ function NavBar() {
       <div className={`${isOpen ? "block" : "hidden"} sm:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
+            to="/wheel"
+            className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
+          >
+            W
+          </Link>
+          <Link
             to="/about"
             className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
           >
             About
           </Link>
+          <Link
+            to="/contact"
+            className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
+          >
+            Contact
+          </Link>
           {isLoggedIn ? (
-            <>
-              <Link
-                to="/restaurants"
-                className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
-              >
-                Restaurants
-              </Link>
-              <Link
-                to="/plans"
-                className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
-              >
-                Plans
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="bg-blue-600 text-white block px-4 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-blue-800"
-              >
-                Log Out
-              </button>
-            </>
+            <button
+              onClick={handleLogout}
+              className="bg-blue-600 text-white block px-4 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-blue-800"
+            >
+              Log Out
+            </button>
           ) : (
             <Link
               to="/login"
@@ -172,18 +170,6 @@ function NavBar() {
               Log In
             </Link>
           )}
-          <Link
-            to="/wheel"
-            className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
-          >
-            Wheel
-          </Link>
-          <Link
-            to="/contact"
-            className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
-          >
-            Contact
-          </Link>
         </div>
       </div>
     </nav>

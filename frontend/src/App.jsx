@@ -20,7 +20,7 @@ import Restaurant from "./Pages/Restaurants";
 const backgrounds = {
   "/Wheel": {
     image:
-      'url("https://img.freepik.com/premium-vector/vector-abstract-technology-background-dark-blue-background-with-blue-gear-wheels-various-cogwheels_250169-181.jpg")',
+      'url(")',
   },
   "/about": {
     image:

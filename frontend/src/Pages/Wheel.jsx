@@ -64,6 +64,7 @@ function Wheel() {
   };
 
   return (
+    
     <div className="flex items-center justify-center min-h-screen bg-gray-800 text-white p-6">
       <div className="border-4 border-yellow-500 bg-gray-900 rounded-lg shadow-lg p-10 w-full max-w-5xl text-center"> {/* Changed max-w-3xl to max-w-5xl */}
         <h2 className="text-yellow-400 font-bold text-5xl mb-4">Heads Or Tails</h2>
@@ -88,7 +89,7 @@ function Wheel() {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWKMm2yKQHkP-7c2phsAquzM9EQVack3xaWw&s"
             alt="Spinning Coin"
             className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${isSpinning ? 'spin' : ''}`}
-            style={{ width: '100px', height: '100px' }}
+            style={{ width: '200px', height: '200px' }}
           />
         </div>
 
@@ -146,4 +147,3 @@ function Wheel() {
 }
 
 export default Wheel;
-
