@@ -53,13 +53,17 @@ public class DataPopulator implements CommandLineRunner {
              // Create PlanToGo entries without 'id'
              PlanToGo plan1 = new PlanToGo(1L, 1L, LocalDate.now().plusDays(10).toString(), "Birthday dinner", false);
              PlanToGo plan2 = new PlanToGo(1L, 2L, LocalDate.now().plusDays(15).toString(), "Casual lunch", false);
-             PlanToGo plan3 = new PlanToGo(1L, 3L, LocalDate.now().plusWeeks(2).toString(), "Anniversary dinner", true);
+             PlanToGo plan3 = new PlanToGo(1L, 3L, LocalDate.now().plusWeeks(2).toString(), "Anniversary", true);
              PlanToGo plan4 = new PlanToGo(1L, 4L, LocalDate.now().plusWeeks(2).toString(), "dinner", true);
+             PlanToGo plan5 = new PlanToGo(1L, 5L, LocalDate.now().plusWeeks(3).toString(), "Lunch", false);
+             PlanToGo plan6 = new PlanToGo(1L, 6L, LocalDate.now().plusWeeks(4).toString(), "Dinner", false);
 
-            planToGoRepository.save(plan1);
+             planToGoRepository.save(plan1);
             planToGoRepository.save(plan2);
             planToGoRepository.save(plan3);
             planToGoRepository.save(plan4);
+            planToGoRepository.save(plan5);
+            planToGoRepository.save(plan6);
 
             System.out.println("Sample data populated in the database.");
         } else {
