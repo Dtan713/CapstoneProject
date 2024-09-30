@@ -13,8 +13,17 @@
   background-size: cover;
   background-position: center;
   color:rgb(139, 185, 200)
-  
- 
+}
+
+.edit-plan-wrapper {
+  background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAyL3dvcmxkZmFjZXNsYWJfZ3JhcGhpY19saWdodF9ibHVlX2RpZ2l0YWxfdGVjaG5vbG9neV9iYWNrZ3JvdW5kX19mNjljZDc5YS1lOWQ4LTRkMWUtYjhhOC0xNDE2Mjc3MmRmY2RfMS5qcGc.jpg'); /* Your background image URL */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  min-height: 100vh; /* Ensure it takes the full height of the viewport */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  padding: 20px; /* Add some padding around the content */
 }
 
 .edit-plan-container h2 {
@@ -29,7 +38,7 @@ form div {
 form label {
   display: block;
   margin-bottom: 10px;
-  font-text: bold;
+  
   
 
 }

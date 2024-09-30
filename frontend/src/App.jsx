@@ -42,10 +42,7 @@ const backgrounds = {
     image:
       'url("https://static.vecteezy.com/system/resources/previews/004/870/602/non_2x/fast-food-modern-banners-set-labels-background-fast-food-template-frame-and-page-design-for-menu-design-modern-style-with-art-fast-food-icons-on-blue-color-background-illustration-free-vector.jpg")',
   },
-  "/editplan": {
-    image:
-      'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiuRR7HBemsQZdrzn4AMbh6FtBG6lj3Osc8g&s")',
-  },
+  
 };
 
 function App() {
