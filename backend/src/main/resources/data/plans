@@ -1,0 +1,26 @@
+[
+  {
+    "id": null,
+    "userId": 1,
+    "restaurantId": 1,
+    "plannedDate": "2024-10-08",
+    "notes": "Birthday dinner",
+    "visited": false
+  },
+  {
+    "id": null,
+    "userId": 1,
+    "restaurantId": 2,
+    "plannedDate": "2024-10-13",
+    "notes": "Casual lunch",
+    "visited": false
+  },
+  {
+    "id": null,
+    "userId": 1,
+    "restaurantId": 3,
+    "plannedDate": "2024-10-15",
+    "notes": "Anniversary dinner",
+    "visited": true
+  }
+]
