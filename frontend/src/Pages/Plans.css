@@ -3,34 +3,31 @@ body {
   background-size: cover; /* Cover the entire page */
   background-position: cover; /* Center the background image */
   background-repeat: no-repeat;
-   /* Remove default margin */
   font-family: Arial, sans-serif; /* Set a clean font */
   height: 250vh;
-  
 }
 
 .plan-cards-container {
   display: flex;
   flex-wrap: wrap;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 20px;
-  padding: 20px;
+  padding: 100px;
   margin: 20px;
+  background-color: rgb(86, 88, 92);
+
 }
 
 .plan-card {
-  background-color: lightblue;
+  background-color: rgb(185, 189, 189);
   border: 4px solid yellow; /* Yellow border */
   border-radius: 8px;
-  background-color: whitesmoke;
-  
   padding: 16px;
   margin: 10px;
   box-shadow: 0 2px 5px;
   text-align: center;
   transition: transform 0.2s ease;
   width: 200%;
-  transition: transform 0.2s ease;
 }
 
 .plan-card:hover {
@@ -38,22 +35,23 @@ body {
 }
 
 .plan-card h3 {
-  font-size: 1.5rem;
- 
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 .plan-card p {
-  font-size: 1rem;
+  font-size: 2rem;
   margin: 10px 0;
   text-align: center;
+  font-weight: bold;
 }
 
 .plan-card-image {
-  width: 100%;
-  max-width: 210px;
-  margin: 0 auto;
-  height: auto;
+  width: 50%; /* Set the desired width */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 8px;
+  margin: 0 auto; /* Center the image */
+  display: block; /* Required to center block-level elements */
   margin-bottom: 10px;
 }
 
@@ -75,20 +73,19 @@ body {
   margin-right: 5px;
   display: inline-block;
   flex: 1;
-
 }
 
 .edit-button {
-  background-color: #5b3ac7;
-  color: rgb(104, 59, 228);
+  background-color: #440c08;
+  color: white;
 }
 
 .edit-button:hover {
-  background-color: #102b69;
+  background-color: #552fd3;
 }
 
 .delete-button {
-  background-color: #f44336;
+  background-color: #440c08;
   color: white;
 }
 
