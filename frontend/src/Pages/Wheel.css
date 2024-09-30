@@ -1,0 +1,22 @@
+.spin {
+  animation: spin 4s ease-out forwards;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+
+  wheel {
+    border: 4px solid #FFD700; /* or your border color */
+    border-radius: 50%;
+    height: 20rem; /* Adjust based on your needs */
+    width: 20rem; /* Adjust based on your needs */
+    position: relative;
+    overflow: hidden; /* Ensure the image does not overflow */
+}
+
+}

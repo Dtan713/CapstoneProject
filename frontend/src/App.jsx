@@ -7,7 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import Login from "./Pages/Login";
-import Home from "./Pages/Home";
+import Wheel from "./Pages/Wheel";
 import NavBar from "./Navbar/Navbar";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -18,9 +18,9 @@ import EditPlan from "./Pages/EditPlan";
 import Restaurant from "./Pages/Restaurants";
 
 const backgrounds = {
-  "/home": {
+  "/Wheel": {
     image:
-      'url("https://img.freepik.com/premium-photo/blue-background-with-spread-mediterranean-appetizers-including-olives-cheese-tomatoes_14117-958320.jpg")',
+      'url("https://img.freepik.com/premium-vector/vector-abstract-technology-background-dark-blue-background-with-blue-gear-wheels-various-cogwheels_250169-181.jpg")',
   },
   "/about": {
     image:
@@ -69,13 +69,18 @@ function App() {
       <main className="flex flex-col items-center justify-center flex-grow p-6">
         <Routes>
           <Route path="/about" element={<About />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/plans" element={<Plans />} />
           <Route path="/plans/edit/:id" element={<EditPlan />} />
-          <Route path="/restaurants" element={<Restaurant />} />
+          <Route path="/wheel" element={<Wheel/>} />
+          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/login" element={<Login />} /> */}
+          {/* <Route path="/register" element={<Register />} /> */}
+          {/* <Route path="/plans" element={<Plans />} />
+          <Route path="/plans/edit/:id" element={<EditPlan />} /> */}
+          {/* <Route path="/restaurants" element={<Restaurant />} /> */}
           <Route path="/" element={<Navigate to="/about" />} />
         </Routes>
       </main>

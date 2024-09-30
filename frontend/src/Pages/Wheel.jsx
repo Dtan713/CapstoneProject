@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './home.css';
+import './wheel.css';
 
-function Home() {
+function Wheel() {
   const initialFoodOptions = [
-    'Gourmet Haven', 'Italian',
+    'Tomato', 'Italian',
     'Sushi World', 'Japanese',
     'Spicy Delight', 'Indian',
     'BBQ Palace', 'Barbecue',
@@ -88,7 +88,7 @@ function Home() {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWKMm2yKQHkP-7c2phsAquzM9EQVack3xaWw&s"
             alt="Spinning Coin"
             className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${isSpinning ? 'spin' : ''}`}
-            style={{ width: '200px', height: '200px' }}
+            style={{ width: '100px', height: '100px' }}
           />
         </div>
 
@@ -102,7 +102,7 @@ function Home() {
 
         {result && (
           <div className={`mt-6 text-3xl font-bold ${isSpinning ? 'text-gray-400' : 'text-yellow-400'}`}>
-            {isSpinning ? '.' : ` ${result}`}
+            {isSpinning ? '' : ` ${result}`}
           </div>
         )}
 
@@ -145,5 +145,5 @@ function Home() {
   );
 }
 
-export default Home;
+export default Wheel;
 
