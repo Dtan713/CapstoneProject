@@ -59,12 +59,14 @@ function Contact() {
   return (
     <div className="contact-container" style={{
       backgroundColor: '#2c3e50',
-      padding: '40px',
+      padding: '60px',
       borderRadius: '10px',
       color: 'white',
-      maxWidth: '1200px',
+      maxWidth: '3000px', // Increased max width for a wider container
       margin: 'auto',
-      height: 'auto',
+      height: '125vh',
+      width: '50%',
+      border: '5px solid yellow',
     }}>
       <h2 style={{ color: 'Yellow', fontWeight: 'bold', fontSize: '2.5rem' }}>Contact Us</h2>
       <p className="about-paragraph">
@@ -99,6 +101,7 @@ function Contact() {
               width: '100%',
               color: 'black',
               background: 'white',
+              fontSize: '1rem',
             }}
           />
         </div>
@@ -118,6 +121,7 @@ function Contact() {
               border: '1px solid #ccc',
               width: '100%',
               color: 'black',
+              fontSize: '1rem',
             }}
           />
         </div>
@@ -127,7 +131,7 @@ function Contact() {
             id="message"
             placeholder="Enter your message here"
             required
-            rows="6"
+            rows="8"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -139,6 +143,7 @@ function Contact() {
               width: '100%',
               resize: 'none',
               color: 'black',
+              fontSize: '1rem',
             }}
           />
         </div>

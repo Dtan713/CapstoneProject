@@ -24,6 +24,7 @@ function Login() {
 
       if (response.data === "User is now logged") {
         localStorage.setItem("auth", "true");
+        console.log(response.data)
         navigate("/");
         window.location.reload();
       } else {
@@ -57,6 +58,7 @@ function Login() {
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
+        border: "4px solid yellow", // Added yellow border
       }}
     >
       <img
@@ -137,7 +139,7 @@ function Login() {
           />
         </div>
 
-        <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "20px", }}>
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "20px" }}>
           <button
             type="submit"
             style={{

@@ -12,22 +12,23 @@ body {
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 20px;
-  padding: 100px;
+  padding: 20px;
   margin: 20px;
-  background-color: rgb(86, 88, 92);
+
 
 }
 
 .plan-card {
-  background-color: rgb(185, 189, 189);
-  border: 4px solid yellow; /* Yellow border */
+  background-color: rgb(17, 223, 223);
+  border: 5px solid yellow; /* Yellow border */
   border-radius: 8px;
   padding: 16px;
   margin: 10px;
   box-shadow: 0 2px 5px;
   text-align: center;
   transition: transform 0.2s ease;
-  width: 200%;
+  width: 30%;
+  
 }
 
 .plan-card:hover {
@@ -38,12 +39,17 @@ body {
   font-size: 3rem;
   font-weight: bold;
 }
+.plan-card h4 {
+  font-size: 2rem;
+  font-weight: bold;
+}
 
 .plan-card p {
   font-size: 2rem;
   margin: 10px 0;
   text-align: center;
   font-weight: bold;
+  font-style: normal;
 }
 
 .plan-card-image {

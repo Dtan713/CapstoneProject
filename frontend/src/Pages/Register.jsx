@@ -39,6 +39,7 @@ function Register() {
         if (response.data.id) {
           console.log("User was created");
           localStorage.setItem("auth", "true");
+          localStorage.setItem("userId", response.data.id);
           navigate("/");
           window.location.reload();
         } else {

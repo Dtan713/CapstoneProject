@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Login from "./Pages/Login";
 import Wheel from "./Pages/Wheel";
-import NavBar from "./Navbar/Navbar";
+import NavBar from "./NavBar/NavBar";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import "./App.css";
@@ -20,27 +20,27 @@ import Restaurant from "./Pages/Restaurants";
 const backgrounds = {
   "/Wheel": {
     image:
-      'url(")',
+      'url("https://static.vecteezy.com/system/resources/previews/000/583/718/original/abstract-cogs-wheel-background-vector.jpg")',
   },
   "/about": {
     image:
-      'url("https://img.freepik.com/free-photo/bowl-mozzarella-balls-with-tomato-sauce-garlic-pasta-turquoise-background_23-2147922791.jpg")',
+      'url("https://w0.peakpx.com/wallpaper/437/888/HD-wallpaper-the-magic-of-books-pages-reading-books-magic-blue-light.jpg")',
   },
   "/contact": {
     image:
-      'url("https://img.freepik.com/premium-photo/food-background-with-sea-fish-blue_128650-1312.jpg")',
+      'url("https://st4.depositphotos.com/1008648/19637/i/450/depositphotos_196370936-stock-photo-big-contact-icons-bright-colorful.jpg")',
   },
   "/login": {
     image:
-      'url("https://img.freepik.com/premium-photo/breakfast-buffet-bliss_1254967-49247.jpg")',
+      'url("https://t4.ftcdn.net/jpg/02/76/25/21/360_F_276252107_rdV920MHGAdDfo49nJUcEoABp37xNak5.jpg")',
   },
   "/plans": {
     image:
-      'url("https://cdn-proxy.slickplan.com/imgs/bg/note.webp")',
+      'url("https://media.istockphoto.com/id/1366763859/vector/floor-plan-of-house-on-blackboard-background-with-shadows.jpg?s=612x612&w=0&k=20&c=btU143_75FbwKFsoVXkni0evyfyLO1vgfUex6eS3z4g=")',
   },
   "/restaurants": {
     image:
-      'url("https://static.vecteezy.com/system/resources/previews/004/870/602/non_2x/fast-food-modern-banners-set-labels-background-fast-food-template-frame-and-page-design-for-menu-design-modern-style-with-art-fast-food-icons-on-blue-color-background-illustration-free-vector.jpg")',
+      'url("https://img.freepik.com/premium-photo/fast-food-restaurant-background_1015293-45777.jpg")',
   },
   
 };
@@ -49,7 +49,7 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const location = useLocation();
   const { image } = backgrounds[location.pathname] || {
-    image: 'url("fallback-image-url")',
+    image: 'url("https://static.vecteezy.com/system/resources/previews/000/583/718/original/abstract-cogs-wheel-background-vector.jpg")',
   };
 
   return (

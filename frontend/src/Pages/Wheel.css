@@ -1,5 +1,7 @@
+/* wheel.css */
+
 .spin {
-  animation: spin 4s ease-out forwards;
+  animation: spin 4s ease-out forwards; /* Animation for spinning */
 }
 
 @keyframes spin {
@@ -7,16 +9,18 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* Full spin */
   }
-
-  wheel {
-    border: 4px solid #FFD700; /* or your border color */
-    border-radius: 50%;
-    height: 20rem; /* Adjust based on your needs */
-    width: 20rem; /* Adjust based on your needs */
-    position: relative;
-    overflow: hidden; /* Ensure the image does not overflow */
 }
 
+#wheel {
+  position: relative; /* Ensure the wheel is positioned relatively */
+}
+
+.wheel-image {
+  position: center; /* Positioning the image absolutely */
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%); /* Centering the image */
+  z-index: 10; /* Ensures the image is on top */
 }

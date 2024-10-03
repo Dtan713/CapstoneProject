@@ -8,6 +8,7 @@ function Wheel() {
     'Spicy Delight', 'Indian',
     'BBQ Palace', 'Barbecue',
     'Vegan Feast', 'Vegan',
+    'Burger Joint', 'American',
   ];
 
   const [currentFoodOptions, setCurrentFoodOptions] = useState(initialFoodOptions);
@@ -64,12 +65,11 @@ function Wheel() {
   };
 
   return (
-    
-    <div className="flex items-center justify-center min-h-screen bg-gray-800 text-white p-6">
-      <div className="border-4 border-yellow-500 bg-gray-900 rounded-lg shadow-lg p-10 w-full max-w-5xl text-center"> {/* Changed max-w-3xl to max-w-5xl */}
-        <h2 className="text-yellow-400 font-bold text-5xl mb-4">Heads Or Tails</h2>
-        <p className="text-yellow-200 font-semibold text-lg mb-4">Having A Hard Time Choosing Where To Go First?</p>
-        <p className="text-yellow-200 font-semibold text-lg mb-4">Enter Your Top Two Choices Below And Spin The Wheel</p>
+    <div className="flex items-center justify-center min-h-screen  text-white p-6">
+      <div className="border-4 border-yellow-500 bg-gray-900 rounded-lg shadow-lg p-20 w-full max-w-7xl text-center">
+        <h2 className="text-yellow-400 font-bold text-6xl mb-4">Heads Or Tails</h2>
+        <p className="text-yellow-200 font-semibold text-2xl mb-4">Having A Hard Time Choosing Where To Go First?</p>
+        <p className="text-yellow-200 font-semibold text-2xl mb-4">Enter Your Top Two Choices Below And Spin The Wheel</p>
 
         <div id="wheel" className="border-4 border-yellow-400 rounded-full h-80 w-80 relative mx-auto mb-4">
           {newFoods.map((food, index) => {
@@ -77,8 +77,8 @@ function Wheel() {
             return (
               <div key={index} className="absolute" style={{
                 transform: `rotate(${angle}deg)`,
-                width: '100%',
-                height: '100%',
+                width: '150%',
+                height: '150%',
                 clipPath: `polygon(50% 50%, 100% 0%, 100% 100%)`,
               }}>
                 <span style={{ transform: `rotate(-${angle}deg)` }}>{food}</span>
@@ -89,7 +89,7 @@ function Wheel() {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWKMm2yKQHkP-7c2phsAquzM9EQVack3xaWw&s"
             alt="Spinning Coin"
             className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${isSpinning ? 'spin' : ''}`}
-            style={{ width: '200px', height: '200px' }}
+            style={{ width: '120px', height: '120px', zIndex: 10 }} // Added zIndex to make sure it's on top
           />
         </div>
 
@@ -102,7 +102,7 @@ function Wheel() {
         </button>
 
         {result && (
-          <div className={`mt-6 text-3xl font-bold ${isSpinning ? 'text-gray-400' : 'text-yellow-400'}`}>
+          <div className={`mt-6 text-4xl font-bold ${isSpinning ? 'text-gray-400' : 'text-yellow-400'}`}>
             {isSpinning ? '' : ` ${result}`}
           </div>
         )}

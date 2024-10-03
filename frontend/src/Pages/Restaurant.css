@@ -9,7 +9,9 @@ body {
   
 }
 
-
+.add-to-plans-button:hover {
+  background-color: blue; /* Change to blue on hover */
+}
 
 
 
@@ -31,7 +33,7 @@ body {
 
 .restaurant-card {
   background-color: #5d8cd7;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
@@ -76,7 +78,3 @@ body {
 
 
 
-.restaurant-card-image {
-  width: 100%; /* Example style, adjust as needed */
-  height: auto; /* Maintain aspect ratio */
-}
