@@ -33,6 +33,10 @@ public class PlanToGoService {
         return planToGoRepository.findByUserId(userId);
     }
 
+    public List<PlanToGo> getAllPlans(){
+        return planToGoRepository.findAll();
+    }
+
 
 
 

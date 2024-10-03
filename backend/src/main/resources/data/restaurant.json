@@ -1,48 +1,44 @@
 [
   {
-    "cuisine": "Italian",
-    "food": [
-      "Pizza",
-      "Pasta",
-      "Lasagna",
-      "Risotto"
-    ]
+    "name": "Tomato",
+    "specialty": "Italian",
+    "address": "123 Main St",
+    "image": "https://media.istockphoto.com/id/468441873/photo/italian-restaurant.jpg?s=612x612&w=0&k=20&c=yFOnfl0p5shN7nx2FR5ElssYEVXyWcuc77_0CvjAlwg=",
+    "description": "Authentic Italian cuisine with a modern twist."
   },
   {
-    "cuisine": "Mexican",
-    "food": [
-      "Tacos",
-      "Burritos",
-      "Quesadillas",
-      "Nachos"
-    ]
+    "name": "Sushi World",
+    "specialty": "Japanese",
+    "address": "456 Ocean Dr",
+    "image": "https://nippondom.com/wp-content/uploads/2019/01/oformlenie-yaponskih-restoranov.jpg",
+    "description": "Fresh sushi made daily."
   },
   {
-    "cuisine": "Indian",
-    "food": [
-      "Biryani",
-      "Butter Chicken",
-      "Samosa",
-      "Paneer Tikka"
-    ]
+    "name": "Spicy Delight",
+    "specialty": "Indian",
+    "address": "789 Spice Ave",
+    "image": "https://media-cdn.tripadvisor.com/media/photo-s/0e/af/a7/26/store-front.jpg",
+    "description": "Spicy Indian dishes that will ignite your taste buds."
   },
   {
-    "cuisine": "Chinese",
-    "food": [
-      "Dim Sum",
-      "Kung Pao Chicken",
-      "Sweet and Sour Pork",
-      "Fried Rice"
-    ]
+    "name": "BBQ Palace",
+    "specialty": "Barbecue",
+    "address": "321 Smoke Blvd",
+    "image": "https://rachelgouk.com/wp-content/uploads/2019/08/chuckville-american-bbq-shanghai-restaurant-11-1024x684.jpg",
+    "description": "Best BBQ in town with slow-cooked meats."
   },
   {
-    "cuisine": "Japanese",
-    "food": [
-      "Sushi",
-      "Ramen",
-      "Tempura",
-      "Teriyaki Chicken"
-    ]
+    "name": "Vegan Feast",
+    "specialty": "Vegan",
+    "address": "654 Greenway",
+    "image": "https://chathamcommunique.com/wp-content/uploads/2020/04/3Vegan_Crawl52-900x600.jpg",
+    "description": "Delicious and healthy plant-based meals."
+  },
+  {
+    "name": "Burger Joint",
+    "specialty": "American",
+    "address": "123 New York",
+    "image": "https://www.habitburger.com/dbcwp/wp-content/uploads/2021/10/in-store.jpg",
+    "description": "Authentic American burgers with all the fixings."
   }
 ]
-
