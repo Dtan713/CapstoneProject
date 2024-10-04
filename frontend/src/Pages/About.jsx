@@ -21,7 +21,7 @@ function About() {
           🧐 Heads or Tails Decision-Making
         </h3>
         <p className="font-medium text-4xl mb-4 px-4">
-          Can’t decide where to go? Let fate take the wheel! Our unique heads or tails feature adds an element of fun to your planning. Simply flip a coin and let chance guide your culinary adventure. It’s the perfect solution for indecisive moments!
+          Can’t decide where to go? Let fate take the wheel! Our heads or tails feature adds an element of fun to your planning. Simply spin the wheel and let chance guide your culinary adventure. It’s the perfect solution for indecisive moments!
         </p>
         <h3 className="font-bold text-7xl mb-4">
           🌟 Join the Community!

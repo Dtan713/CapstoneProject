@@ -59,7 +59,7 @@ function EditPlan() {
         <div>
           <label htmlFor="plannedDate">Planned Date</label>
           <input
-            type="date"
+            type="text"
             id="plannedDate"
             name="plannedDate"
             value={formData.plannedDate}

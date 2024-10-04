@@ -42,8 +42,8 @@ function Restaurant() {
           visited: false,
           restaurant_id: restaurant.id,
           user_id: userId,
-          // notes: "",
-          // plannedDate: "",
+          notes: "",
+          plannedDate: "",
         });
         const id = await data.data.id;
         setPlanId(id);
@@ -73,8 +73,8 @@ function Restaurant() {
     // Save the updated plans back to local storage
     localStorage.setItem("plans", JSON.stringify(currentPlans)); 
 
-    // Navigate to the plans page
-    // navigate("/plans");
+    //  Navigate to the plans page
+     navigate("/plans");
   };
 
   if (loading) {

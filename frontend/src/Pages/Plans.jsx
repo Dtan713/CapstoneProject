@@ -9,6 +9,7 @@ function Plans() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
+  
   let navigate = useNavigate();
 
   // Fetching plans from local storage and setting initial state
@@ -25,6 +26,7 @@ function Plans() {
           "http://localhost:8080/plans/users/1/restaurants"
         );
         setRestaurants(response.data); // Assuming API response is an array of restaurants
+        console.log(response.data);
       } catch (err) {
         setError(err.message);
       }
@@ -61,7 +63,7 @@ function Plans() {
     return <div>Error: {error}</div>;
   }
 
-  console.log(plans);
+ 
   
   return (
     <div className="restaurant-cards-container">
@@ -79,6 +81,7 @@ function Plans() {
           <p>
             <strong>Address:</strong> {plan.address}
           </p>
+        
           <p>{plan.description}</p>
           <div className="card-actions">
             <button

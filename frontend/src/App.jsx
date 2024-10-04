@@ -85,7 +85,7 @@ function App() {
         </Routes>
       </main>
       <footer className="text-yellow text-center p-4">
-        <p className="font-bold text-lg">&copy; 2024 Heads or Tails</p>
+        <p className="font-bold text bg-yellow-300 text-lg">&copy; 2024 Heads or Tails</p>
       </footer>
     </div>
   );
