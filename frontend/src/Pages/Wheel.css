@@ -1,4 +1,4 @@
-/* wheel.css */
+wheel.css
 
 .spin {
   animation: spin 4s ease-out forwards; /* Animation for spinning */
@@ -22,5 +22,5 @@
   top: 100%;
   left: 100%;
   transform: translate(-50%, -50%); /* Centering the image */
-  z-index: 10; /* Ensures the image is on top */
+  z-index: 20; /* Ensures the image is on top */
 }

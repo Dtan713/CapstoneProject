@@ -20,8 +20,11 @@ function EditPlan() {
           `http://localhost:8080/plans/user/${id}`
         );
         setPlan(response.data);
-        console.log(response.data);
-        console.log(plan);
+        setFormData({
+          plannedDate: response.data.plannedDate,
+          notes: response.data.notes,
+          visited: response.data.visited,
+        });
       } catch (error) {
         console.error("Error fetching plan:", error);
       }
@@ -35,14 +38,21 @@ function EditPlan() {
       ...prevData,
       [name]: value,
     }));
-    console.log(formData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:8080/plans/edit/${id}`, formData);
-      navigate("/plans"); // Navigate back to the home page after editing
+
+      // Update local storage
+      const currentPlans = JSON.parse(localStorage.getItem("plans")) || [];
+      const updatedPlans = currentPlans.map((plan) => 
+        plan.id === parseInt(id) ? { ...plan, ...formData } : plan
+      );
+      localStorage.setItem("plans", JSON.stringify(updatedPlans));
+
+      navigate("/plans"); // Navigate back to the plans page after editing
     } catch (error) {
       console.error("Error updating plan:", error);
     }
@@ -97,3 +107,4 @@ function EditPlan() {
 }
 
 export default EditPlan;
+

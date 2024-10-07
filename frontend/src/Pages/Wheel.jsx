@@ -40,9 +40,11 @@ function Wheel() {
     const randomRotation = Math.floor(Math.random() * 360) + 720;
     const wheel = document.getElementById('wheel');
 
-    wheel.style.transition = 'transform 4s ease-out';
+    // Reduced transition duration for faster spinning
+    wheel.style.transition = 'transform 2s ease-out';
     wheel.style.transform = `rotate(${randomRotation}deg)`;
 
+    // Adjusted timeout to match the new transition duration
     setTimeout(() => {
       const actualRotation = randomRotation % 360;
       const index = Math.floor((actualRotation / 360) * newFoods.length);
@@ -53,7 +55,7 @@ function Wheel() {
       setIsSpinning(false);
       wheel.style.transition = 'none';
       wheel.style.transform = `rotate(${actualRotation}deg)`;
-    }, 4000);
+    }, 2000); // Match the timeout with the transition duration
   };
 
   const handleAddFood = () => {
@@ -65,7 +67,7 @@ function Wheel() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen  text-white p-6">
+    <div className="flex items-center justify-center min-h-screen text-white p-6">
       <div className="border-4 border-yellow-500 bg-gray-900 rounded-lg shadow-lg p-20 w-full max-w-7xl text-center">
         <h2 className="text-yellow-400 font-bold text-6xl mb-4">Heads Or Tails</h2>
         <p className="text-yellow-200 font-semibold text-2xl mb-4">Having A Hard Time Choosing Where To Go First?</p>
@@ -89,7 +91,7 @@ function Wheel() {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWKMm2yKQHkP-7c2phsAquzM9EQVack3xaWw&s"
             alt="Spinning Coin"
             className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${isSpinning ? 'spin' : ''}`}
-            style={{ width: '120px', height: '120px', zIndex: 10 }} // Added zIndex to make sure it's on top
+            style={{ width: '200px', height: '200px', zIndex: 10 }} // Added zIndex to ensure it's on top
           />
         </div>
 
