@@ -48,7 +48,7 @@ function EditPlan() {
       // Update local storage
       const currentPlans = JSON.parse(localStorage.getItem("plans")) || [];
       const updatedPlans = currentPlans.map((plan) => 
-        plan.id === parseInt(id) ? { ...plan, ...formData } : plan
+        plan.planId === parseInt(id) ? { ...plan, ...formData } : plan
       );
       localStorage.setItem("plans", JSON.stringify(updatedPlans));
 
@@ -107,4 +107,3 @@ function EditPlan() {
 }
 
 export default EditPlan;
-
