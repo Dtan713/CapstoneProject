@@ -8,10 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-// import jakarta.persistence.JoinColumn;
-// import jakarta.persistence.ManyToOne;
-
-// import java.time.LocalDate;
 
 @AllArgsConstructor
 @Data
@@ -28,15 +24,24 @@ public class PlanToGo {
 
     @Column(name = "restaurant_id", nullable = false)
     private long restaurantId;
-
-
+    private String name;
+    private String specialty;
+    private String address;
+    private String image;
+    private String description;
     private String plannedDate;
     private String notes;
     private Boolean visited = false;
 
+
     public PlanToGo(Long userId, Long restaurantId, String plannedDate, String notes, Boolean visited) {
         this.userId = userId;
         this.restaurantId = restaurantId;
+        this.name = name;
+        this.specialty = specialty;
+        this.address = address;
+        this.image = image;
+        this.description = description;
         this.plannedDate = plannedDate;
         this.notes = notes;
         this.visited = visited;

@@ -8,18 +8,8 @@ function Restaurant() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate(); 
-  const [userId, setUserId] = useState(1);
-  const [planId, setPlanId] = useState(null);
-
-  // Predefined plans
-  const predefinedPlans = [
-    { id: 1, restaurant_id: 1, plannedDate: new Date(Date.now() + 10 * 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], title: "Birthday dinner", visited: false },
-    { id: 2, restaurant_id: 2, plannedDate: new Date(Date.now() + 15 * 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], title: "Casual lunch", visited: false },
-    { id: 3, restaurant_id: 3, plannedDate: new Date(Date.now() + 2 * 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], title: "Anniversary", visited: true },
-    { id: 4, restaurant_id: 4, plannedDate: new Date(Date.now() + 2 * 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], title: "Dinner", visited: true },
-    { id: 5, restaurant_id: 5, plannedDate: new Date(Date.now() + 3 * 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], title: "Lunch", visited: false },
-    { id: 6, restaurant_id: 6, plannedDate: new Date(Date.now() + 4 * 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], title: "Dinner", visited: false },
-  ];
+  const [userId, setUserId] = useState(1);//change this later 
+  const [plans, setPlans] = useState([]); // To hold plans
 
   // Fetch restaurant data from the API
   useEffect(() => {
@@ -35,54 +25,65 @@ function Restaurant() {
         setLoading(false);
       }
     };
+    
+    const fetchPlans = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/plans/user/${userId}`);
+        setPlans(response.data);
+      } catch (err) {
+        console.error("Error fetching plans:", err);
+      }
+    };
+
     fetchRestaurants();
-  }, []);
+    fetchPlans();
+  }, [userId]);
 
   const handleAddClick = (restaurant) => {
-    // Add to database
+    console.log("Adding plan for restaurant:", restaurant);
+    const { id, address, description,image } = restaurant;
     const addPlan = async () => {
       try {
-        const data = await axios.post(`http://localhost:8080/plans/add/${userId}/${restaurant.id}`, {
-          visited: false,
-          restaurant_id: restaurant.id,
-          user_id: userId,
-          notes: "",
-          plannedDate: "",
+        const response = await axios.post(`http://localhost:8080/plans/add/${userId}/${restaurant.id}`, {
+          userId: userId,
+          restaurantId: restaurant.id,
+          plannedDate: "test",
+          address: address,
+          description: description,
+          image: image,
+          notes: "test",
+          visited: false
         });
-        const id = data.data.id;
-        setPlanId(id);
+        
+        // Update local state with the new plan
+        setPlans((prevPlans) => [...prevPlans, response.data]); // Update state
       } catch (error) {
         console.error("Error adding plan:", error);
       }
     };
     
     addPlan();
-    
-    // Get current plans from local storage
-    const currentPlans = JSON.parse(localStorage.getItem("plans")) || [];
-    
-    // Check if restaurant is already in plans
-    let exists = currentPlans.some((plan) => plan.restaurant_id === restaurant.id);
-    
-    if (exists) {
-      console.log("Restaurant already added to plans");
-    } else {
-      const updatedRestaurant = { ...restaurant, planId };
-      currentPlans.push(updatedRestaurant);
-      localStorage.setItem("plans", JSON.stringify(currentPlans)); 
-    }
-    
-    // Navigate to the plans page
     navigate("/plans");
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const handleDeletePlan = async (planId) => {
+    try {
+      await axios.delete(`http://localhost:8080/plans/delete/${planId}`);
+      // Remove the deleted plan from local state
+      setPlans((prevPlans) => prevPlans.filter(plan => plan.id !== planId));
+    } catch (error) {
+      console.error("Error deleting plan:", error);
+    }
+  };
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const handleUpdatePlan = async (planId, updatedData) => {
+    try {
+      const response = await axios.put(`http://localhost:8080/plans/update/${planId}`, updatedData);
+      setPlans((prevPlans) => prevPlans.map(plan => (plan.id === planId ? response.data : plan)));
+    } catch (error) {
+      console.error("Error updating plan:", error);
+    }
+  };
 
   return (
     <div className="restaurant-cards-container">
@@ -102,14 +103,18 @@ function Restaurant() {
           </p>
           <p>{restaurant.description}</p>
           
-          {/* Display predefined plans for this restaurant */}
-          <h4>Planned Visits:</h4>
+          {/* Display user plans for this restaurant */}
+          <h4>My Planned Visits:</h4>
           <ul>
-            {predefinedPlans
+            {plans
               .filter(plan => plan.restaurant_id === restaurant.id)
               .map(plan => (
                 <li key={plan.id}>
                   {plan.title} on {plan.plannedDate} {plan.visited ? "(Visited)" : "(Not Visited)"}
+                  <button onClick={() => handleDeletePlan(plan.id)} style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}>
+                    Delete
+                  </button>
+                  {/* Add more controls for updating, e.g., a modal or form to edit */}
                 </li>
               ))}
           </ul>

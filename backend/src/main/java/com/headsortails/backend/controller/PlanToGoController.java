@@ -12,6 +12,7 @@ import com.headsortails.backend.service.PlanToGoService;
 
 @RestController
 @RequestMapping("/plans")
+@CrossOrigin
 public class PlanToGoController {
 
     @Autowired
@@ -19,6 +20,7 @@ public class PlanToGoController {
 
     @GetMapping("/user/{userId}")
     public List<PlanToGo> getPlansForUser(@PathVariable Long userId) {
+
         return planToGoService.getPlansForUser(userId);
     }
 

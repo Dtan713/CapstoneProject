@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom"; 
 import "../App.css"; // Ensure this imports your CSS file with the font
+import SignUp from "../Pages/SignUp"; // Import the SignUp component (assuming you rename Register.jsx to SignUp.jsx)
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
   const navigate = useNavigate(); // Initialize useNavigate
+  const [showSignUp, setShowSignUp] = useState(false);
 
   useEffect(() => {
     // Check if the user is logged in by looking for an item in localStorage
@@ -23,6 +25,11 @@ function NavBar() {
     localStorage.removeItem("auth");
     setIsLoggedIn(false);
     navigate('/login'); // Navigate to login page after logout
+  };
+
+  const toggleSignUp = () => {
+    setShowSignUp(!showSignUp);
+    setIsOpen(false); // Close the mobile menu if open
   };
 
   return (
@@ -84,12 +91,27 @@ function NavBar() {
                   </button>
                 </>
               ) : (
-                <Link
-                  to="/login"
-                  className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
-                >
-                  Login
-                </Link>
+                <>
+                  <Link
+                    to="/login"
+                    className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+                  >
+                    Sign Up
+                  </Link>
+
+                  {/* <button
+                    onClick={toggleSignUp}
+                    className="text-yellow-300 hover:bg-blue-700 hover:text-white px-4 py-3 rounded-md text-lg font-semibold"
+                  >
+                    Sign Up
+                  </button> */}
+                </>
               )}
             </div>
           </div>
@@ -147,7 +169,7 @@ function NavBar() {
             to="/about"
             className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
           >
-            About
+            Hi
           </Link>
           <Link
             to="/contact"
@@ -163,16 +185,38 @@ function NavBar() {
               Log Out
             </button>
           ) : (
-            <Link
-              to="/login"
-              className="bg-blue-600 text-white block px-4 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-blue-800"
-            >
-              Log In
-            </Link>
+            <>
+              <Link
+                to="/login"
+                className="bg-blue-600 text-white block px-4 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-blue-800"
+              >
+                Log In
+              </Link>
+              <button
+                onClick={toggleSignUp}
+                className="text-yellow-300 hover:bg-blue-700 hover:text-white block px-4 py-3 rounded-md text-lg font-semibold"
+              >
+                Sign Up
+              </button>
+              {showSignUp && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                  <div className="bg-white rounded-lg p-8 max-w-md w-full">
+                    <button
+                      onClick={toggleSignUp}
+                      className="float-right text-gray-500 hover:text-gray-700"
+                    >
+                      ✕
+                    </button>
+                    <SignUp />
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
     </nav>
+    
   );
 }
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
 
     @Autowired

@@ -12,7 +12,7 @@ import NavBar from "./NavBar/NavBar";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import "./App.css";
-import Register from "./Pages/Register";
+import SignUp from "./Pages/SignUp";  // Using absolute path
 import Plans from "./Pages/Plans";
 import EditPlan from "./Pages/EditPlan";
 import Restaurant from "./Pages/Restaurants";
@@ -69,8 +69,8 @@ function App() {
       <main className="flex flex-col items-center justify-center flex-grow p-6">
         <Routes>
           <Route path="/about" element={<About />} />
+          <Route path="/signup" element={<SignUp />} />  // Updated route
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/restaurants" element={<Restaurant />} />
           <Route path="/plans" element={<Plans />} />
           <Route path="/plans/edit/:id" element={<EditPlan />} />

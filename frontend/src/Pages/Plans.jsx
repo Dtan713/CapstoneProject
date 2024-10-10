@@ -1,40 +1,50 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Plans.css";
 import { useNavigate } from "react-router-dom";
+import "./Plans.css";
 
 function Plans() {
   const [plans, setPlans] = useState([]);
-  const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  
-  let navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const userId = localStorage.getItem("userId");
 
-  // Fetching plans from local storage and setting initial state
   useEffect(() => {
-    const fetchPlans = () => {
-      const storedPlans = JSON.parse(localStorage.getItem("plans")) || [];
-      setPlans(storedPlans);
-      setLoading(false);
-    };
-
-    const fetchRestaurants = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/plans/users/1/restaurants"
-        );
-        setRestaurants(response.data); // Assuming API response is an array of restaurants
-        console.log(response.data);
+        // Fetch user plans first
+        const plansResponse = await axios.get(`http://localhost:8080/plans/user/${userId}`);
+        const userPlans = plansResponse.data;
+
+        // Fetch restaurants that user has plans for
+        const restaurantIds = userPlans.map(plan => plan.restaurantId);
+        const restaurantsResponse = await axios.get(`http://localhost:8080/restaurants?ids=${restaurantIds.join(",")}`);
+        const restaurants = restaurantsResponse.data;
+
+        // Combine plan and restaurant data
+        const combinedPlans = userPlans.map(plan => {
+          const restaurant = restaurants.find(r => r.id === plan.restaurantId);
+          return {
+            ...plan,
+            name: restaurant?.name,
+            image: restaurant?.image,
+            specialty: restaurant?.specialty,
+            address: restaurant?.address,
+            description: restaurant?.description
+          };
+        });
+
+        setPlans(userPlans);
+        setLoading(false);
       } catch (err) {
         setError(err.message);
+        setLoading(false);
       }
     };
 
-    fetchPlans();
-    fetchRestaurants();
-  }, []);
+    fetchData();
+  }, [userId]);
 
   const handleDelete = async (planId) => { 
     console.log("Attempting to delete plan with ID:", planId); // Corrected logging
@@ -55,50 +65,64 @@ function Plans() {
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
+  const navigateToEdit = (planId, restaurantId) => {  
+    console.log("Navigating to edit plan with ID:", restaurantId);
+    localStorage.setItem("restaurantId", restaurantId);
+    navigate(`/plans/edit/${planId}`);
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
- 
-  
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
+
+  console.log("Plans:", plans);
+  // console.log("Restaurants:", JSON.stringify(plans));
+
   return (
     <div className="restaurant-cards-container">
-      {plans.map((plan) => (
-        <div key={plan.id} className="restaurant-card">
-          <h3 style={{ color: 'yellow', fontWeight: 'bold' }}>{plan.name}</h3>
-          <img
-            src={plan.image}
-            alt={plan.name}
-            className="restaurant-card-image"
-          />
-          <p>
-            <strong>Specialty:</strong> {plan.specialty}
-          </p>
-          <p>
-            <strong>Address:</strong> {plan.address}
-          </p>
-        
-          <p>{plan.description}</p>
-          <div className="card-actions">
-            <button
-              className="edit-button"
-              onClick={() => navigate(`/plans/edit/${plan.id}`)}
-            >
-              Edit
-            </button>
-            <button
-              className="delete-button"
-              onClick={() => handleDelete(plan.id)} // Ensure you're using plan.id
-            >
-              Delete
-            </button>
+      <h1>Your Planned Visits</h1>
+      {plans.length === 0 ? (
+        <p>No planned visits found.</p>
+      ) : (
+        plans.map((plan) => (
+          <div key={plan.id} className="restaurant-card">
+            <h3 style={{ color: 'yellow', fontWeight: 'bold' }}>{plan.name}</h3>
+            <img
+              src={plan.image}
+              alt={plan.name}
+              className="restaurant-card-image"
+            />
+            <p>
+              <strong>Specialty:</strong> {plan.specialty}
+            </p>
+            <p>
+              <strong>Address:</strong> {plan.address}
+            </p>
+            <p>
+              <strong>Planned Date:</strong> {plan.plannedDate}
+            </p>
+            <p>{plan.description}</p>
+            <div className="card-actions">
+              <button
+                className="edit-button"
+                onClick={() => navigate(`/plans/edit/${plan.id}`)}
+              >
+                Edit
+              </button>
+              <button
+                className="delete-button"
+                onClick={() => handleDelete(plan.id)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 }

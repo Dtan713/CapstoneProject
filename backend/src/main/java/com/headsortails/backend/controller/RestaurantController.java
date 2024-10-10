@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/restaurants") // Use @RequestMapping for the base path
+@CrossOrigin
 public class RestaurantController {
 
     @Autowired

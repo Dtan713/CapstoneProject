@@ -48,10 +48,10 @@ function Login() {
       className="contact-container"
       style={{
         backgroundColor: "#2c3e50",
-        padding: "60px",
-        borderRadius: "10px",
+        padding: "100px",
+        borderRadius: "20px",
         color: "white",
-        maxWidth: "600px",
+        maxWidth: "1000px",
         margin: "auto",
         display: "flex",
         flexDirection: "column",
@@ -65,7 +65,7 @@ function Login() {
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlg9-2ci1Ts2HHas6wrAyO22of-Xfcvw7sYg&s"
         alt="Login Account"
         style={{
-          width: "100%",
+          width: "150%",
           maxWidth: "600px",
           borderRadius: "10px",
           marginBottom: "20px",
@@ -139,7 +139,7 @@ function Login() {
           />
         </div>
 
-        <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: "20px" }}>
+        <div style={{ width: "200%", display: "flex", justifyContent: "center", marginTop: "20px" }}>
           <button
             type="submit"
             style={{
@@ -158,7 +158,7 @@ function Login() {
         </div>
       </form>
 
-      <div className="mt-4 text-center">
+      {/* <div className="mt-4 text-center">
         <p className="text-yellow-300" style={{ fontSize: "1.1rem" }}>
           Don’t have an account?
           <button
@@ -173,7 +173,7 @@ function Login() {
             Create Account
           </button>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

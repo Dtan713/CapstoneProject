@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./EditPlan.css"; // Updated CSS file
 
@@ -7,20 +7,29 @@ function EditPlan() {
   const { id } = useParams(); // Get the plan ID from the URL
   const [plan, setPlan] = useState(null);
   const [formData, setFormData] = useState({
+    userId: localStorage.getItem("userId"),
     plannedDate: "",
     notes: "",
     visited: false,
   });
   const navigate = useNavigate();
+  const {state} = useLocation();
+  let rest = state
+  console.log(rest);
+  const userId = localStorage.getItem("userId");
 
   useEffect(() => {
     const fetchPlan = async () => {
       try {
+        // const response2 = await axios.get(`http://localhost:8080/plans/${id}`);
         const response = await axios.get(
           `http://localhost:8080/plans/user/${id}`
         );
+        console.log(response, "response   data", id);
         setPlan(response.data);
         setFormData({
+          userId,
+          restaurantId,
           plannedDate: response.data.plannedDate,
           notes: response.data.notes,
           visited: response.data.visited,
@@ -42,9 +51,19 @@ function EditPlan() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log (plan);
     try {
       await axios.put(`http://localhost:8080/plans/edit/${id}`, formData);
+      
+      // const combinedPlans = [
+      //     ...rest,
+      //     formData.plannedDate,
+      //     formData.notes,
+      //     formData.visited,
+      // ]
 
+      // console.log(rest);
+ 
       // Update local storage
       const currentPlans = JSON.parse(localStorage.getItem("plans")) || [];
       const updatedPlans = currentPlans.map((plan) => 
