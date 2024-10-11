@@ -8,7 +8,7 @@ function Plans() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate(); 
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem("userid");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +16,7 @@ function Plans() {
         // Fetch user plans first
         const plansResponse = await axios.get(`http://localhost:8080/plans/user/${userId}`);
         const userPlans = plansResponse.data;
+        
 
         // Fetch restaurants that user has plans for
         const restaurantIds = userPlans.map(plan => plan.restaurantId);
@@ -44,7 +45,7 @@ function Plans() {
     };
 
     fetchData();
-  }, [userId]);
+  }, []);
 
   const handleDelete = async (planId) => { 
     console.log("Attempting to delete plan with ID:", planId); // Corrected logging
@@ -106,6 +107,9 @@ function Plans() {
               <strong>Planned Date:</strong> {plan.plannedDate}
             </p>
             <p>{plan.description}</p>
+            <p>
+              <strong>Notes:</strong> {plan.notes}
+            </p>
             <div className="card-actions">
               <button
                 className="edit-button"

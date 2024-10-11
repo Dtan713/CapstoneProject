@@ -13,7 +13,7 @@ function Restaurant() {
 
   // Fetch restaurant data from the API
   useEffect(() => {
-    setUserId(localStorage.getItem("userId"));
+    setUserId(localStorage.getItem("userid"));
     
     const fetchRestaurants = async () => {
       try {

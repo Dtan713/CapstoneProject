@@ -22,8 +22,9 @@ function Login() {
         password: formValues.password,
       });
 
-      if (response.data === "User is now logged") {
+      if (response.data ) {
         localStorage.setItem("auth", "true");
+        localStorage.setItem("userid", response.data.id);
         console.log(response.data)
         navigate("/");
         window.location.reload();

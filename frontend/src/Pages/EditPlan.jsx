@@ -8,6 +8,7 @@ function EditPlan() {
   const [plan, setPlan] = useState(null);
   const [formData, setFormData] = useState({
     userId: localStorage.getItem("userId"),
+    restaurantId: "",
     plannedDate: "",
     notes: "",
     visited: false,
@@ -21,7 +22,7 @@ function EditPlan() {
   useEffect(() => {
     const fetchPlan = async () => {
       try {
-        // const response2 = await axios.get(`http://localhost:8080/plans/${id}`);
+      //  const response2 = await axios.get(`http://localhost:8080/plans/${id}`);
         const response = await axios.get(
           `http://localhost:8080/plans/user/${id}`
         );
@@ -29,9 +30,10 @@ function EditPlan() {
         setPlan(response.data);
         setFormData({
           userId,
-          restaurantId,
+          restaurantId: response.data.restaurantId,
           plannedDate: response.data.plannedDate,
           notes: response.data.notes,
+
           visited: response.data.visited,
         });
       } catch (error) {

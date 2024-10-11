@@ -70,16 +70,16 @@ public class PlanToGoService {
         Optional<PlanToGo> existingPlan = Optional.ofNullable(planToGoRepository.findById(id).orElse(null));
 
         if(existingPlan.isPresent()){
-            existingPlan.get().setUserId(updatedPlanToGo.getUserId());
-            existingPlan.get().setRestaurantId(updatedPlanToGo.getRestaurantId());
-            existingPlan.get().setName(updatedPlanToGo.getName());
-            existingPlan.get().setSpecialty(updatedPlanToGo.getSpecialty());
-            existingPlan.get().setAddress(updatedPlanToGo.getAddress());
-            existingPlan.get().setImage(updatedPlanToGo.getImage());
-            existingPlan.get().setDescription(updatedPlanToGo.getDescription());
+//            existingPlan.get().setUserId(updatedPlanToGo.getUserId());
+//            existingPlan.get().setRestaurantId(updatedPlanToGo.getRestaurantId());
+//            existingPlan.get().setName(updatedPlanToGo.getName());
+//            existingPlan.get().setSpecialty(updatedPlanToGo.getSpecialty());
+//            existingPlan.get().setAddress(updatedPlanToGo.getAddress());
+//            existingPlan.get().setImage(updatedPlanToGo.getImage());
+//            existingPlan.get().setDescription(updatedPlanToGo.getDescription());
             existingPlan.get().setPlannedDate(updatedPlanToGo.getPlannedDate());
             existingPlan.get().setNotes(updatedPlanToGo.getNotes());
-            existingPlan.get().setVisited(updatedPlanToGo.getVisited());
+//            existingPlan.get().setVisited(updatedPlanToGo.getVisited());
 
    
         return ResponseEntity.ok().body( planToGoRepository.save(existingPlan.get()));

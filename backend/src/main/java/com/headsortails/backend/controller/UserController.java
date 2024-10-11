@@ -57,7 +57,7 @@ public class UserController {
         Optional<User> user = userService.loginUser(loginRequest.getEmail(), loginRequest.getPassword());
 
         if (user.isPresent()) {
-            return ResponseEntity.ok().body("User is now logged");
+            return ResponseEntity.ok().body(user);
         } else {
             return ResponseEntity.ok().body("Email or Password is Incorrect");
         }
