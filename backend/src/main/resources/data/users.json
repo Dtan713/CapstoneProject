@@ -1,26 +1,26 @@
-//[
-//  {
-//    "id": 1,
-//    "username": "john_doe",
-//    "email": "john@example.com",
-//    "password": "password123"
-//  },
-//  {
-//    "id": 2,
-//    "username": "jane_smith",
-//    "email": "jane@example.com",
-//    "password": "securePassword!"
-//  },
-//  {
-//    "id": 3,
-//    "username": "alex_jones",
-//    "email": "alex@example.com",
-//    "password": "mySecretPass"
-//  },
-//  {
-//    "id": 4,
-//    "username": "mary_jane",
-//    "email": "mary@example.com",
-//    "password": "anotherPassword"
-//  }
-//]
+[
+  {
+    "id": 1,
+    "username": "john_doe",
+    "email": "john@example.com",
+    "password": "password123"
+  },
+  {
+    "id": 2,
+    "username": "jane_smith",
+    "email": "jane@example.com",
+    "password": "securePassword!"
+  },
+  {
+    "id": 3,
+    "username": "alex_jones",
+    "email": "alex@example.com",
+    "password": "mySecretPass"
+  },
+  {
+    "id": 4,
+    "username": "mary_jane",
+    "email": "mary@example.com",
+    "password": "anotherPassword"
+  }
+]

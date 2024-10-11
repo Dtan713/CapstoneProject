@@ -76,11 +76,6 @@ function App() {
           <Route path="/plans/edit/:id" element={<EditPlan />} />
           <Route path="/wheel" element={<Wheel/>} />
           <Route path="/contact" element={<Contact />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/register" element={<Register />} /> */}
-          {/* <Route path="/plans" element={<Plans />} />
-          <Route path="/plans/edit/:id" element={<EditPlan />} /> */}
-          {/* <Route path="/restaurants" element={<Restaurant />} /> */}
           <Route path="/" element={<Navigate to="/about" />} />
         </Routes>
       </main>

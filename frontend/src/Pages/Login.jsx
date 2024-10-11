@@ -158,22 +158,7 @@ function Login() {
         </div>
       </form>
 
-      {/* <div className="mt-4 text-center">
-        <p className="text-yellow-300" style={{ fontSize: "1.1rem" }}>
-          Don’t have an account?
-          <button
-            onClick={() => navigate("/register")}
-            className="text-blue-400 font-semibold hover:underline"
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Create Account
-          </button>
-        </p>
-      </div> */}
+      {/* Add a link to the signup page */}
     </div>
   );
 }

@@ -55,16 +55,7 @@ function EditPlan() {
     try {
       await axios.put(`http://localhost:8080/plans/edit/${id}`, formData);
       
-      // const combinedPlans = [
-      //     ...rest,
-      //     formData.plannedDate,
-      //     formData.notes,
-      //     formData.visited,
-      // ]
-
-      // console.log(rest);
- 
-      // Update local storage
+      // Update local storage with the new plan data
       const currentPlans = JSON.parse(localStorage.getItem("plans")) || [];
       const updatedPlans = currentPlans.map((plan) => 
         plan.planId === parseInt(id) ? { ...plan, ...formData } : plan
